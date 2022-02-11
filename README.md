@@ -1,2 +1,2 @@
-# My personal Curator
-	:artist:
+# My personal Curator :artist:
+
