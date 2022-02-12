@@ -1,6 +1,8 @@
 # NEART :artist:
 
-My personal Curator 
+My personal Curator
+
+------
 
 #### 사이트 이름: NEART [니아트]
 
