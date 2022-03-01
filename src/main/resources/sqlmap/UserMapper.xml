@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.teamPM.neart.mapper.UserMapper">
+
+	<resultMap id="userMap" type="com.teamPM.neart.vo.MemberVO"> 
+		<result property="membernum" column="membernum"/> <!-- 칼럼은 디비에 있는 칼럼명이 온다, property는 MemberVO에있는 변수명 -->
+	    <result property="id" column="id"/>
+	    <result property="password" column="password"/>
+	    <result property="name" column="name"/>
+	    <result property="year" column="year"/>
+	    <result property="month" column="month"/>
+	    <result property="day" column="day"/>
+	    <result property="address" column="address"/>
+	    <result property="phonenum" column="phonenum"/>
+		<collection property="authList" resultMap="authMap"></collection> <!-- private List<AuthVO> authList; 처리 -->
+	</resultMap>
+	
+	<resultMap id="authMap" type="com.teamPM.neart.vo.AuthVO">
+		<result property="authorityid" column="authorityid"/>
+		<result property="authority" column="authority"/>
+		<result property="membernum" column="membernum"/>
+	</resultMap>
+	
+	<select id="getUser" resultMap="userMap"> <!--  resultMap : 1:n 처리 -->
+		select * from member, authorities 
+		where member.membernum = authorities.membernum and member.id = #{username}
+	</select>
+	
+
+</mapper>

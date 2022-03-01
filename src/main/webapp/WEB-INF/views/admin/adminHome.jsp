@@ -2,14 +2,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-	<title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>관리자 페이지</title>
 </head>
+
 <body>
-<h1>
-	neart 메롱 홈이다.
-</h1>
+
+<h1>관리자 페이지 입니다.</h1>
+
+<p>principal: <sec:authentication property="principal"/></p>
+<p>아이디: <sec:authentication property="principal.user.id"/></p>
+<p>비밀번호: <sec:authentication property="principal.user.password"/></p>
+<p>이름: <sec:authentication property="principal.user.name"/></p>
+<p>전화: <sec:authentication property="principal.user.phonenum"/></p>
+<p>주소: <sec:authentication property="principal.user.address"/></p>
+<p><a href="<c:url value="/" />">홈</a></p>
 
 <sec:authorize access="isAnonymous()">
    <p><a href="<c:url value="/login/loginForm" />">로그인</a></p>
@@ -21,11 +31,5 @@
    </form:form>
 </sec:authorize>
 
-<h3>
-    [<a href="<c:url value="/add/addForm" />">회원가입</a>]
-     [<a href="<c:url value="/add/addFormAdmin" />">관리자 회원가입</a>]
-    [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
-    [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
-</h3>
 </body>
 </html>
