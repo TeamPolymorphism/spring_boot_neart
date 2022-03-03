@@ -76,8 +76,7 @@
 
 			<tr>
 				<td>글번호</td>
-				<td><input id="bid" type="hidden" name="bid"
-					value="${content_view.bid}"></td>
+				<td>${content_view.bid}</td>
 			</tr>
 
 			<tr>
