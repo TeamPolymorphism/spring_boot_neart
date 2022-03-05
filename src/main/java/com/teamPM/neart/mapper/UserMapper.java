@@ -10,6 +10,10 @@ public interface UserMapper {
 	
    
    public MemberVO getUser(String username); // xml로 처리하겟다 = UserMapper.xml에 있음
+
+   //ssj
+   public MemberVO memberJoin(MemberVO memberVO); // xml로 처리하겟다 = UserMapper.xml에 있음
+   public MemberVO insertAuth(MemberVO memberVO); // xml로 처리하겟다 = UserMapper.xml에 있음(String username); // xml로 처리하겟다 = UserMapper.xml에 있음
    
    @Insert("insert into member(membernum, id, password, name, year, month, day, address, phonenum) values(member_seq.NEXTVAL,#{id},#{password},#{name},#{year},#{month},#{day},#{address},#{phonenum})")
    public int insertUser(MemberVO MemberVO);
@@ -20,5 +24,7 @@ public interface UserMapper {
    @Insert("insert into AUTHORITIES (authorityid,authority,membernum) values(authorities_seq.NEXTVAL,'ROLE_ADMIN',member_seq.CURRVAL)")
    public void insertAuthoritiesAdmin(MemberVO MemberVO);
 
+ 
+   
    
 }

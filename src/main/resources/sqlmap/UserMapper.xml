@@ -29,5 +29,22 @@
 		where member.membernum = authorities.membernum and member.id = #{username}
 	</select>
 	
+	
+	<select id="memberJoin" resultType="com.teamPM.neart.vo.MemberVO">
+	<![CDATA[ 
+			insert into member (MEMBERNUM,ID, PASSWORD,NAME,PHONENUM)
+			values (member_seq.nextval, #{member.id}, #{member.password}, #{member.name}, #{member.phonenum})	  
+		]]>
+	</select>
+	
+
+	<select id="insertAuth" resultType="com.teamPM.neart.vo.MemberVO">
+	<![CDATA[ 
+		insert into authorities(AUTHORITYID, AUTHORITY, MEMBERNUM)
+		values (authorities_seq.nextval, 'ROLE_USER', member_seq.currval)		
+	]]>
+	</select>
+
+	
 
 </mapper>

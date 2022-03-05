@@ -23,9 +23,11 @@
 
 <h3>
     [<a href="<c:url value="/add/addForm" />">회원가입</a>]
-     [<a href="<c:url value="/add/addFormAdmin" />">관리자 회원가입</a>]
+    [<a href="<c:url value="/add/addFormAdmin" />">관리자 회원가입</a>]
     [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
     [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
+    [<a href="<c:url value="/oauth2/authorization/kakao" />">카카오로그인</a>]
+    [<a href="<c:url value="/oauth2/authorization/naver" />">네이버로그인</a>]
 </h3>
 </body>
 </html>
