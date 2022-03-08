@@ -10,6 +10,7 @@
 	neart 메롱 홈이다.
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<span><a href="/board/list">[공지사항 게시판]</a></span>
+<span><a href="/qnaboard/list">[Q&A 게시판]</a></span>
 </body>
 </html>

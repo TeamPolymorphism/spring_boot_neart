@@ -24,7 +24,7 @@ MEMBERNUM          NUMBER */
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class NoticeBoardVO {
+public class BoardVO {
 	private int bid;
 	private String btitle;
 	private String bcontent;

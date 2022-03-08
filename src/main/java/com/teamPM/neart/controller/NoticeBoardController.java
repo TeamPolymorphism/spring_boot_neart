@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.teamPM.neart.service.NoticeBoardService;
-import com.teamPM.neart.vo.NoticeBoardVO;
+import com.teamPM.neart.page.Criteria;
+import com.teamPM.neart.page.PageVO;
+import com.teamPM.neart.service.BoardService;
+import com.teamPM.neart.vo.BoardVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,49 +26,52 @@ import lombok.extern.slf4j.Slf4j;
 public class NoticeBoardController {
 
 	@Autowired
-	private NoticeBoardService noticeBoardService;
+	private BoardService boardService;
 
 	@GetMapping("/board/list")
-	public ModelAndView list(ModelAndView mav) {
+	public ModelAndView list(ModelAndView mav, Criteria cri) {
 		log.info("list..");
 		mav.setViewName("board/noticeBoardList");
-		mav.addObject("list", noticeBoardService.getList());
+		mav.addObject("list", boardService.noticeGetList(cri));
 
+		int total = boardService.noticeGetTotalCount();
+
+		mav.addObject("pageMaker", new PageVO(cri, total));
 		return mav;
 	}
 
 	@GetMapping("/board/content_view/{bid}")
-	public ModelAndView content_view(NoticeBoardVO board, ModelAndView mav) {
+	public ModelAndView content_view(BoardVO board, ModelAndView mav) {
 		log.info("content..");
 		mav.setViewName("board/content_view");
-		mav.addObject("content_view", noticeBoardService.get(board.getBid()));
+		mav.addObject("content_view", boardService.get(board.getBid()));
 
 		return mav;
 	}
 
 	@GetMapping("/board/write_view")
 	public ModelAndView write_view(ModelAndView mav) {
-		log.info("write_view..");
+		log.info("notice_write_view..");
 		mav.setViewName("board/write_view");
 
 		return mav;
 	}
 
 	@PostMapping("/board/write")
-	public ModelAndView write(NoticeBoardVO board, ModelAndView mav) {
-		log.info("write..");
-		noticeBoardService.register(board);
+	public ModelAndView write(BoardVO board, ModelAndView mav) {
+		log.info("notice_write..");
+		boardService.register(board);
 		mav.setViewName("redirect:list");
 
 		return mav;
 	}
 
 	@DeleteMapping("/board/list/{bid}")
-	public ResponseEntity<String> delete(NoticeBoardVO board, Model model) {
+	public ResponseEntity<String> delete(BoardVO board, Model model) {
 		ResponseEntity<String> entity = null;
 		log.info("delete..");
 		try {
-			noticeBoardService.remove(board.getBid());
+			boardService.remove(board.getBid());
 			// 삭제가 성공하면 성공 상태메시지 저장
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {
@@ -80,20 +85,21 @@ public class NoticeBoardController {
 	}
 
 	@GetMapping("/board/modify_view/{bid}")
-	public ModelAndView modify_view(NoticeBoardVO board, ModelAndView mav) {
+	public ModelAndView modify_view(BoardVO board, ModelAndView mav) {
 		log.info("modify_view..");
+		
 		mav.setViewName("board/modify_view");
-		mav.addObject("content_view", noticeBoardService.get(board.getBid()));
+		mav.addObject("content_view", boardService.get(board.getBid()));
 
 		return mav;
 	}
 
 	@PutMapping("/board/modify/{bid}")
-	public ResponseEntity<String> modify(@RequestBody NoticeBoardVO board, Model model) {
+	public ResponseEntity<String> modify(@RequestBody BoardVO board, Model model) {
 		ResponseEntity<String> entity = null;
 		log.info("modify..");
 		try {
-			noticeBoardService.modify(board);
+			boardService.modify(board);
 			// 수정에 성공하면 성공 상태메시지 저장
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {

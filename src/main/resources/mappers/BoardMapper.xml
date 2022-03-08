@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamPM.neart.mapper.BoardMapper">
+    
+   <select id="noticeGetList" resultType="com.teamPM.neart.vo.BoardVO">
+   <![CDATA[
+      select * from board where bcategory = 0 order by bid desc
+   ]]> 
+   </select>
+   
+   <select id="qnaGetList" resultType="com.teamPM.neart.vo.BoardVO">
+   <![CDATA[
+      select * from board where bcategory = 1 order by bid desc
+   ]]> 
+   </select>
+   
+   <select id="read" resultType="com.teamPM.neart.vo.BoardVO">
+	<![CDATA[
+		select * from board where bid = #{bid}
+	]]>
+	</select>
+	
+	<insert id="insert" >
+	<![CDATA[
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 0, 4)
+		
+	]]>
+	</insert>
+	
+	<insert id="insert2" >
+	<![CDATA[
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1, 4)
+		
+	]]>
+	</insert>
+	
+	<delete id="delete" >
+	<![CDATA[
+		delete from board where bid = #{bid}
+	]]>
+	</delete>
+	
+	<update id="update" >
+	<![CDATA[
+		update board set bid = #{bid}, btitle = #{btitle}, bcontent = #{bcontent} where bid = #{bid}
+	]]>
+	</update>
+	
+	<update id="updateHit" >
+	<![CDATA[
+		update board set bhit = bhit +1 where bid = #{bid}
+	]]>
+	</update>
+	
+	 <select id="noticeGetTotalCount" resultType = "int">
+	<![CDATA[
+		select count(*) from board where bcategory = 0
+	]]>
+	</select>
+	
+	<select id="qnaGetTotalCount" resultType = "int">
+	<![CDATA[
+		select count(*) from board where bcategory = 1
+	]]>
+	</select>
+	
+	<!-- 	열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
+	<select id="noticeGetListWithPaging" resultType = "com.teamPM.neart.vo.BoardVO">
+	<![CDATA[
+		         SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             *
+                         FROM
+                             board 
+                         where bcategory = 0 order by bid desc
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}		
+	]]>
+	</select>
+	
+	<!-- 	열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
+	<select id="qnaGetListWithPaging" resultType = "com.teamPM.neart.vo.BoardVO">
+	<![CDATA[
+		         SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             *
+                         FROM
+                             board 
+                         where bcategory = 1 order by bid desc
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}		
+	]]>
+	</select>
+   
+</mapper>

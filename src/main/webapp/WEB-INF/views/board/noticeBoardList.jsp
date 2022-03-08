@@ -44,7 +44,8 @@
    </script>
 </head>
 <body>
-   
+	<a href="/">Home</a>
+   <h1>공지사항 게시판입니다.</h1>
    <table width="500" cellpadding="0" cellspacing="0" border="1">
       <tr>
          <td>번호</td>
@@ -69,5 +70,18 @@
          <td colspan="5"> <a href="write_view">글작성</a> </td>
       </tr>
    </table>
+   
+    <c:if test="${pageMaker.pre}">
+         <a href="list${pageMaker.makeQuery(pageMaker.startPage - 1) }">«</a>
+   </c:if>
+
+	<!-- 링크를 걸어준다 1-10페이지까지 페이지를 만들어주는것  -->
+	<c:forEach var="idx" begin="${pageMaker.startPage }" end="${pageMaker.endPage }" >
+		<a href="list${pageMaker.makeQuery(idx)}">${idx}</a>
+	</c:forEach>
+	      
+	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+		<a href="list${pageMaker.makeQuery(pageMaker.endPage +1) }"> » </a>
+	</c:if>
 </body>
 </html>
