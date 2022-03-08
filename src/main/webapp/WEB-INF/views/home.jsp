@@ -27,5 +27,12 @@
     [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
     [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
 </h3>
+<h3>
+    [<a href="https://kauth.kakao.com/oauth/authorize?client_id=d211e27fda35078191c41904b8ffb4ba&redirect_uri=http://localhost:8282/auth/kakao/callback&response_type=code">카카오로그인</a>]
+</h3>
+
+<h3>
+    [<a href="<c:url value="/product/listProduct" />">상품목록</a>]
+</h3>
 </body>
 </html>

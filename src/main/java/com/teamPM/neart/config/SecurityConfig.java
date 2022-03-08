@@ -30,11 +30,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	.antMatchers("/add/**").permitAll()
     	.antMatchers("/user/**").hasRole("USER")
     	.antMatchers("/admin/**").hasRole("ADMIN")
+    	.antMatchers("/product/**").permitAll()
     	.anyRequest().authenticated()
     	.and().logout().permitAll()
     	.and().formLogin()
     	.defaultSuccessUrl("/", true)
     	.and().csrf().disable();
+
     	
     }
     
