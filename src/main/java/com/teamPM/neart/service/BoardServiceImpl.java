@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.teamPM.neart.mapper.BoardMapper;
 import com.teamPM.neart.page.Criteria;
 import com.teamPM.neart.vo.BoardVO;
+import com.teamPM.neart.vo.ReplyVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,6 +28,11 @@ public class BoardServiceImpl implements BoardService{
 	public BoardVO get(int bid) {
 		upHit(bid);
 		return boardMapper.read(bid);
+	}
+	
+	@Override
+	public ReplyVO getReply(int bid) {
+		return boardMapper.readReply(bid);
 	}
 
 	@Override
@@ -79,6 +85,32 @@ public class BoardServiceImpl implements BoardService{
 		log.info("QnA_register..");
 		boardMapper.insert2(board);
 	}
+
+	@Override
+	public void updateShape(int bgroup, int bstep) {
+		log.info("updateShape..");
+		boardMapper.updateShape(bgroup, bstep);
+	}
+
+	@Override
+	public void insertReply(ReplyVO reply) {
+		log.info("insertReply..");
+		boardMapper.insertReply(reply);
+	}
+
+	@Override
+	public void insertReplyBoard(BoardVO board) {
+		log.info("insertReplyBoard..");
+		boardMapper.insertReplyBoard(board);
+	}
+
+	@Override
+	public void insertReply2(BoardVO board) {
+		log.info("insertReply2..");
+		boardMapper.insertReply2(board);
+	}
+
+
 
 	
 	

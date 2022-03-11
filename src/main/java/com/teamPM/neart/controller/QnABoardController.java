@@ -10,6 +10,7 @@ import com.teamPM.neart.page.Criteria;
 import com.teamPM.neart.page.PageVO;
 import com.teamPM.neart.service.BoardService;
 import com.teamPM.neart.vo.BoardVO;
+import com.teamPM.neart.vo.ReplyVO;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,14 +44,18 @@ public class QnABoardController {
 	public String write(BoardVO board) {
 		log.info("QnA_write..");
 		boardService.register2(board);
-	
+		boardService.insertReply2(board);
+		
 		return "redirect:list";
 	}
 	
 	@GetMapping("/qnaboard/content_view")
-	public String content_view(int bid, Model model) {
+	public String content_view(BoardVO board, Model model) {
 		log.info("QnA_content_view..");
-		model.addAttribute("content_view", boardService.get(bid));
+		model.addAttribute("content_view", boardService.get(board.getBid()));
+		model.addAttribute(board.getBgroup());
+		
+		System.out.println("bgroup ======= " + board.getBgroup());
 		
 		return "qnaboard/content_view";
 	}
@@ -77,5 +82,33 @@ public class QnABoardController {
 		
 		return "redirect:list";
 	}
-
+	
+	@GetMapping("/qnaboard/reply_view")
+	public String reply_view(BoardVO board,Model model) {
+		log.info("QnA_reply_view..");
+		model.addAttribute("reply_view", boardService.get(board.getBid()));
+		model.addAttribute("reply_view2", boardService.getReply(board.getBid()));
+		ReplyVO reply = boardService.getReply(board.getBid());
+		System.out.println(reply.getBgroup());
+		
+		return "qnaboard/reply_view";
+	}
+	
+	@PostMapping("/qnaboard/reply")
+	public String modify(BoardVO board, ReplyVO reply, Model model) {
+		log.info("QnA_reply..");
+		System.out.println("bgroup : " + reply.getBgroup());
+	
+		boardService.insertReplyBoard(board);
+		boardService.updateShape(board.getBgroup(), board.getBstep());
+		System.out.println("---Bid : " + reply.getBid() + "----------bgroup : " + reply.getBgroup());
+		
+		System.out.println("=========group" + board.getBgroup());
+		System.out.println("=========step" + board.getBstep());
+		
+		boardService.insertReply(reply);
+		
+		return "redirect:list"; 
+		
+	}
 }

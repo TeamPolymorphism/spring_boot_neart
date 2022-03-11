@@ -22,19 +22,49 @@
 	]]>
 	</select>
 	
+	<select id="readReply" resultType="com.teamPM.neart.vo.ReplyVO">
+	<![CDATA[
+		select * from reply where bid = #{bid}
+	]]>
+	</select>
+	
 	<insert id="insert" >
 	<![CDATA[
 		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 0, 4)
-		
 	]]>
 	</insert>
 	
 	<insert id="insert2" >
 	<![CDATA[
 		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1, 4)
-		
 	]]>
 	</insert>
+	
+	<insert id="insertReply2" >
+	<![CDATA[
+		insert into reply (bid, bgroup, bstep, bindent) values (board_seq.currval, reply_seq.nextval, 0, 0)
+	]]>
+	</insert>
+	
+	<!-- 	댓글을 하나씩 미뤄서 정렬을 해줘야하기때문에 세로정렬을 bstep에 +1로 한칸씩 미뤄내줘야한다 -->
+	<update id="updateShape" >
+	<![CDATA[
+		update reply set bstep = bstep+1 where bgroup = #{bgroup} and bstep > #{bstep}
+	]]>
+	</update>
+	
+	<insert id="insertReply" >
+	<![CDATA[
+		insert into reply (bid, bgroup, bstep, bindent) values (board_seq.currval, reply_seq.currval, #{bstep}+1, #{bindent}+1)
+	]]>
+	</insert>
+	
+	<insert id="insertReplyBoard">
+	<![CDATA[
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1, 4)
+	]]>
+	</insert>
+	
 	
 	<delete id="delete" >
 	<![CDATA[
@@ -87,10 +117,15 @@
 		         SELECT * FROM (
               SELECT ROWNUM AS RNUM, A.* FROM (
                        SELECT
-                             *
+                             board.bid,
+                             board.btitle,
+                             board.bcontent,
+                             reply.bgroup,
+                             reply.bstep,
+                             reply.bindent   
                          FROM
-                             board 
-                         where bcategory = 1 order by bid desc
+                             board, reply 
+                         where bcategory = 1 and board.bid=reply.bid order by bgroup desc, bstep asc
              ) A WHERE ROWNUM <= #{pageNum} * #{amount}
          ) WHERE RNUM > (#{pageNum}-1) * #{amount}		
 	]]>

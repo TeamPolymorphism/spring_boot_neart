@@ -33,4 +33,7 @@ public class BoardVO {
 	private int secret;
 	private int bcategory;
 	private int membernum;
+	private int bindent;
+	private int bgroup;
+	private int bstep;
 }

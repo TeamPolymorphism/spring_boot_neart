@@ -10,6 +10,7 @@
 	<span><a href="/">Home</a></span>
    <h1>QnA 게시판입니다.</h1>
    <table width="500" cellpadding="0" cellspacing="0" border="1">
+   
       <tr>
          <td>번호</td>
          <td>제목</td>
@@ -18,10 +19,12 @@
          <td>아이디</td>
       </tr>
       <c:forEach items="${list}" var="board">
+      <input type="hidden" name="bgroup" value="${board.bgroup}"/>
       <tr>
          <td>${board.bid}</td>
          <td>
-            <a href="/qnaboard/content_view?bid=${board.bid}">${board.btitle}</a></td>
+         	<c:forEach begin="1" end="${board.bindent}">[답변]</c:forEach>
+            <a href="/qnaboard/content_view?bid=${board.bid}&bgroup=${board.bgroup}">${board.btitle}</a></td>
          <td>${board.bdate}</td>
          <td>${board.bhit}</td>
          <td>${board.membernum}
