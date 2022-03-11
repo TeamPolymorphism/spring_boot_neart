@@ -13,18 +13,17 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ImageVO {
+public class ImageTypeVO {
 	
 	/*
-		IMGID     NOT NULL NUMBER        
-		FILEPATH           VARCHAR2(200) 
-		PRODUCTID          NUMBER         
- 
+		TYPEID  NOT NULL NUMBER        
+		IMGTYPE          VARCHAR2(200) 
+		IMGID            NUMBER  
 	 * */
 	
-	private int imgid;
-    private String filePath;
-    private int productid;
+    private int typeid;
+    private String imgtype;
+    private int imgid;
 
 
 

@@ -1,29 +1,19 @@
 package com.teamPM.neart.controller;
 
-import java.io.IOException;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.teamPM.neart.page.Criteria;
 import com.teamPM.neart.page.PageVO;
+import com.teamPM.neart.service.AwsS3Service;
 import com.teamPM.neart.service.ProductService;
-import com.teamPM.neart.service.S3Service;
 import com.teamPM.neart.vo.ProductVO;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -32,7 +22,7 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-	private S3Service s3Service;
+	private AwsS3Service awsS3Service;
 
 	// 페이징 + 상품목록
 	@GetMapping("/product/listProduct")
@@ -114,22 +104,6 @@ public class ProductController {
 		productService.modifyProduct(productVO);
 
 		return "redirect:/product/listProduct";
-	}
-
-	// aws 업로드
-	@RequestMapping("/test")
-	public String test() {
-		return "home";
-	}
-
-	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public String upload(@RequestPart MultipartFile file){
-		return s3Service.uploadFile(file);
-	}
-
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public String upload(@RequestPart String fileName) {
-		return s3Service.deleteFile(fileName);
 	}
 
 }

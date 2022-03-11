@@ -22,7 +22,8 @@
 </head>
 <body>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
-		<input type="hidden" name="productid" value="${detailProduct.productid}">
+		<input type="hidden" name="productid"
+			value="${detailProduct.productid}">
 		<tr>
 			<td>조회수</td>
 			<td>${detailProduct.producthit}</td>
@@ -39,8 +40,13 @@
 			<td>작가</td>
 			<td>${detailProduct.artist}</td>
 		</tr>
+		<!-- 작품사진 join 사용 -->
 		<tr>
-			<td>작품</td>
+			<td>작품사진</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>작품설명</td>
 			<td>${detailProduct.productcontent}</td>
 		</tr>
 		<tr>
@@ -56,10 +62,10 @@
 			<td>${detailProduct.price}</td>
 		</tr>
 		<tr>
-			<td colspan="2"><a href="listProduct">목록보기</a> &nbsp;&nbsp; 
-			<a href="deleteProduct?productid=${detailProduct.productid}"
-				Onclick="return deleteProduct();">삭제</a> &nbsp;&nbsp; 
-			<a href="modifyProduct?productid=${detailProduct.productid}">수정하기</a></td>
+			<td colspan="2"><a href="listProduct">목록보기</a> &nbsp;&nbsp; <a
+				href="deleteProduct?productid=${detailProduct.productid}"
+				Onclick="return deleteProduct();">삭제</a> &nbsp;&nbsp; <a
+				href="modifyProduct?productid=${detailProduct.productid}">수정하기</a></td>
 		</tr>
 	</table>
 </body>

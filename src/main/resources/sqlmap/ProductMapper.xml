@@ -4,10 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teamPM.neart.mapper.ProductMapper">
 
-    
-    <!-- 01. 상품 목록 -->
-	 <!--    열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
-	   <select id="getProductList" resultType = "com.teamPM.neart.vo.ProductVO">
+
+	<!-- 01. 상품 목록 -->
+	<!-- 열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
+	<select id="getProductList"
+		resultType="com.teamPM.neart.vo.ProductVO">
 	   <![CDATA[
 	               SELECT * FROM (
 	              SELECT ROWNUM AS RNUM, A.* FROM (
@@ -21,54 +22,64 @@
 	      
 	   
 	   ]]>
-	   </select>
-   
-   <!-- 02. 상품 상세 조회 -->
-   <select id="detailProduct" resultType="com.teamPM.neart.vo.ProductVO">
+	</select>
+
+	<!-- 02. 상품 상세 조회 -->
+	<select id="detailProduct"
+		resultType="com.teamPM.neart.vo.ProductVO">
    <![CDATA[
       select * from product where productid = #{productid}
-   ]]> 
-   </select>
-   
+   ]]>
+	</select>
+
 	<!-- 03. 상품 등록 -->
-   <insert id="insertProduct"> 
+	<insert id="insertProduct"> 
    <![CDATA[
 		insert into product (productid, productname, productcontent, artist, productsize, price, quantity, producthit) 
 	values (product_seq.nextval, #{productname}, #{productcontent}, #{artist}, #{productsize}, #{price}, #{quantity}, 0)
 
-   ]]> 
-   </insert>
-   
+   ]]>
+	</insert>
+
 	<!-- 04. 상품 삭제 -->
-    <delete id="deleteProduct" >
+	<delete id="deleteProduct">
 	<![CDATA[
 		delete from product where productid =#{productid}
 	]]>
 	</delete>
-	
-	<!-- 05. 상품 수정 -->	
-	<update id="modifyProduct" >
+
+	<!-- 05. 상품 수정 -->
+	<update id="modifyProduct">
 	<![CDATA[
 		update product set artist = #{artist}, productname = #{productname}, productcontent = #{productcontent}, productsize = #{productsize}, price = #{price}, quantity = #{quantity} where productid = #{productid}
 	]]>
 	</update>
-	
-	<!-- 05. 상품 조회수 -->	
+
+	<!-- 05. 상품 조회수 -->
 	<update id="upHitProduct">
 	<![CDATA[
 		update product set producthit = producthit +1 where productid = #{productid}
 	]]>
 	</update>
-	
-	<!-- 06. 총 상품(페이징) -->	
-	<select id="getTotalCount" resultType = "int">
+
+	<!-- 06. 총 상품(페이징) -->
+	<select id="getTotalCount" resultType="int">
 	<![CDATA[
 		select count(*) from product
 	]]>
 	</select>
-	
 
-		
-	
-	
+
+	<!-- 07. image테이블 -->
+	<insert id="imgProduct"> 
+   <![CDATA[
+		insert into product (productid, productname, productcontent, artist, productsize, price, quantity, producthit) 
+	values (product_seq.nextval, #{productname}, #{productcontent}, #{artist}, #{productsize}, #{price}, #{quantity}, 0)
+
+   ]]>
+	</insert>
+
+
+
+
 </mapper>

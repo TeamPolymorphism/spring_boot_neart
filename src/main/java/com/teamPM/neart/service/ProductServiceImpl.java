@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
 	public ProductVO detailProduct(int productid) {
 		log.info("--------detailProduct");
 		
-		//upHitProduct(productid); //조회수
+		upHitProduct(productid); //조회수
 		
 		return productMapper.detailProduct(productid) ;
 	}

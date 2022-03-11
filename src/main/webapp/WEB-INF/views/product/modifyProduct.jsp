@@ -8,35 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>관리자 | 작품수정</title>
 
-<!-- 공백 방지 -->
-<script type="text/javascript">
-	window.onload = () => {
-	    
-	    let sbmBtn = document.querySelector("#sbmBtn"); 
-	
-	    sbmBtn.onclick = () =>{
-	        if(document.getElementById("productname").value == ""){
-	            alert("작품명 누락"); //유효성 검사
-	        }else if(document.getElementById("artist").value == ""){
-	            alert("작가명 누락");
-	        }else if(document.getElementById("productcontent").value == ""){
-	            alert("작품사진 누락");
-	        } else if(document.getElementById("productsize").value == ""){
-	            alert("사이즈 누락");
-	        } else if(document.getElementById("price").value == ""){
-	            alert("가격 누락");
-	        } else if(document.getElementById("quantity").value == ""){
-	            alert("재고 누락");
-	        } else{
-	            //모든 항목이 채워졌을 경우
-	            alert("수정을 진행합니다.");
-	            document.getElementById("modifyProductFinish").submit();
-	        }
-	
-	    };
-	
-	    };
-</script>
 </head>
 <body>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
@@ -74,8 +45,8 @@
 			</tr> -->
 			<tr>
 				<td>작품설명</td>
-				<td><textarea id="productcontent" type="text"
-						name="productcontent" rows="20"></textarea></td>
+				<td><input id="productcontent" type="text"
+						name="productcontent" value="${modifyProduct.productcontent}"></td>
 			</tr>
 			<tr>
 				<td>사이즈</td>
@@ -95,8 +66,9 @@
 
 			<tr>
 				<td colspan="2"><a href="listProduct">목록으로</a> &nbsp;&nbsp; <input
-					id="sbmBtn" type="submit" value="수정완료"></td>
+					type="submit" value="수정완료"></td>
 			</tr>
+			
 		</form:form>
 	</table>
 
