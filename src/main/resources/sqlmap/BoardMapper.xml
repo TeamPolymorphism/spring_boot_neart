@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamPM.neart.mapper.BoardMapper">
+    
+   <select id="noticeGetList" resultType="com.teamPM.neart.vo.BoardVO">
+   <![CDATA[
+      select * from board where bcategory = 0 order by bid desc
+   ]]> 
+   </select>
+   
+   <select id="qnaGetList" resultType="com.teamPM.neart.vo.BoardVO">
+   <![CDATA[
+      select * from board where bcategory = 1 order by bid desc
+   ]]> 
+   </select>
+   
+   <select id="read" resultType="com.teamPM.neart.vo.BoardVO">
+	<![CDATA[
+		select * from board where bid = #{bid}
+	]]>
+	</select>
+	
+	<select id="readReply" resultType="com.teamPM.neart.vo.ReplyVO">
+	<![CDATA[
+		select * from reply where bid = #{bid}
+	]]>
+	</select>
+	
+	<insert id="insert" >
+	<![CDATA[
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 0, 4)
+	]]>
+	</insert>
+	
+	<insert id="insert2" >
+	<![CDATA[
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1, 4)
+	]]>
+	</insert>
+	
+	<insert id="insertReply2" >
+	<![CDATA[
+		insert into reply (bid, bgroup, bstep, bindent) values (board_seq.currval, reply_seq.nextval, 0, 0)
+	]]>
+	</insert>
+	
+	<!-- 	댓글을 하나씩 미뤄서 정렬을 해줘야하기때문에 세로정렬을 bstep에 +1로 한칸씩 미뤄내줘야한다 -->
+	<update id="updateShape" >
+	<![CDATA[
+		update reply set bstep = bstep+1 where bgroup = #{bgroup} and bstep > #{bstep}
+	]]>
+	</update>
+	
+	<insert id="insertReply" >
+	<![CDATA[
+		insert into reply (bid, bgroup, bstep, bindent) values (board_seq.currval, reply_seq.currval, #{bstep}+1, #{bindent}+1)
+	]]>
+	</insert>
+	
+	<insert id="insertReplyBoard">
+	<![CDATA[
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1, 4)
+	]]>
+	</insert>
+	
+	
+	<delete id="delete" >
+	<![CDATA[
+		delete from board where bid = #{bid}
+	]]>
+	</delete>
+	
+	<update id="update" >
+	<![CDATA[
+		update board set bid = #{bid}, btitle = #{btitle}, bcontent = #{bcontent} where bid = #{bid}
+	]]>
+	</update>
+	
+	<update id="updateHit" >
+	<![CDATA[
+		update board set bhit = bhit +1 where bid = #{bid}
+	]]>
+	</update>
+	
+	 <select id="noticeGetTotalCount" resultType = "int">
+	<![CDATA[
+		select count(*) from board where bcategory = 0
+	]]>
+	</select>
+	
+	<select id="qnaGetTotalCount" resultType = "int">
+	<![CDATA[
+		select count(*) from board where bcategory = 1
+	]]>
+	</select>
+	
+	<!-- 	열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
+	<select id="noticeGetListWithPaging" resultType = "com.teamPM.neart.vo.BoardVO">
+	<![CDATA[
+		         SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             *
+                         FROM
+                             board 
+                         where bcategory = 0 order by bid desc
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}		
+	]]>
+	</select>
+	
+	<!-- 	열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
+	<select id="qnaGetListWithPaging" resultType = "com.teamPM.neart.vo.BoardVO">
+	<![CDATA[
+		         SELECT * FROM (
+              SELECT ROWNUM AS RNUM, A.* FROM (
+                       SELECT
+                             board.bid,
+                             board.btitle,
+                             board.bcontent,
+                             reply.bgroup,
+                             reply.bstep,
+                             reply.bindent   
+                         FROM
+                             board, reply 
+                         where bcategory = 1 and board.bid=reply.bid order by bgroup desc, bstep asc
+             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
+         ) WHERE RNUM > (#{pageNum}-1) * #{amount}		
+	]]>
+	</select>
+   
+</mapper>

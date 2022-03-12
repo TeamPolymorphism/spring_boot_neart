@@ -28,6 +28,8 @@
     [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
     [<a href="<c:url value="/oauth2/authorization/kakao" />">카카오로그인</a>]
     [<a href="<c:url value="/oauth2/authorization/naver" />">네이버로그인</a>]
+    <span><a href="/board/list">[공지사항 게시판]</a></span>
+	<span><a href="/qnaboard/list">[Q&A 게시판]</a></span>
 </h3>
 </body>
 </html>
