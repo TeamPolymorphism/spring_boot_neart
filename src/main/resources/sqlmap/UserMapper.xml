@@ -15,6 +15,7 @@
 	    <result property="day" column="day"/>
 	    <result property="address" column="address"/>
 	    <result property="phonenum" column="phonenum"/>
+	    <result property="enabled" column="enabled"/>
 		<collection property="authList" resultMap="authMap"></collection> <!-- private List<AuthVO> authList; 처리 -->
 	</resultMap>
 	

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.teamPM.neart.mapper.UserMapper;
 import com.teamPM.neart.vo.MemberVO;
+import com.teamPM.neart.vo.OrderdetailsVO;
 
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,6 +35,57 @@ public class MemberService {
       userMapper.insertUser(userVO);//db에 insert시킴
       userMapper.insertAuthorities(userVO);
    }
+   
+   public MemberVO read(String id){
+	   
+		log.info("get() ..");
+		
+		return userMapper.read(id);
+	}
+  
+  public void modify(MemberVO memberVO) { 
+	   
+		log.info("modify() ..");
+		
+		userMapper.update(memberVO);
+	}
+  
+  public void delete(String id) {
+	   
+	   log.info("delete()...");
+	   
+	   userMapper.delete(id);
+  }
+  
+	/*
+	 * public void remove(String id) {
+	 * 
+	 * log.info("remove()...");
+	 * 
+	 * userMapper.remove(id); }
+	 */
+ 
+ public void withdraw(MemberVO memberVO) {
+	   
+	   log.info("withdraw()...");
+	   
+	   userMapper.withdraw(memberVO);
+ }
+ 
+ public void orderdetails(OrderdetailsVO orderdetailsVO) {
+	   
+	   log.info("orderdetails()...");
+	   
+	  userMapper.orderdetails(orderdetailsVO);
+}
+ 
+ //OrderdetailsVO orderdetailsVO
+ public OrderdetailsVO detail(int membernum){
+	   
+		log.info("get() ..");
+		
+		return userMapper.detail(membernum);
+	}
    
    public void addAdmin(MemberVO userVO) {
 	   

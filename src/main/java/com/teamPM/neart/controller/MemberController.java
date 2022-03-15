@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.teamPM.neart.service.MemberService;
 import com.teamPM.neart.vo.MemberVO;
@@ -31,7 +32,13 @@ public class MemberController {
 	public void userHome() {
 		System.out.println("----userHome");
 	}
- 
+	
+	@RequestMapping("/login")
+	public String loginForm() {
+		System.out.println("----login 나와랑");
+		return "/login/loginForm";
+	}
+	
    
    @GetMapping("/add/addForm")
    public String userForm() {

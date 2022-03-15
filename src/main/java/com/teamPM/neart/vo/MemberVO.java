@@ -42,6 +42,7 @@ public class MemberVO {
 	private int day;
 	private String address;
 	private String phonenum;
+	private int enabled;
 	
 	private List<AuthVO> authList;
 	

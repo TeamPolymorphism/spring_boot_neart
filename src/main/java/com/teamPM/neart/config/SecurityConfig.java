@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.httpBasic().and().authorizeRequests()
     	.antMatchers("/").permitAll()
+    	.antMatchers("/login").permitAll()
     	.antMatchers("/add/**").permitAll()
     	.antMatchers("/user/**").hasRole("USER")
     	.antMatchers("/admin/**").hasRole("ADMIN")
@@ -37,17 +38,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	.antMatchers("/board/**").permitAll()
     	.antMatchers("/qnaboard/**").permitAll()
     	.anyRequest().authenticated()
-    	.and()
-    	.logout()
+    	.and().logout().permitAll()
     	.logoutSuccessUrl("/")
     	.invalidateHttpSession(true)
     	.permitAll()
-    	.and().formLogin()
+    	.and().formLogin().loginPage("/login")
+    	.failureUrl("/login?error").permitAll()
     	.defaultSuccessUrl("/", true)
     	
+    	
     	.and()
-		.oauth2Login()
-		.loginPage("/home")
+		.oauth2Login().loginPage("/home")
 		// 소셜로그인이 완료되면 후처리가 필요함 1.코드받기(인증) 2.엑세스토큰(권한) 3.사용자프로필 가져오기 4. 가져온 정보를 토대로
 		// 회원가입을 자동으로 진행
 		.userInfoEndpoint() // OAuth2 로그인 성공 이후 사용자 정보를 가져올 때의 설정
@@ -57,8 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.defaultSuccessUrl("/user/userHome")// 소셜 로그인이 성공하면 이동할 주소
 		
-		.and()
-		.csrf().disable(); 
+		.and().csrf().disable();
     }
     
     @Override

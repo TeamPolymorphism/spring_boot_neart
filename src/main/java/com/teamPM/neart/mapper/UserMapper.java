@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.teamPM.neart.vo.MemberVO;
+import com.teamPM.neart.vo.OrderdetailsVO;
 
 @Mapper
 public interface UserMapper {
@@ -23,6 +24,23 @@ public interface UserMapper {
    
    @Insert("insert into AUTHORITIES (authorityid,authority,membernum) values(authorities_seq.NEXTVAL,'ROLE_ADMIN',member_seq.CURRVAL)")
    public void insertAuthoritiesAdmin(MemberVO MemberVO);
+   
+   
+   	//로그인한 회원조회
+   
+ 	//MemberVO get(String id);
+    MemberVO read(String id);
+ 	
+    void modify(MemberVO memberVO);
+    void update(MemberVO memberVO);
+ 	
+    void delete(String id);
+    //void remove(String id);
+    
+    void withdraw(MemberVO memberVO);
+    
+    OrderdetailsVO detail(int membernum);
+    void orderdetails(OrderdetailsVO orderdetailsVO);
 
  
    
