@@ -31,18 +31,47 @@
 	</select>
 	
 	
-	<select id="memberJoin" resultType="com.teamPM.neart.vo.MemberVO">
-	<![CDATA[ 
-			insert into member (MEMBERNUM,ID, PASSWORD,NAME,PHONENUM)
-			values (member_seq.nextval, #{member.id}, #{member.password}, #{member.name}, #{member.phonenum})	  
-		]]>
+	
+	<!-- 회원정보읽기 -->
+	<select id="read" resultType="com.teamPM.neart.vo.MemberVO">
+	<![CDATA[
+		select * from member where id = #{id}
+	]]>
 	</select>
 	
-
-	<select id="insertAuth" resultType="com.teamPM.neart.vo.MemberVO">
-	<![CDATA[ 
-		insert into authorities(AUTHORITYID, AUTHORITY, MEMBERNUM)
-		values (authorities_seq.nextval, 'ROLE_USER', member_seq.currval)		
+	<!-- 회원정보수정 -->
+	<update id="update">
+	<![CDATA[
+		update member set id = #{id}, name = #{name}, year = #{year}, month = #{month}, day = #{day}, address = #{address}, phonenum = #{phonenum} where id = #{id}
+	]]>
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<update id="delete">
+	<![CDATA[
+		update member set enabled = 0 where id = #{id}
+	]]>
+	</update>
+	
+	<!-- 탈퇴한 회원 로그인 불가 -->
+	<select id="withdraw" resultType="com.teamPM.neart.vo.MemberVO">
+	<![CDATA[
+		select * from member where enabled = 0
+	]]>
+	</select>
+	
+	<!-- 주문내역 뽑아내기 -->
+	<select id="orderdetails" resultType="com.teamPM.neart.vo.MemberVO">
+	<![CDATA[
+        select DISTINCT 
+		orders.membernum as membernum,
+		orders.ordersdate as ordersdate,
+        orders.ordersid as ordersid,
+        ordersdetails.totalquantity as totalquantity,
+        product.productname as productname,
+		product.price as price 
+        from orders, ordersdetails, product
+        where membernum = #{membernum}
 	]]>
 	</select>
 

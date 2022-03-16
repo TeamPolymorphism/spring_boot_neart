@@ -37,6 +37,7 @@ public class MemberVO {
 	private String id;
 	private String password;
 	private String name;
+	private String email;
 	private int year;
 	private int month;
 	private int day;

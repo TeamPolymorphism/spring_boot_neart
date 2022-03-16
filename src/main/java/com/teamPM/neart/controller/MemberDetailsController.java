@@ -45,7 +45,7 @@ public class MemberDetailsController {
 
 	// GetMapping 데이터값을 주소창에 보여주는 건데 + 보안에 취약함
 	//내 페이지 보여주기
-	@GetMapping("/user/mypage")
+	@GetMapping("/mypage")
 	public String mypage(MemberVO memberVO, Model model) {
 
 		log.info("mypage() ..");
@@ -53,7 +53,7 @@ public class MemberDetailsController {
 
 		String id = memberVO.getId();
 
-		model.addAttribute("mypage_view", memberService.read(id));
+		//model.addAttribute("mypage_view", memberService.read(id));
 
 		return "/user/mypage";
 

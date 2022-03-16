@@ -40,7 +40,7 @@ public class MemberController {
 	}
 	
    
-   @GetMapping("/add/addForm")
+   @GetMapping("/addForm")
    public String userForm() {
       log.info("Welcome userForm");
       System.out.println("----- dasdsadsadsa     -------- userForm ");
