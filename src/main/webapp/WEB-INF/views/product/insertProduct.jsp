@@ -11,9 +11,10 @@
 
 </head>
 <body>
+
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
-		<!-- "등록"을 누르면 /write 실행 -->
-		<form action="insertProductFinish" method="post" enctype="multipart/form-data">
+		<!-- "등록"을 누르면 /upload 실행 -->
+		<form action="upload" method="post" enctype="multipart/form-data">
 			<tr>
 				<td>작품명</td>
 				<td><input id="productname" type="text" name="productname"
@@ -23,14 +24,24 @@
 				<td>작가</td>
 				<td><input id="artist" type="text" name="artist" size="50"></td>
 			</tr>
-			<!-- AWS 파일 업로드 -->
-
+	
 			<tr>
-				<td>작품사진</td>
+				<td>작품사진</td><!-- AWS 파일 업로드 -->
 				<td>
-				<label for="InputImage">사진</label>          
-			  <input type="file" id="filePath" name="filePath" onchange="readURL(this);" /> 
-		      <img id="ShowImage" src="#" />
+					<!--	<label for="fileImage"> 
+						<form:form
+							enctype="multipart/form-data" action="upload" method="POST">
+							<img src="<c:url value="${insertProduct.filePath}"/>" />
+
+						</form:form>
+					</label>-->
+
+						<label for="img">파일 업로드</label> 
+						<img src="<c:url value="${insertProduct.filePath}"/>" />
+						<input type="file" id="img">
+						
+
+
 				</td>
 			</tr>
 			<tr>

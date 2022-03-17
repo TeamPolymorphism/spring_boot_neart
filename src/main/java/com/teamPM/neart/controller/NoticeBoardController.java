@@ -59,6 +59,8 @@ public class NoticeBoardController {
 
 	@PostMapping("/board/write")
 	public ModelAndView write(BoardVO board, ModelAndView mav) {
+		
+		
 		log.info("notice_write..");
 		boardService.register(board);
 		mav.setViewName("redirect:list");
@@ -88,8 +90,8 @@ public class NoticeBoardController {
 	public ModelAndView modify_view(BoardVO board, ModelAndView mav) {
 		log.info("modify_view..");
 		
-		mav.setViewName("board/modify_view");
-		mav.addObject("content_view", boardService.get(board.getBid()));
+		mav.setViewName("board/modify_view");  //return할때 들어가는 주소 
+		mav.addObject("content_view", boardService.get(board.getBid())); //model.addattribute와 같음 
 
 		return mav;
 	}

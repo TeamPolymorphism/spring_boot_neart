@@ -43,7 +43,12 @@
 		<!-- 작품사진 join 사용 -->
 		<tr>
 			<td>작품사진</td>
-			<td></td>
+			<td>
+				<!-- <img src="https://neart.s3.ap-northeast-2.amazonaws.com/{파일명}"> -->
+				<c:forEach items="${products}" var="detailProduct" varStatus="status">
+					<img src="<c:url value="${detailProduct.filePath}"/>" />
+				</c:forEach>
+			</td>
 		</tr>
 		<tr>
 			<td>작품설명</td>

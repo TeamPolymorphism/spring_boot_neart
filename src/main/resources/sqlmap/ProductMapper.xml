@@ -2,21 +2,57 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace는 패키지 명 + 인터페이스명과 맞춰줘야한다. -->
 <mapper namespace="com.teamPM.neart.mapper.ProductMapper">
 
+	<!-- 1대 n 처리 -->
+	<resultMap id="ProductMap" type="com.teamPM.neart.vo.ProductVO">
+		<result property="productid" column="productid" /> <!-- 칼럼은 디비에 있는 칼럼명이 온다, property는 ProductVO에있는 변수명 -->
+		<result property="productname" column="productname" />
+		<result property="productcontent" column="productcontent" />
+		<result property="artist" column="artist" />
+		<result property="productsize" column="productsize" />
+		<result property="quantity" column="quantity" />
+		<result property="price" column="price" />
+		<result property="productdate" column="productdate" />
+		<result property="producthit" column="producthit" />
+		<result property="imgid" column="imgid" />
+		<result property="filePath" column="filePath" />
+		<result property="typeid" column="typeid" />
+		<result property="imgtype" column="imgtype" />
+	</resultMap>
 
-	<!-- 01. 상품 목록 -->
+
+	<!-- 01. 사진포함 상품 목록 -->
 	<!-- 열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
-	<select id="getProductList"
-		resultType="com.teamPM.neart.vo.ProductVO">
+	<select id="getProductList" resultType="com.teamPM.neart.vo.ProductVO">
 	   <![CDATA[
-	               SELECT * FROM (
+	            SELECT * FROM (
 	              SELECT ROWNUM AS RNUM, A.* FROM (
 	                       SELECT
-	                             *
+	                       		product.productid as productid,
+	                       		product.productname as productname,
+	                       		product.productcontent as productcontent,
+	                       		product.artist as artist,
+	                       		product.productsize as productsize,
+	                       		product.quantity as quantity,
+	                       		product.price as price,
+	                       		product.productdate as productdate,
+	                       		product.producthit as producthit,
+	                       		image.imgid as imgid,
+	                       		image.filePath as filePath,
+	                       		imagetype.typeid as typeid,
+	                       		imagetype.imgtype as imgtype
 	                         FROM
-	                             product 
-	                         order by productid desc   
+	                            product,
+	                            image,
+	                            imagetype
+	                         where
+	                         	product.productid = image.productid
+	                         	and
+	                         	image.imgid = imagetype.imgid
+	                         	order by 
+	                         	product.productid desc 
 	             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
 	         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
 	      
@@ -25,8 +61,7 @@
 	</select>
 
 	<!-- 02. 상품 상세 조회 -->
-	<select id="detailProduct"
-		resultType="com.teamPM.neart.vo.ProductVO">
+	<select id="detailProduct" resultType="com.teamPM.neart.vo.ProductVO">
    <![CDATA[
       select * from product where productid = #{productid}
    ]]>
@@ -68,17 +103,6 @@
 		select count(*) from product
 	]]>
 	</select>
-
-
-	<!-- 07. image테이블 -->
-	<insert id="imgProduct"> 
-   <![CDATA[
-		insert into product (productid, productname, productcontent, artist, productsize, price, quantity, producthit) 
-	values (product_seq.nextval, #{productname}, #{productcontent}, #{artist}, #{productsize}, #{price}, #{quantity}, 0)
-
-   ]]>
-	</insert>
-
 
 
 
