@@ -45,6 +45,7 @@ public class MemberVO {
 	private String phonenum;
 	private int enabled;
 	
+	
 	private List<AuthVO> authList;
 	
    

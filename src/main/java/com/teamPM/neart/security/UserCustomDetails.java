@@ -64,12 +64,13 @@ public class UserCustomDetails implements UserDetails, OAuth2User {
 	@Override
 	   public Collection<? extends GrantedAuthority> getAuthorities() {
 	      List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+	  			System.out.println("------ 나와라");
 
 	      for (AuthVO auth : mvo.getAuthList()) {
 	         authorities.add(new SimpleGrantedAuthority(auth.getAuthority()));
 
 	      }
-
+	  		System.out.println("***** 나와라");
 	      return authorities;
 	   }
 
@@ -79,11 +80,14 @@ public class UserCustomDetails implements UserDetails, OAuth2User {
 	 */
 	@Override
 	public String getPassword() {
+		System.out.println("비번 나와라");
 		return mvo.getPassword();
+		
 	}
 
 	@Override
 	public String getUsername() {
+		System.out.println("아이디 나와라");
 		return mvo.getName();
 	}
 

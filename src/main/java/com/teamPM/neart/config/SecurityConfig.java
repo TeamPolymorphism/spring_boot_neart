@@ -39,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	.antMatchers("/product/**").permitAll()
     	.antMatchers("/board/**").permitAll()
     	.antMatchers("/qnaboard/**").permitAll()
-    	.anyRequest().authenticated()
     	.and().logout().permitAll()
     	.logoutSuccessUrl("/")
     	.invalidateHttpSession(true)

@@ -8,37 +8,35 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public class KakaoUserInfo implements OAuth2UserInfo {
 	private Map<String, Object> attributes;
-	private Map<String, Object> attributesResponse;
-	
+
 	public KakaoUserInfo(Map<String, Object> attributes) {
-		this.attributes = (Map<String, Object>) attributes.get("response");
-		this.attributesResponse = (Map<String, Object>) attributes.get("response");
+		this.attributes = attributes;
 	}
 
 	@Override
 	public String getProviderId() {
-		return attributesResponse.get("id").toString();
+		// TODO Auto-generated method stub
+		return String.valueOf(attributes.get("id"));
 	}
 
 	@Override
 	public String getProvider() {
+		// TODO Auto-generated method stub
 		return "kakao";
 	}
 
 	@Override
 	public String getEmail() {
-		return attributesResponse.get("email").toString();
+		// TODO Auto-generated method stub
+		return (String) ((Map) attributes.get("kakao_account")).get("email");
 	}
+
+
 
 	@Override
 	public String getName() {
-		return attributesResponse.get("name").toString();
+		// TODO Auto-generated method stub
+		return (String) ((Map) ((Map) attributes.get("kakao_account")).get("profile")).get("nickname");
 	}
-
-	@Override
-	public Map<String, Object> getAttributes() {
-		return attributes;
-	}
-	
 
 }

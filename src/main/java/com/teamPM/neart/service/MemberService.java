@@ -33,7 +33,7 @@ public class MemberService {
       userVO.setPassword(encode);//암호화 시킨 것을 집어넣음
 
       userMapper.insertUser(userVO);//db에 insert시킴
-      userMapper.insertAuthorities(userVO);
+      userMapper.insertAuthorities();
    }
    
    public MemberVO read(String id){
