@@ -50,7 +50,7 @@
 			</tr>
 			<tr>
 				<td>재고</td>
-				<td><input id="quantity" type="number" name="quantity"
+				<td><input id="stock" type="number" name="stock"
 					size="50">개</td>
 			</tr>
 			<tr>

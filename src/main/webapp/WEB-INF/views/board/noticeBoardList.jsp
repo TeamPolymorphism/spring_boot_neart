@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -49,25 +50,27 @@
    <table width="500" cellpadding="0" cellspacing="0" border="1">
       <tr>
          <td>번호</td>
+         <td>아이디</td>
          <td>제목</td>
          <td>날짜</td>
          <td>조회수</td>
-         <td>아이디</td>
       </tr>
       <c:forEach items="${list}" var="board">
       <tr>
          <td>${board.bid}</td>
+         <td>관리자</td>
          <td>
             <a href="/board/content_view/${board.bid}">${board.btitle}</a></td>
          <td>${board.bdate}</td>
          <td>${board.bhit}</td>
-         <td>${board.membernum }
-         <td><a class="a-delete" data-bid='${board.bid}'
-					href="/board/list/${board.bid}">삭제</a></td>
+         <td><sec:authorize access="hasRole('ADMIN')"><a class="a-delete" data-bid='${board.bid}'
+					href="/board/list/${board.bid}">삭제</a></sec:authorize></td>
       </tr>
       </c:forEach>
       <tr>
-         <td colspan="5"> <a href="write_view">글작성</a> </td>
+      <sec:authorize access="hasRole('ADMIN')">
+         <td colspan="5"><a href="write_view">글작성</a></td>
+         </sec:authorize>
       </tr>
    </table>
    

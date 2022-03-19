@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+   <sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE>
 <html>
 <head>
@@ -13,25 +17,27 @@
    
       <tr>
          <td>번호</td>
+         <td>아이디</td>
          <td>제목</td>
          <td>날짜</td>
          <td>조회수</td>
-         <td>아이디</td>
       </tr>
       <c:forEach items="${list}" var="board">
       <input type="hidden" name="bgroup" value="${board.bgroup}"/>
       <tr>
-         <td>${board.bid}</td>
+		 <td>${board.bid}</td>
+         <td>${board.id}</td>
          <td>
          	<c:forEach begin="1" end="${board.bindent}">[답변]</c:forEach>
             <a href="/qnaboard/content_view?bid=${board.bid}&bgroup=${board.bgroup}">${board.btitle}</a></td>
          <td>${board.bdate}</td>
          <td>${board.bhit}</td>
-         <td>${board.membernum}
       </tr>
       </c:forEach>
       <tr>
+      <sec:authorize access="isAuthenticated()">
          <td colspan="5"> <a href="/qnaboard/write_view">글작성</a> </td>
+         </sec:authorize>
       </tr>
    </table>
    

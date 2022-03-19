@@ -30,13 +30,13 @@
 	
 	<insert id="insert" >
 	<![CDATA[
-		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 0, 4)
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 0)
 	]]>
 	</insert>
 	
 	<insert id="insert2" >
 	<![CDATA[
-		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1, 4)
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, id) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1, #{id})
 	]]>
 	</insert>
 	
@@ -61,12 +61,18 @@
 	
 	<insert id="insertReplyBoard">
 	<![CDATA[
-		insert into board (bid, btitle, bcontent, bhit, secret, bcategory, membernum) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1, 4)
+		insert into board (bid, btitle, bcontent, bhit, secret, bcategory) values (board_seq.nextval, #{btitle}, #{bcontent}, 0, 0, 1)
 	]]>
 	</insert>
 	
 	
-	<delete id="delete" >
+	<delete id="deleteReply" >
+	<![CDATA[
+		delete from reply where bid = #{bid}
+	]]>
+	</delete>
+	
+	<delete id="deleteBoard" >
 	<![CDATA[
 		delete from board where bid = #{bid}
 	]]>
@@ -120,12 +126,16 @@
                              board.bid,
                              board.btitle,
                              board.bcontent,
+                             board.bdate,
+                             board.bhit,
+                             board.membernum,
+                             board.id,
                              reply.bgroup,
                              reply.bstep,
-                             reply.bindent   
+                             reply.bindent
                          FROM
-                             board, reply 
-                         where bcategory = 1 and board.bid=reply.bid order by bgroup desc, bstep asc
+                             board, reply
+                         where bcategory = 1 and board.bid = reply.bid order by bgroup desc, bstep asc
              ) A WHERE ROWNUM <= #{pageNum} * #{amount}
          ) WHERE RNUM > (#{pageNum}-1) * #{amount}		
 	]]>

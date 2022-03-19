@@ -48,4 +48,8 @@ public class MemberService {
 	      userMapper.insertUser(userVO);
 	      userMapper.insertAuthoritiesAdmin(userVO);
 	   }
+   
+   public MemberVO getMember(int memberNum) {
+	   return null;
+   }
 }

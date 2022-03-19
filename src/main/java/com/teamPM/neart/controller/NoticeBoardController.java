@@ -29,7 +29,8 @@ public class NoticeBoardController {
 	private BoardService boardService;
 
 	@GetMapping("/board/list")
-	public ModelAndView list(ModelAndView mav, Criteria cri) {
+	public ModelAndView
+	list(ModelAndView mav, Criteria cri) {
 		log.info("list..");
 		mav.setViewName("board/noticeBoardList");
 		mav.addObject("list", boardService.noticeGetList(cri));
@@ -71,7 +72,7 @@ public class NoticeBoardController {
 		ResponseEntity<String> entity = null;
 		log.info("delete..");
 		try {
-			boardService.remove(board.getBid());
+			boardService.removeBoard(board.getBid());
 			// 삭제가 성공하면 성공 상태메시지 저장
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {

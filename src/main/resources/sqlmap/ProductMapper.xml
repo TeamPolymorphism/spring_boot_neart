@@ -4,7 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.teamPM.neart.mapper.ProductMapper">
 
-
+	<select id="productList"
+		resultType="com.teamPM.neart.vo.ProductVO">
+	   <![CDATA[
+	   		select * from product order by productid desc
+	   ]]>
+	</select>
+	
+	
 	<!-- 01. 상품 목록 -->
 	<!-- 열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
 	<select id="getProductList"
@@ -35,8 +42,8 @@
 	<!-- 03. 상품 등록 -->
 	<insert id="insertProduct"> 
    <![CDATA[
-		insert into product (productid, productname, productcontent, artist, productsize, price, quantity, producthit) 
-	values (product_seq.nextval, #{productname}, #{productcontent}, #{artist}, #{productsize}, #{price}, #{quantity}, 0)
+		insert into product (productid, productname, productcontent, artist, productsize, price, stock, producthit) 
+	values (product_seq.nextval, #{productname}, #{productcontent}, #{artist}, #{productsize}, #{price}, #{stock}, 0)
 
    ]]>
 	</insert>
@@ -51,7 +58,7 @@
 	<!-- 05. 상품 수정 -->
 	<update id="modifyProduct">
 	<![CDATA[
-		update product set artist = #{artist}, productname = #{productname}, productcontent = #{productcontent}, productsize = #{productsize}, price = #{price}, quantity = #{quantity} where productid = #{productid}
+		update product set artist = #{artist}, productname = #{productname}, productcontent = #{productcontent}, productsize = #{productsize}, price = #{price}, stock = #{stock} where productid = #{productid}
 	]]>
 	</update>
 
@@ -73,13 +80,12 @@
 	<!-- 07. image테이블 -->
 	<insert id="imgProduct"> 
    <![CDATA[
-		insert into product (productid, productname, productcontent, artist, productsize, price, quantity, producthit) 
-	values (product_seq.nextval, #{productname}, #{productcontent}, #{artist}, #{productsize}, #{price}, #{quantity}, 0)
+		insert into product (productid, productname, productcontent, artist, productsize, price, stock, producthit) 
+	values (product_seq.nextval, #{productname}, #{productcontent}, #{artist}, #{productsize}, #{price}, #{stock}, 0)
 
    ]]>
 	</insert>
-
-
-
+	
+	
 
 </mapper>

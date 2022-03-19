@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.teamPM.neart.mapper.ProductMapper;
+import com.teamPM.neart.mapper.UserMapper;
 import com.teamPM.neart.page.Criteria;
+import com.teamPM.neart.vo.CartVO;
+import com.teamPM.neart.vo.MemberVO;
 import com.teamPM.neart.vo.ProductVO;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +23,12 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private ProductMapper productMapper;
+	
+	
+	/*@Override
+	public List<ProductVO> productList() {
+		return productMapper.productList();
+	}*/
 
 	//페이징
 	@Override
@@ -72,6 +81,6 @@ public class ProductServiceImpl implements ProductService {
 		productMapper.upHitProduct(productid);
 		
 	}
-	
+
 
 }

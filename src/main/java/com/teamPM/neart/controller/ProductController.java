@@ -1,10 +1,8 @@
 package com.teamPM.neart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -12,6 +10,8 @@ import com.teamPM.neart.page.Criteria;
 import com.teamPM.neart.page.PageVO;
 import com.teamPM.neart.service.AwsS3Service;
 import com.teamPM.neart.service.ProductService;
+import com.teamPM.neart.vo.CartVO;
+import com.teamPM.neart.vo.MemberVO;
 import com.teamPM.neart.vo.ProductVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +23,9 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	private AwsS3Service awsS3Service;
+	
+	
+
 
 	// 페이징 + 상품목록
 	@GetMapping("/product/listProduct")
@@ -105,5 +108,7 @@ public class ProductController {
 
 		return "redirect:/product/listProduct";
 	}
+	
+	
 
 }

@@ -3,11 +3,14 @@ package com.teamPM.neart.service;
 import java.util.List;
 
 import com.teamPM.neart.page.Criteria;
+import com.teamPM.neart.vo.CartVO;
+import com.teamPM.neart.vo.MemberVO;
 import com.teamPM.neart.vo.ProductVO;
 
 
 
 public interface ProductService {
+	//public List<ProductVO> productList();
 	
 	public int getTotalCount();
 	public List<ProductVO> getProductList(Criteria criteria); //리스트

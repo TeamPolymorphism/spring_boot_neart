@@ -1,16 +1,11 @@
 package com.teamPM.neart.vo;
 
-import java.sql.Timestamp;
 import java.util.List;
-
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
-
 
 
 /*
@@ -25,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 	PHONENUM	VARCHAR2(100 BYTE)
  */
 
-@Slf4j
 @Getter
 @Setter
 @AllArgsConstructor

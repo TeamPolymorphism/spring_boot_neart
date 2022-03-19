@@ -42,9 +42,15 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void remove(int bid) {
+	public void removeBoard(int bid) {
 		log.info("remove..");
-		boardMapper.delete(bid);
+		boardMapper.deleteBoard(bid);
+	}
+	
+	@Override
+	public void removeReply(int bid) {
+		log.info("remove..");
+		boardMapper.deleteReply(bid);
 	}
 
 	@Override

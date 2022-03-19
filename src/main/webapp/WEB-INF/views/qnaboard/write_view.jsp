@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+   <sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE>
 <html>
 <head>
@@ -25,6 +29,11 @@ function inputCheck(){
 <body>
    <form action="/qnaboard/write" name="form" method="post" onsubmit="return inputCheck()">
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
+			<tr>
+				<td>작성자</td>
+				<td> <input type="text" name="id" size="50" value="${principal.user.id}" style="border:0;" readonly> </td>
+			</tr>
+			
 		
 			<tr>
 				<td>제목</td>
@@ -35,7 +44,7 @@ function inputCheck(){
 				<td> <textarea name="bcontent" rows="10" cols="50" autocomplete="off"></textarea> </td>
 			</tr>
 			<tr>
-				<td colspan="2"> <input type="submit" value="입력"> &nbsp;&nbsp; <a href="/qnaboard/list2">목록보기</a></td>
+				<td colspan="2"> <input type="submit" value="입력"> &nbsp;&nbsp; <a href="/qnaboard/list">목록보기</a></td>
 			</tr>
 			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>
 		

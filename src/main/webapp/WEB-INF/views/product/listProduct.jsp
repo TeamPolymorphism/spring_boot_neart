@@ -27,7 +27,7 @@
 				<td>${product.artist}</td>
 				<td>${product.productsize}</td>
 				<td>${product.price}</td>
-				<td>${product.quantity}</td>
+				<td>${product.stock}</td>
 				<td>${product.productdate}</td>
 				<td>${product.producthit}</td>
 			</tr>

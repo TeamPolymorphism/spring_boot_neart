@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamPM.neart.mapper.CartMapper">
+    
+   <insert id="insertCart" >
+	<![CDATA[
+		insert into cart (cartid, cartquantity, price, totalprice, productid, membernum) values(cart_seq.nextval, 0, #{price}, #{totalprice}, #{productid}, #{membernum})
+	]]>
+	</insert>
+	
+	<update id="plusProduct" >
+	<![CDATA[
+		update cart set cartquantity = cartquantity + 1 where productid = #{productid}
+	]]>
+	</update>
+	
+	<update id="plusPrice" >
+	<![CDATA[
+		update cart set totalprice = price * cartquantity where productid = #{productid}
+	]]>
+	</update>
+	
+	<select id="productIdChk" >
+	<![CDATA[
+		select count(*) from cart where productid = #{productid}
+	]]>
+	</select>
+	
+	
+	<select id="getCartList" resultType="com.teamPM.neart.vo.CartVO">
+   <![CDATA[
+    select distinct
+      cart.cartquantity,
+      cart.totalprice,
+      product.productname, 
+      product.price, 
+      member.membernum
+      from cart, product, member 
+      where cart.productid = product.productid 
+      and cart.membernum = member.membernum
+      and cart.membernum = #{membernum}
+      order by cart.totalprice desc
+   ]]> 
+   </select>
+   
+    
+   
+   
+   
+</mapper>

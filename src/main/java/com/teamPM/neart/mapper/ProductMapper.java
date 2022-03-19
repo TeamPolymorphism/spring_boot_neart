@@ -5,11 +5,15 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.teamPM.neart.page.Criteria;
+import com.teamPM.neart.vo.CartVO;
+import com.teamPM.neart.vo.MemberVO;
 import com.teamPM.neart.vo.ProductVO;
 
 
 @Mapper
 public interface ProductMapper {
+	
+	public List<ProductVO> productList();
 
 	public int getTotalCount(); // 페이징 전체
 	List<ProductVO> getProductList(Criteria criteria); 
@@ -19,8 +23,6 @@ public interface ProductMapper {
 	public void deleteProduct(int productid);// 작품 삭제
 	public void modifyProduct(ProductVO productboard);// 작품 수정(modify)
 	public void upHitProduct(int productid);// 조회수
-
-
-
+	
    
 }

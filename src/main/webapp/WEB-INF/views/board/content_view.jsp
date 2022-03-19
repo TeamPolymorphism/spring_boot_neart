@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE>
 <html>
 <head>
@@ -23,9 +24,9 @@
 				<td>${content_view.bcontent}</td>
 			</tr>
 			<tr>
-				<td colspan="2"> 
+				<td colspan="2">
 				<a href="/board/list">목록보기</a> &nbsp;&nbsp;
-				<a href="/board/modify_view/${content_view.bid}">수정하기</a> &nbsp;&nbsp;  
+				<sec:authorize access="hasRole('ADMIN')"><a href="/board/modify_view/${content_view.bid}">수정하기</a></sec:authorize> &nbsp;&nbsp;  
 				</td>
 			</tr>
 	</table>

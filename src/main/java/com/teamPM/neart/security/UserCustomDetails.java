@@ -33,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-@Service
 @NoArgsConstructor
 public class UserCustomDetails implements UserDetails, OAuth2User {
 	private MemberVO mvo;

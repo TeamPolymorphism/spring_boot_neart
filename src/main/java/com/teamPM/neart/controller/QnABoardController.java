@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.teamPM.neart.page.Criteria;
 import com.teamPM.neart.page.PageVO;
 import com.teamPM.neart.service.BoardService;
+import com.teamPM.neart.service.MemberService;
 import com.teamPM.neart.vo.BoardVO;
 import com.teamPM.neart.vo.ReplyVO;
 
@@ -22,6 +23,9 @@ public class QnABoardController {
 
 	@Autowired
 	private BoardService boardService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("/qnaboard/list")
 	public String list(Model model, Criteria cri) {
@@ -78,7 +82,8 @@ public class QnABoardController {
 	@GetMapping("/qnaboard/delete")
 	public String delete(BoardVO board) {
 		log.info("QnA_delete..");
-		boardService.remove(board.getBid());
+		boardService.removeReply(board.getBid());
+		boardService.removeBoard(board.getBid());
 		
 		return "redirect:list";
 	}
