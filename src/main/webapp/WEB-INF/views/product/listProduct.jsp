@@ -26,7 +26,7 @@
 		<c:forEach items="${productBoard}" var="product">
 			<tr>
 				<td>${product.productid}</td>
-				<td><img src="https://neart.s3.ap-northeast-2.amazonaws.com/${upload.filePath}"></td>
+				<td><img src="${product.filePath}"></td>
 				<td><a href="detailProduct?productid=${product.productid}">${product.productname}</a></td>
 				<td>${product.artist}</td>
 				<td>${product.productsize}</td>

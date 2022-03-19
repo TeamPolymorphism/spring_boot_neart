@@ -57,7 +57,7 @@ public class ProductController {
 	
 
 	// 관리자 상품상세
-	@GetMapping("/product/detailProduct/{productid}")
+	@GetMapping("/product/detailProduct")
 	public ModelAndView productDetail(ProductVO productVO, ModelAndView model) {
 
 		log.info("----Controller----detailProduct");
@@ -98,26 +98,20 @@ public class ProductController {
 								ModelAndView model) throws IOException  {
 		log.info("---------controller----insertProduct-------upload---------");
 		
+		log.info("================ MultipartFile: " + file + " :: ProductVO"+ productVO.getFile());
+		
 		/**
 	     * Amazon S3에 이미지 업로드
 	     * @return 성공 시 업로드 된 파일의 파일명 리스트 반환
 	     */
-		awsS3Service.upload(file); //s3에 파일 업로드 ★★★★
+		String uri = awsS3Service.upload(file); //s3에 파일 업로드 ★★★★
 		log.info("---------controller----s3file----upload");
 		
-		// 파일이름을 uri로 바꾸기
-    	String uri = MvcUriComponentsBuilder.fromMethodName(
-				ProductController.class,
-				"serveFile", 
-				file.getOriginalFilename())
-		.build()
-		.toUri()
-		.toString();
+
     	
     	//db넣어주는 애들
-    	productVO.setProductname(file.getOriginalFilename()); //이름이라 uri 제일 끝부분만
     	productVO.setFilePath(uri); //db에 uri넣게 함
-    	productService.insertProduct(productVO); //db넣기 실행
+    	productVO.setImgtype("product");
     	log.info("---------controller----db----file update---------");
     	
     	redirectAttributes.addFlashAttribute("message",
@@ -136,14 +130,15 @@ public class ProductController {
 	/**
      * Amazon S3에 이미지 업로드 된 파일을 삭제 + db 상품 삭제
      */
-	@GetMapping("/product/deleteProduct/{productid}")
+	@GetMapping("/product/deleteProduct")
 	public ModelAndView deleteProduct(@RequestPart String filePath, ProductVO productVO, ModelAndView model) throws IOException  {
-		log.info("----deleteProduct");
+		log.info("-------------------controller---------deleteProduct--------------------");
 		productService.deleteProduct(productVO.getProductid());//db에서 삭제
 		
+		log.info("================ deleteProduct: " + filePath + " :: ProductVO"+ productVO.getFile());
+		
 		log.info("-------------------controller-------file----delete--------------------------"); 
-		awsS3Service.delete(filePath); // s3 사진 삭제
-		 // https://neart.s3.ap-northeast-2.amazonaws.com/2300242e-4203-4eb8-a1a0-037cfb5704d5
+		awsS3Service.delete(productVO.getFilePath()); // s3 사진 삭제
 		model.setViewName("redirect:/product/listProduct");
 		
 		return model;
@@ -151,7 +146,7 @@ public class ProductController {
 
 
 	// 작품수정 진행
-	@GetMapping("/product/modifyProduct/{productid}")
+	@GetMapping("/product/modifyProduct")
 	public ModelAndView productModify(ProductVO productVO, ModelAndView model) {
 		log.info("------------controller----modifyProduct----Start");
 		int productid = productVO.getProductid();

@@ -51,14 +51,14 @@ public class ProductServiceImpl implements ProductService {
 		log.info("--------Product--------insertProduct");
 		
 		String imgtype = productboard.getImgtype();
-		//get typeid from ImageType table in DB
-		int typeid = productMapper.getImageType(imgtype);
-		productboard.setTypeid(typeid);
-		
+		log.info("=================="+ "imgtype: "+imgtype+"==================");
+
 		//테이블 각각 뽑아내기 - set product table
 		productMapper.insertProduct(productboard);
 		//테이블 각각 뽑아내기 - set filePath into Image table
 		productMapper.insertImage(productboard.getFilePath());
+		
+		productMapper.insrtImageType("product");
 		
 	}
 

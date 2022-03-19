@@ -2,6 +2,8 @@ package com.teamPM.neart.vo;
 
 import java.sql.Timestamp;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +37,7 @@ public class ProductVO {
 	private int price; // 작품가격
 	private Timestamp productdate; // 등록날짜
 	private int producthit; // 조회수
+	private MultipartFile file; 
 
 	/*
 	 * IMGID NOT NULL NUMBER 

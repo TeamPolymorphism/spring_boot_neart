@@ -25,9 +25,11 @@ public interface ProductMapper {
 	@Select("select typeid from imagetype where imgtype = #{imgtype}")
 	int getImageType(String imgtype);
 	
-	
+	@Insert("insert into imagetype(typeid, imgtype, imgid) values(imagetype_seq.nextval, #{imgtype}, image_seq.currval)")
+	int insrtImageType(String imgtype);
+		
 	// 작품 등록 (write view)
-	public void insertProduct(ProductVO productboard);	
+	public void insertProduct(ProductVO productboard);//db넣기 실행	
 	// 작품 사진(image)업로드
 	@Insert("insert into image(imgid, filePath, productid) values(image_seq.nextval, #{filePath}, product_seq.currval)") 
 	void insertImage(String image_name);

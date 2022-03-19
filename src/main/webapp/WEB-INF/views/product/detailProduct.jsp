@@ -7,18 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>관리자 | 작품상세</title>
 
-<!-- 삭제 확인 -->
-<script type="text/javascript">
-	function deleteProduct() {
-		if (confirm("정말 삭제하시겠습니까?") == true) { //확인
-			document.form.submit(); //유효성 검사
-		} else { //취소
-			return false;
-
-		}
-
-	};
-</script>
 </head>
 <body>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
@@ -40,15 +28,9 @@
 			<td>작가</td>
 			<td>${detailProduct.artist}</td>
 		</tr>
-		<!-- 작품사진 join 사용 -->
 		<tr>
 			<td>작품사진</td>
-			<td>
-				<!-- <img src="https://neart.s3.ap-northeast-2.amazonaws.com/{파일명}"> -->
-				<c:forEach items="${products}" var="detailProduct" varStatus="status">
-					<img src="<c:url value="${detailProduct.filePath}"/>" />
-				</c:forEach>
-			</td>
+			<td><img src="${detailProduct.filePath}"></td>
 		</tr>
 		<tr>
 			<td>작품설명</td>
@@ -68,8 +50,8 @@
 		</tr>
 		<tr>
 			<td colspan="2"><a href="listProduct">목록보기</a> &nbsp;&nbsp; <a
-				href="deleteProduct?productid=${detailProduct.productid}"
-				Onclick="return deleteProduct();">삭제</a> &nbsp;&nbsp; <a
+				 href="deleteProduct?productid=${detailProduct.productid}">삭제</a>
+				&nbsp;&nbsp; <a
 				href="modifyProduct?productid=${detailProduct.productid}">수정하기</a></td>
 		</tr>
 	</table>

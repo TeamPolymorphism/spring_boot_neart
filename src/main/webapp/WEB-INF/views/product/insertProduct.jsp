@@ -17,37 +17,22 @@
 		<form action="upload" method="post" enctype="multipart/form-data">
 			<tr>
 				<td>작품명</td>
-				<td><input id="productname" type="text" name="productname"
-					size="50"></td>
+				<td><input type="text" name="productname" size="50"></td>
 			</tr>
 			<tr>
 				<td>작가</td>
-				<td><input id="artist" type="text" name="artist" size="50"></td>
+				<td><input type="text" name="artist" size="50"></td>
 			</tr>
-	
+
 			<tr>
-				<td>작품사진</td><!-- AWS 파일 업로드 -->
-				<td>
-					<!--	<label for="fileImage"> 
-						<form:form
-							enctype="multipart/form-data" action="upload" method="POST">
-							<img src="<c:url value="${insertProduct.filePath}"/>" />
-
-						</form:form>
-					</label>-->
-
-						<label for="img">파일 업로드</label> 
-						<img src="<c:url value="${insertProduct.filePath}"/>" />
-						<input type="file" id="img">
-						
-
-
-				</td>
+				<td>작품사진</td>
+				<td><label for="img">파일 업로드</label> <img
+					src="<c:url value="${insertProduct.filePath}"/>" /> <input
+					type="file" name="file"></td>
 			</tr>
 			<tr>
 				<td>작품설명</td>
-				<td><textarea id="productcontent" type="text"
-						name="productcontent" rows="20"></textarea></td>
+				<td><textarea type="text" name="productcontent" rows="20"></textarea></td>
 			</tr>
 			<tr>
 

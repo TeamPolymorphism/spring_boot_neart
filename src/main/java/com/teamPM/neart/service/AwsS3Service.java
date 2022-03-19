@@ -76,7 +76,9 @@ public class AwsS3Service {
 	public String delete(String filePath) { // Client가 가진 파일명을 가져와서 해당 파일명과 일치하는 것 삭제
 		try {
 			this.clientBuild();
-			s3Client.deleteObject(new DeleteObjectRequest(bucket, filePath));
+			String [] splitFilePath = filePath.split("/");
+			String fileName = splitFilePath[splitFilePath.length - 1];
+			s3Client.deleteObject(new DeleteObjectRequest(bucket, fileName));
 			log.info("DELETE || bucket : " +bucket + " || fileName: "+ filePath);
 			return "done";
 			
