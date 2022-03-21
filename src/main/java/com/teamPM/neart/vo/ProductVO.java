@@ -33,7 +33,7 @@ public class ProductVO {
 	private String productcontent; // 작품 설명
 	private String artist; // 작가
 	private String productsize; // 작품크기
-	private int quantity; // 작품수량
+	private int stock; // 작품수량
 	private int price; // 작품가격
 	private Timestamp productdate; // 등록날짜
 	private int producthit; // 조회수

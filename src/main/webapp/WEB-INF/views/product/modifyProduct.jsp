@@ -12,7 +12,7 @@
 <body>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
 		<!-- "작품수정"을 누르면 /"modifyProductFinish" 실행 -->
-		<form action="modifyProductFinish" method="post">
+		<form action="doModifyProduct" method="post">
 			<input type="hidden" name="productid"
 				value="${modifyProduct.productid}">
 		<tr>
@@ -52,13 +52,13 @@
 		</tr>
 		<tr>
 			<td>가격</td>
-			<td><input id="price" type="number" name="price" size="50"
+			<td><input type="number" name="price" size="50"
 				value="${modifyProduct.price}"></td>
 		</tr>
 		<tr>
 			<td>재고</td>
-			<td><input id="quantity" type="number" name="quantity" size="50"
-				value="${modifyProduct.quantity}"></td>
+			<td><input type="number" name="stock" size="50"
+				value="${modifyProduct.stock}"></td>
 		</tr>
 
 		<tr>

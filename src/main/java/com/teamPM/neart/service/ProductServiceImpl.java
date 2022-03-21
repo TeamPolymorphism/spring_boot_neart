@@ -24,21 +24,21 @@ public class ProductServiceImpl implements ProductService {
 	//페이징
 	@Override
 	public int getTotalCount() {
-		log.info("--------Product--------getTotalCount");
+		log.info("++++++++++ Product ++++++++++ getTotalCount");
 		return productMapper.getTotalCount();
 	}
 
 	//페이징 + 리스트
 	@Override
 	public List<ProductVO> getProductList(Criteria criteria) {
-		log.info("--------Product--------getProductList(Criteria)");
+		log.info("++++++++++ Product ++++++++++ getProductList(Criteria)");
 		return productMapper.getProductList(criteria);
 	}
 
 
 	@Override
 	public ProductVO detailProduct(int productid) {
-		log.info("--------Product--------detailProduct");
+		log.info("++++++++++ Product ++++++++++ detailProduct");
 		
 		upHitProduct(productid); //조회수
 		
@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
 	//product & image 테이블
 	@Override
 	public void insertProduct(ProductVO productboard) {
-		log.info("--------Product--------insertProduct");
+		log.info("++++++++++ Product ++++++++++ insertProduct");
 		
 		String imgtype = productboard.getImgtype();
 		log.info("=================="+ "imgtype: "+imgtype+"==================");
@@ -64,22 +64,23 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void deleteProduct(int productid) {
-		log.info("--------Product--------deleteProduct");
+		log.info("++++++++++ Product ++++++++++ deleteProduct");
 		productMapper.deleteProduct(productid);
 		productMapper.deleteImage(productid);
+		productMapper.deleteImageType(productid);
 		
 	}
 
 	@Override
 	public void modifyProduct(ProductVO ProductVO) {
-		log.info("--------Product--------modifyProduct");
+		log.info("++++++++++ Product ++++++++++ modifyProduct");
 		productMapper.modifyProduct(ProductVO);
 		
 	}
 
 	@Override
 	public void upHitProduct(int productid) {
-		log.info("--------Product--------upHitProduct");
+		log.info("++++++++++ Product ++++++++++ upHitProduct");
 		productMapper.upHitProduct(productid);
 		
 	}

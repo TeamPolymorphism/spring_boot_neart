@@ -10,8 +10,7 @@
 </head>
 <body>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
-		<input type="hidden" name="productid"
-			value="${detailProduct.productid}">
+		<input type="hidden" name="productid" value="${detailProduct.productid}">
 		<tr>
 			<td>조회수</td>
 			<td>${detailProduct.producthit}</td>
@@ -42,17 +41,18 @@
 		</tr>
 		<tr>
 			<td>재고</td>
-			<td>${detailProduct.quantity}</td>
+			<td>${detailProduct.stock}</td>
 		</tr>
 		<tr>
 			<td>가격</td>
 			<td>${detailProduct.price}</td>
 		</tr>
 		<tr>
-			<td colspan="2"><a href="listProduct">목록보기</a> &nbsp;&nbsp; <a
-				 href="deleteProduct?productid=${detailProduct.productid}">삭제</a>
-				&nbsp;&nbsp; <a
-				href="modifyProduct?productid=${detailProduct.productid}">수정하기</a></td>
+			<td colspan="2">
+				<a href="listProduct">목록보기</a> &nbsp;&nbsp; 
+				<a href="deleteProduct?productid=${detailProduct.productid}">삭제</a> &nbsp;&nbsp; 
+				<a href="modifyProduct?productid=${detailProduct.productid}">수정하기</a>
+			</td>
 		</tr>
 	</table>
 </body>

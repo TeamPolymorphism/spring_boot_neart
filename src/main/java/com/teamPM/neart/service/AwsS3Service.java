@@ -55,7 +55,7 @@ public class AwsS3Service {
 
 			//inputstream의 byte배열로 변환 > 모든 데이터를 바이트배열로 가져온다
 			//텍스트 데이터를 인쇄하기 위해 String 생성자에 추가로 전달할 수 있는 바이트 배열을 반환
-			byte[] bytes = IOUtils.toByteArray(file.getInputStream()); // AmazonS3라이브러리 활용하여 업로드 ★★★★
+			byte[] bytes = IOUtils.toByteArray(file.getInputStream()); // AmazonS3라이브러리 활용하여 업로드
 
 			ObjectMetadata metaData = new ObjectMetadata(); //로컬에 파일 저장않고 s3에 업로드
 			metaData.setContentLength(bytes.length);
@@ -63,7 +63,7 @@ public class AwsS3Service {
 
 			// object 업로드
 			s3Client.putObject(new PutObjectRequest(bucket, filePath, new ByteArrayInputStream(bytes), metaData));
-			log.info("UPLOAD || bucket : " +bucket + " || fileName: "+ filePath);
+			log.info("+++++++++++++ UPLOAD || bucket : " +bucket + " || fileName: "+ filePath);
 			return s3Client.getUrl(bucket, filePath).toString();
 		} catch (IOException e) {
 			return "IOException";
@@ -79,7 +79,7 @@ public class AwsS3Service {
 			String [] splitFilePath = filePath.split("/");
 			String fileName = splitFilePath[splitFilePath.length - 1];
 			s3Client.deleteObject(new DeleteObjectRequest(bucket, fileName));
-			log.info("DELETE || bucket : " +bucket + " || fileName: "+ filePath);
+			log.info("+++++++++++++ DELETE || bucket : " +bucket + " || fileName: "+ filePath);
 			return "done";
 			
 		} catch (AmazonServiceException e) {
