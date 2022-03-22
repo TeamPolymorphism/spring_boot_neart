@@ -23,6 +23,14 @@ import lombok.extern.slf4j.Slf4j;
 		product.price as price 
         from orders, ordersdetails, product
         where membernum = #{membernum}
+        
+        
+        ORDERSID	NUMBER
+		ORDERSDATE	DATE
+		TOTALPRICE	NUMBER
+		MEMBERNUM	NUMBER
+		PAYMENTID	NUMBER
+		DELIVERYID	NUMBER
  */
 
 @Slf4j
@@ -31,27 +39,13 @@ import lombok.extern.slf4j.Slf4j;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class OrderdetailsVO {
-	
-		//주문내역에 필요한 VO
-		private int membernum;
-		private String ordersdate;
-		private int ordersid;
-		private int totalquantity;
-		private String productname;
-		private int price;
-		private int productid;
-		
-		private List<OrderdetailsVO> orderdetailsVO;
-		
-		public int getTotal() {
-			int total = 0;
-			
-			for (OrderdetailsVO orderdetailsVO : orderdetailsVO) {
-				total = orderdetailsVO.getPrice() * orderdetailsVO.getTotalquantity();
-			}
-			
-			return total;
-		}
+public class OrdersVO {
+	//주문내역에 필요한 VO
+	int ordersid;
+	Timestamp ordersdate;
+	int totalprice;
+	int membernum;
+	int paymentid;
+	int deliveryid;
 	
 }

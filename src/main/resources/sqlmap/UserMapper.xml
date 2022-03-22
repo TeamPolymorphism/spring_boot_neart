@@ -60,20 +60,77 @@
 	]]>
 	</select>
 	
-	<!-- 주문내역 뽑아내기 -->
-	<select id="orderdetails" resultType="com.teamPM.neart.vo.MemberVO">
+	<!-- 주문리스트 뽑아내기 -->
+	<select id="detail" resultType="com.teamPM.neart.vo.OrderdetailsVO">
 	<![CDATA[
-        select DISTINCT 
-		orders.membernum as membernum,
-		orders.ordersdate as ordersdate,
-        orders.ordersid as ordersid,
-        ordersdetails.totalquantity as totalquantity,
-        product.productname as productname,
-		product.price as price 
-        from orders, ordersdetails, product
-        where membernum = #{membernum}
+        select
+			orders.membernum as membernum,
+			orders.ordersdate as ordersdate,
+	        orders.ordersid as ordersid,
+	        ordersdetails.totalquantity as totalquantity,
+            product.productid as productid,
+	        product.productname as productname,
+			product.price as price
+	        from orders, ordersdetails, product
+	        where membernum = #{membernum}
+            group by
+            orders.membernum,
+            orders.ordersdate,
+            orders.ordersid,
+            ordersdetails.totalquantity,
+            product.productid,
+            product.productname,
+            product.price
 	]]>
 	</select>
+	
+	<!-- 주문 상세 내역 뽑아내기 -->
+	<select id="orderreceipt" resultType="com.teamPM.neart.vo.OrderdetailsVO">
+	<![CDATA[
+        select
+			B.membernum
+			,B.ordersdate
+			,B.ordersid
+			,sum(B.price) as price
+			from
+				(select 
+			    orders.membernum as membernum,
+			    orders.ordersdate as ordersdate,
+			    orders.ordersid as ordersid,
+			    ordersdetails.totalquantity as totalquantity,
+			    product.productname as productname,
+			    product.price as price 
+			    from orders, ordersdetails, member, product
+			    where orders.ordersid = ordersdetails.ordersid
+			    and orders.membernum = member.membernum) B
+		    where B.ordersid = #{ordersid}
+			group by 
+			B.membernum
+			,B.ordersdate
+			,B.ordersid
+	]]>
+	</select>
+	
+	<!-- 주문리스트 뽑아내기 -->
+	<select id="receiptlist" resultType="com.teamPM.neart.vo.OrderdetailsVO">
+	<![CDATA[
+        select
+	        orders.ordersid as ordersid,
+	        ordersdetails.totalquantity as totalquantity,
+	        product.productname as productname,
+			product.price as price,
+            product.productid as productid
+	        from orders, ordersdetails, product
+	        where orders.ordersid = #{ordersid}
+            group by 
+            orders.ordersid,
+	        ordersdetails.totalquantity,
+	        product.productname,
+			product.price,
+            product.productid
+	]]>
+	</select>
+	
 
 	
 

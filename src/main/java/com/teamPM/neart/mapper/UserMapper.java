@@ -1,5 +1,7 @@
 package com.teamPM.neart.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -39,10 +41,12 @@ public interface UserMapper {
     
     void withdraw(MemberVO memberVO);
     
-    OrderdetailsVO detail(int membernum);
+    List<OrderdetailsVO> detail(int membernum);
     void orderdetails(OrderdetailsVO orderdetailsVO);
 
- 
+    OrderdetailsVO orderreceipt(int ordersid);
+    List<OrderdetailsVO> receiptlist(int ordersid);
+
    
    
 }

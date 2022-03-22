@@ -57,10 +57,12 @@ public class MemberController {
       return "redirect:/";
    }
    
-   @GetMapping("/add/addFormAdmin")
-   public void addFormAdmin() {
+   @GetMapping("/addFormAdmin")
+   public String addFormAdmin() {
       log.info("Welcome userForm");
       System.out.println("----- userForm ");
+      
+      return "/add/addFormAdmin";
    }
    @PostMapping("/add/addAdmin")
    public String addAdmin(MemberVO uservo) {

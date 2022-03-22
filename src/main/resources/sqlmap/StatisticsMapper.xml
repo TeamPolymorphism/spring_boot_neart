@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamPM.neart.mapper.StatisticsMapper">
+
+	<resultMap id="userMap" type="com.teamPM.neart.vo.MemberVO"> 
+		<result property="membernum" column="membernum"/> <!-- 칼럼은 디비에 있는 칼럼명이 온다, property는 MemberVO에있는 변수명 -->
+	    <result property="id" column="id"/>
+	    <result property="password" column="password"/>
+	    <result property="name" column="name"/>
+	    <result property="year" column="year"/>
+	    <result property="month" column="month"/>
+	    <result property="day" column="day"/>
+	    <result property="address" column="address"/>
+	    <result property="phonenum" column="phonenum"/>
+	    <result property="enabled" column="enabled"/>
+		<collection property="authList" resultMap="authMap"></collection> <!-- private List<AuthVO> authList; 처리 -->
+	</resultMap>
+	
+
+	<resultMap id="authMap" type="com.teamPM.neart.vo.AuthVO">
+		<result property="authorityid" column="authorityid"/>
+		<result property="authority" column="authority"/>
+		<result property="membernum" column="membernum"/>
+	</resultMap>
+
+
+	<resultMap id="order" type="com.teamPM.neart.vo.OrdersVO">
+		<result property="ordersid" column="ordersid" />
+		<result property="ordersdate" column="ordersdate" />
+		<result property="totalprice" column="totalprice" />
+		<result property="membernum" column="membernum" />
+		<result property="paymentid" column="paymentid" />
+		<result property="deliveryid" column="deliveryid" />
+		<collection property="OrderdetailsVO"
+			resultMap="orderDetail"></collection>
+	</resultMap>
+
+	<resultMap id="orderDetail"
+		type="com.teamPM.neart.vo.OrderdetailsVO">
+		<result property="membernum" column="membernum" />
+		<result property="orderdate" column="orderdate" />
+		<result property="orderid" column="orderid" />
+		<result property="totalquantity" column="totalquantity" />
+		<result property="productname" column="productname" />
+		<result property="price" column="price" />
+		<result property="detailsid" column="detailsid" />
+		<result property="productid" column="productid" />
+
+	</resultMap>
+	
+
+
+	<!-- 일별 통계 -->
+	<select id="getDailySale" resultType="int">
+		<![CDATA[
+			select nvl(sum(totalprice), 0) from orders where extract(year from ordersdate) = #{year} and extract(month from ordersdate) = #{month} and extract(day from ordersdate) = #{valueOf}
+		]]>
+	</select>
+
+	
+	
+	<!-- 월별 통계 -->
+	<select id="getMonthSale" resultType="int"> 
+	<![CDATA[ 
+		select nvl(sum(totalprice), 0) from orders where extract(year from ordersdate) = #{year} and extract(month from ordersdate) = #{valueOf}
+	]]>
+	</select>
+	
+	
+	<!-- 년별 통계 -->
+	<select id="getYearSale" resultType="int">
+		<![CDATA[
+			select nvl(sum(totalprice), 0) from orders where extract(year from ordersdate) = #{year}
+		]]>
+	</select>
+	
+	
+	
+	
+
+
+</mapper>

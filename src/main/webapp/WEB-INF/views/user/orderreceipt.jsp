@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!doctype html>
-<html lang="ko">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta
@@ -12,7 +12,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>WITHDRAW</title>
+        <title>MYPAGE</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -305,18 +305,18 @@
                             <!-- <span class="badge badge-secondary badge-pill">3</span> -->
                         </h4>
                         <hr class="mb-4" style="border: solid 2px black;">
-                        <h4>김설인 님</h4>
+                        <h4><sec:authentication property="principal.user.name"/> 님</h4>
                         <hr class="mb-3" style="border: solid 2px white;">
                         <ul class="list-group mb-4" style="padding: 5px;">
                             <div>
-                                <h6 class="mb-2">나의 쇼핑정보</h6>
-                                <div style="padding: 2px;">
-                                    <a href="#" class="text-muted">주문조회</a>
-                                </div>
-                                <div style="margin: 2px;">
-                                    <a href="#" class="text-muted">반품/교환/취소 내역</a>
-                                </div>
-                            </div>
+					            <h6 class="mb-2">나의 쇼핑정보</h6>
+					            <div style="padding: 2px;">
+								<a href="${pageContext.request.contextPath}/orderdetailslist?membernum=<sec:authentication property="principal.user.membernum" />" class="text-muted">주문조회</a>
+								</div>
+								<div style="margin: 2px;">
+								<a href="${pageContext.request.contextPath}/ordercancel?membernum=<sec:authentication property="principal.user.membernum" />" class="text-muted">반품/교환/취소</a>
+								</div>
+				          	</div>
                             <hr class="mb-3" style="border: solid 2px white;">
                             <div>
                                 <h6 class="mb-2">나의 참여내역</h6>
@@ -331,35 +331,176 @@
                             <div>
                                 <h6 class="mb-2">나의 정보관리</h6>
                                 <div style="padding: 2px;">
-                                    <a href="#" class="text-muted">회원정보수정</a>
-                                </div>
+									<a href="${pageContext.request.contextPath}/update?id=<sec:authentication property="principal.user.id" />" class="text-muted">회원정보수정</a>
+								</div>
                             </div>
                         </ul>
                     </div>
 
-                    <!-- 반품/교환/취소 신청 -->
+                    <!-- 주문상세내역 -->
                     <div class="col-md-8 order-md-2" style="color: black;">
                         <div class="d-flex justify-content-between">
-                        <h4 class="mb-0">회원탈퇴 유의사항</h4>
+                            <h4 class="mb-0">주문상세내역</h4>
                         </div>
                         <hr class="mb-0" style="border: solid 2px black;">
-
-                        <div class="mt-4 mb-4">
-                            <h5 style="font-weight: bold;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M9.126.64a1.75 1.75 0 011.75 0l8.25 4.762c.103.06.199.128.286.206a.748.748 0 01.554.96c.023.113.035.23.035.35v3.332a.75.75 0 01-1.5 0V7.64l-7.75 4.474V22.36a.75.75 0 01-1.125.65l-8.75-5.052a1.75 1.75 0 01-.875-1.515V6.917c0-.119.012-.236.035-.35a.748.748 0 01.554-.96 1.75 1.75 0 01.286-.205L9.126.639zM1.501 7.638v8.803c0 .09.048.172.125.216l7.625 4.402v-8.947l-7.75-4.474zm8.5 3.175L2.251 6.34l7.625-4.402a.25.25 0 01.25 0l7.625 4.402-7.75 4.474z"></path><path d="M21.347 17.5l-2.894-2.702a.75.75 0 111.023-1.096l4.286 4a.75.75 0 010 1.096l-4.286 4a.75.75 0 11-1.023-1.096L21.347 19h-6.633a.75.75 0 010-1.5h6.633z"></path></svg>
-                                회원정보삭제</h5>
-                            <p class="mt-1 mb-1">탈퇴 시 회원님의 NEART 이용정보가 삭제되며 복구가 불가능하오니 신중히 선택하시기 바랍니다.</p>
-                            <p class="mt-1 mb-1">회원 탈퇴와 함께 NEART 에 등록된 모든 개인정보는 삭제, 폐기 처리되며 복구되지 않습니다.</p>
-                            
-                            <p class="mt-1 mb-1">회원탈퇴 시 동일 아이디(이메일)로 재가입하실 수 없습니다.</p>
-                            <p class="mt-1 mb-1">단, 상법 및 '전자상거래 등에서 소비자 보호에 관한 법률' 등 관련 법령의 규정에 의하여 다음과 같이 ‘거래 관련 관리의무 관계 확인’ 등을 이유로 일정 기간 보관됩니다.</p>
-                            
-                            <hr class="mb-4">
-                            <p class="mt-1 mb-1">정말 NEART를 탈퇴하시겠습니까?</p>
-                            <hr class="mb-4">
-                            <form:form action="delete" method="post">
-                                <button class="btn btn-block btn-danger" name="id" value="${remove_view.id}" type="submit">회원 탈퇴</button>
-                            </form:form>
+                        <div class="row mt-3 ml-0 mb-5">
+                            <div class="col-md-6">
+                                <span style="font-weight: bold; font-size: 17px;">주문일자</span>
+                                <span>${orderreceipt_view.ordersdate}</span>
+                            </div>
+                            <div class="col-md-6">
+                                <span style="font-weight: bold; font-size: 17px;">주문번호</span>
+                                <span>${orderreceipt_view.ordersid}</span>
+                            </div>
                         </div>
+
+                        <!-- 주문상품정보 -->
+                        <div class="d-flex justify-content-between">
+                            <h4 class="mb-0 mt-5">주문상품정보</h4>
+                        </div>
+                        
+                        <hr class="mb-0" style="border: solid 2px black;">
+                        <table class="table">
+                            <thead style="height: 20px;">
+                                <tr style="height: 20px;">
+                                    <th style="font-weight: bold; font-size: 17px;">상품</th>
+                                    <th style="font-weight: bold; font-size: 17px;">정보</th>
+                                    <th style="font-weight: bold; font-size: 17px;">수량</th>
+                                    <th style="font-weight: bold; font-size: 17px;">진행상태</th>
+                                </tr>
+                            </thead>
+                            <c:forEach var="receiptlist" items="${orderdetails_view}">
+	                            <tbody style=" line-height: center;">
+	                                <tr>
+	                                    <td style="overflow: hidden;">
+	                                        <img
+	                                            src="neart-source/image/0${receiptlist.productid}.jpg"
+	                                            class="card-img-top"
+	                                            alt="..."
+	                                            style="width: 100px; height: 100px; overflow: hidden;">
+	                                    </td>
+	                                    <%-- <td style="font-weight: bold; font-size: 20px;">${receiptlist.ordersid}</td> --%>
+	                                    <td style="font-weight: bold; font-size: 20px;">${receiptlist.productname}</td>
+	                                    <td style="font-weight: bold; font-size: 20px;">${receiptlist.totalquantity}</td>
+	                                    <td style="font-weight: bold; font-size: 20px;">배송중</td>
+	                                </tr>
+	                            </tbody>
+                            </c:forEach>
+                        </table>
+                        <hr class="mb-5" style="border: solid 1px black;">
+
+                        <!-- 구매자정보 -->
+                        <div class="d-flex justify-content-between">
+                            <h4 class="mb-0 mt-5">구매자정보</h4>
+                        </div>
+                        <hr class="mb-0" style="border: solid 2px black;">
+                        <table class="table mb-5">
+                            <thead style="height: 20px;">
+                                <tr style="height: 20px;">
+                                    <th
+                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">주문자</th>
+                                    <th
+                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">
+										<sec:authentication property="principal.user.name"/></th>
+                                    <th
+                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">아이디</th>
+                                    <th
+                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">
+                                        <sec:authentication property="principal.user.id"/></th>
+                                </tr>
+                            </thead>
+                            <!--<c:forEach var="dto" items="${list}">-->
+                            <tbody style=" line-height: center;">
+                                <tr>
+                                    <td
+                                        style="font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">전화번호</td>
+                                    <td
+                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);"></td>
+                                    <td
+                                        style="font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">휴대폰번호</td>
+                                    <td
+                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">
+                                        <sec:authentication property="principal.user.phonenum"/></td>
+                                </tr>
+                            </tbody>
+                            <!--</c:forEach>-->
+                        </table>
+
+                        <!-- 결제정보 -->
+                        <div class="d-flex justify-content-between">
+                            <h4 class="mb-0 mt-5">결제정보</h4>
+                        </div>
+                        <hr class="mb-0" style="border: solid 2px black;">
+                        <table class="table mb-5">
+                            <thead style="height: 20px;">
+                                <tr style="height: 20px;">
+                                    <th
+                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); ">주문금액</th>
+                                    <th
+                                        style="text-align: end; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">${orderreceipt_view.price}원</th>
+                                    <th
+                                        style="color: red; font-size: 18px; border-bottom: 1px solid rgb(189, 189, 189); ">결제금액</th>
+                                    <th
+                                        style="color: red; text-align: end; font-size: 18px; border-bottom: 1px solid rgb(189, 189, 189);">${orderreceipt_view.price}원</th>
+                                </tr>
+                            </thead>
+                            <!--<c:forEach var="dto" items="${list}">-->
+                            <tbody style=" line-height: center;">
+                                <tr>
+                                    <td style="font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); ">상품금액</td>
+                                    <td
+                                        style="font-weight: bold; text-align: end; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">300,000원</td>
+                                    <td style="font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); ">현대카드</td>
+                                    <td
+                                        style="font-weight: bold; text-align: end; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">300,000원</td>
+                                </tr>
+                            </tbody>
+                            <!--</c:forEach>-->
+                        </table>
+
+                        <!-- 배송지정보 -->
+                        <div class="d-flex justify-content-between">
+                            <h4 class="mb-0 mt-5">배송지정보</h4>
+                        </div>
+                        <hr class="mb-0" style="border: solid 2px black;">
+                        <table class="table mb-5">
+                            <thead style="height: 20px;">
+                                <tr style="height: 20px;">
+                                    <th
+                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">받는사람</th>
+                                    <th
+                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">
+                                        <sec:authentication property="principal.user.name"/></th>
+                                </tr>
+                            </thead>
+                            <thead style=" line-height: center;">
+                                <tr>
+                                    <th
+                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">휴대폰번호</th>
+                                    <th
+                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">
+                                        <sec:authentication property="principal.user.phonenum"/></th>
+                                </tr>
+                            </thead>
+                            <thead style=" line-height: center;">
+                                <tr>
+                                    <th
+                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">주소</th>
+                                    <th
+                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-top: 1px solid rgb(189, 189, 189);">
+                                        <sec:authentication property="principal.user.address"/></th>
+                                </tr>
+                            </thead>
+                            <thead style=" line-height: center;">
+                                <tr>
+                                    <th
+                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">배송요청사항</th>
+                                    <th
+                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-top: 1px solid rgb(189, 189, 189);">관리실에 맡겨주세요.</th>
+                                </tr>
+                            </thead>
+                        </table>
+					
                     </div>
                 </div>
             </main>
@@ -529,6 +670,5 @@
                 </span>
             </div>
 
-        </script>
     </body>
 </html>

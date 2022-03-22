@@ -235,7 +235,7 @@
 		      <button class="btn btn-lg btn-block" type="submit" style="color: white;">Login</button>
 	     
       <div class="d-flex justify-content-between" style="padding: 20px 0px;">
-      <a href="#" style="color: black;">아이디/비밀번호 찾기</a>
+      <a href="/addFormAdmin" style="color: black;">관리자 회원가입</a>
       <a class="justify-content-end" href="/addForm" style="color: black;">회원가입</a>
       </div>
       <p style="font-size: 20px;">SNS로 로그인하기</p>

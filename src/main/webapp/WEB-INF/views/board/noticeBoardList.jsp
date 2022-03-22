@@ -59,7 +59,7 @@
          <td>${board.bid}</td>
          <td>
             <a href="/board/content_view/${board.bid}">${board.btitle}</a></td>
-         <td>${board.bdate}</td>
+         <td style="text-overflow:clip; ">${board.bdate}</td>
          <td>${board.bhit}</td>
          <td>${board.membernum }
          <td><a class="a-delete" data-bid='${board.bid}'

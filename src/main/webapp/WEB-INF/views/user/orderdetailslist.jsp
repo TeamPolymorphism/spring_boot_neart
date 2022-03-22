@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,13 +10,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>LOGIN_NEART</title>
+    <title>MYPAGE</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link  rel="stylesheet" type="text/css" href="css/signin.css">
+    <link rel="stylesheet" type="text/css" href="css/mypage.css">
 
     <!-- password eye form -->
     <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -63,7 +64,7 @@
 				<nav class="limiter-menu-desktop p-l-45">
 					
 					<!-- Logo desktop -->		
-					<a href="home-03.html" class="logo">
+					<a href="/" class="logo">
 						<img src="neart-source/logo/logo_w.png" alt="IMG-LOGO">
 					</a>
 
@@ -71,7 +72,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="product.html">ART-PRODUCT</a>
+								<a href="">ART-PRODUCT</a>
 								<!-- <ul class="sub-menu">
 									<li><a href="index.html">frame</a></li>
 									<li><a href="home-02.html"></a></li>
@@ -80,11 +81,11 @@
 							</li>
 
 							<li class="label1">
-								<a href="subscription-detail.html">SUBSCRIPTION (구독)</a>
+								<a href="product.html">SUBSCRIPTION (구독)</a>
 							</li>
 
 							<li>
-								<a href="artist.html">ARTIST</a>
+								<a href="shoping-cart.html">ARTIST</a>
 							</li>
 						</ul>
 						<ul class="main-menu">
@@ -94,18 +95,20 @@
 						</ul>
 					</div>	
 
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m h-full">	
+					<!-- Icon header 반응형 클 때-->
+					<div class="wrap-icon-header flex-w flex-r-m h-full">
+						<sec:authorize access="isAuthenticated()">
+						<h6><sec:authentication property="principal.user.name"/>님</h6>
+						<a href="${pageContext.request.contextPath}/logout" method="POST">
 						<div class="flex-c-m h-full bor6">
-							<a href="login.html">
-								<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
-									<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
+							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
 									preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
 									1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
-								</div>
-							</a>
+							</div>
 						</div>
-						<!--
+						<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+							
 						<div class="flex-c-m h-full  bor6">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
@@ -116,7 +119,9 @@
 									39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
 									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
 							</div>
-						</div>-->
+						</div>
+						</a>
+						</sec:authorize>
 
 						<div class="flex-c-m h-full p-r-10 bor6">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
@@ -134,14 +139,17 @@
 			</div>	
 		</div>
 
-		<!-- Header Mobile -->
+		<!-- Header Mobile 반응형 작아질 때 -->
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="home-03.html"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
+				<a href="/"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
+			<sec:authorize access="isAuthenticated()">
+			<h6><sec:authentication property="principal.user.name"/>님</h6>
+			<a href="${pageContext.request.contextPath}/logout" method="POST">
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
@@ -149,6 +157,9 @@
 						1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 				</div>
 			</div>
+			</a>
+			<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+			
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
@@ -160,6 +171,8 @@
 						56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
 				</div>
 			</div>
+			</a>
+			</sec:authorize>
 
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="flex-c-m h-full p-r-5">
@@ -194,15 +207,15 @@
 				</li>
 
 				<li>
-					<a href="subscription-detail.html">SUBSCRIPTION 구독</a>
+					<a href="product.html">SUBSCRIPTION 구독</a>
 				</li>
 
 				<li>
-					<a href="artist.html" class="label1 rs1" data-label1="hot">ARTIST</a>
+					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">ARTIST</a>
 				</li>
 
 				<li>
-					<a href="about.html">ABOUT</a>
+					<a href="blog.html">ABOUT</a>
 				</li>
 			</ul>
 		</div>
@@ -227,100 +240,92 @@
 
 
 <main>
-  <div class="py-5 text-center">
-    <h2>관리자 회원가입</h2>
-  </div>
+<div class="container">
+  <div class="row">
+    
 
-  <div class="card-container">
-      <div class="row">
-        <div class="signin-md-1">
-        <c:url value="/add/addAdmin" var="addAdminUrl" />
-          <form:form name="frmMember" action="${addAdminUrl}" method="post" id="myForm">
-            <div class="form-group has-feedback">
-                <label class="control-label" for="id">아이디</label>
-                <input class="form-control" type="text" name="id" id="id"/>
-                <!-- <span id="overlapErr" class="help-block">사용할 수 없는 아이디 입니다.</span> -->
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  <!-- MYPAGE / li안에 li는 불가능 -->
+    <div class="col-md-4 order-md-1 mb-4" style="color: black;">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span >MYPAGE</span>
+        <!-- <span class="badge badge-secondary badge-pill">3</span> -->
+      </h4>
+      <hr class="mb-4" style="border: solid 2px black;">
+      <h4><sec:authentication property="principal.user.name"/> 님</h4>
+      <hr class="mb-3" style="border: solid 2px white;">
+      <ul class="list-group mb-4" style="padding: 5px;">
+          <div>
+            <h6 class="mb-2">나의 쇼핑정보</h6>
+            <div style="padding: 2px;">
+			<a href="${pageContext.request.contextPath}/orderdetailslist?membernum=<sec:authentication property="principal.user.membernum" />" class="text-muted">주문조회</a>
+			</div>
+			<div style="margin: 2px;">
+			<a href="${pageContext.request.contextPath}/ordercancel?membernum=<sec:authentication property="principal.user.membernum" />" class="text-muted">반품/교환/취소</a>
+			</div>
+          </div>
+        <hr class="mb-3" style="border: solid 2px white;">
+          <div>
+            <h6 class="mb-2">나의 참여내역</h6>
+            <div style="padding: 2px;">
+              <a href="#" class="text-muted">1:1문의</a>
             </div>
-            <div class="form-group has-feedback">
-                <label class="control-label" for="pwd">비밀번호</label>
-                <input class="form-control" type="password" name="password" id="pwd"/>
-                <span id="pwdRegErr" class="help-block">4글자 이상 입력하세요.</span>
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+            <div style="padding: 2px;">
+              <a href="#" class="text-muted">Q & A</a>
             </div>
-            <div class="form-group has-feedback">
-                <label class="control-label" for="rePwd">비밀번호 재확인</label>
-                <input class="form-control" type="password" name="rePwd" id="rePwd"/>
-                <span id="rePwdErr" class="help-block">비밀번호와 일치하지 않습니다. 다시 입력해 주세요.</span>
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-            </div>
+          </div>
+        <hr class="mb-3" style="border: solid 2px white;">
+          <div>
+            <h6 class="mb-2">나의 정보관리</h6>
+            <div style="padding: 2px;">
+				<a href="${pageContext.request.contextPath}/update?id=<sec:authentication property="principal.user.id" />" class="text-muted">회원정보수정</a>
+			</div>
+          </div>
+        </ul>
+    </div>
 
-            <div class="mb-3">
-              <label for="name">이름</label>
-              <input type="text" class="form-control" id="name" name="name" required>
-              <div class="invalid-feedback">
-              </div>
-            </div>
 
-            <div class="form-group has-feedback">
-                <label class="control-label" for="email">이메일</label>
-                <input class="form-control" type="text" name="email" id="email" placeholder="___@___"/>
-                <span id="emailErr" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-            </div>
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="country">생년월일</label>
-                <input type="text" class="form-control" id="year" name="year" required>
-                <!-- <select class="custom-select d-block w-100" id="year" required>
-                  <option value="">선택</option>
-                  <option>010</option>
-                  <option>011</option>
-                  <option>012</option>
-                </select> -->
-                <div class="invalid-feedback">
-                </div>
-              </div>
-              <div class="col-md-2 mb-3">
-                <label for="state">월</label>
-                <input type="text" class="form-control" id="month" name="month" required>
-                <div class="invalid-feedback">
-                </div>
-              </div>
-              <div class="col-md-2 mb-3">
-                <label for="zip">일</label>
-                <input type="text" class="form-control" id="date" name="day" placeholder="" required>
-                <div class="invalid-feedback">
-                </div>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="address">전화번호</label>
-              <input type="text" class="form-control" id="phonenum" name="phonenum" placeholder="010부터 입력하세요." required>
-              <div class="invalid-feedback">
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="address">주소</label>
-              <input type="text" class="form-control" id="address" name="address" placeholder="" required>
-              <div class="invalid-feedback">
-              </div>
-            </div>
-            <hr class="mb-4">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="same-address">
-              <label class="custom-control-label" for="same-address">주소지를 확인하세요.</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="save-info">
-              <label class="custom-control-label" for="save-info">약관에 동의합니다.</label>
-            </div>
-            <hr class="mb-4">
-            <button class="btn btn-block" type="submit" style="color: white;">Sign In</button>
-          </form:form>
-        </div>
-      </div>
-  </div>
+
+    
+			<div class="col-md-8 order-md-2" style="color: black;">
+			<div class="d-flex justify-content-between">
+			  <h4 class="mb-0" style="font-weight: bold;">최근 주문내역</h4>
+			</div>
+			  <hr class="mb-0" style="border: solid 2px black;">
+			<table class="table">
+			  <thead style="height: 20px;">
+				<tr style="height: 20px;">
+				  <th>주문일</th>
+				  <th>주문내역</th>
+				  <th>수량</th>
+				  <th>금액</th>
+				</tr>
+			  </thead>
+			  <c:forEach var="detail" items="${orderdetails_view}">
+			  <tbody style=" line-height: center;">
+				<tr>
+				  <td>${detail.ordersdate}</td>
+				  <td> <!--  style="word-break:break-all;"
+					<img
+						src="images/product-08.jpg"
+						class="card-img-top"
+						alt="..."
+						style="width: 50px; height: 50px; overflow: hidden;"> 
+						
+						
+						<a href="${pageContext.request.contextPath}/orderreceipt?id=<sec:authentication property="principal.user.id" />" class="text-muted">${detail.productname}</a>
+						 -->
+						<a href="${pageContext.request.contextPath}/orderreceipt?ordersid=${detail.ordersid}">${detail.productname}</a>
+					  </td>
+				  <td>${detail.totalquantity}</td>
+				  <td>${detail.price}</td>
+				</tr>
+				
+			  </tbody>
+			</c:forEach>
+			</table>
+</div>
+</div>
+
 </main>
 
 
@@ -480,142 +485,5 @@ NEART &copy;<script>document.write(new Date().getFullYear());</script> ALL RIGHT
 </div>
 
 
-
-
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
-    <script>
-      // Example starter JavaScript for disabling form submissions if there are invalid fields
-      (function() {
-        'use strict';
-
-        window.addEventListener('load', function() {
-          // Fetch all the forms we want to apply custom Bootstrap validation styles to
-          var forms = document.getElementsByClassName('needs-validation');
-
-          // Loop over them and prevent submission
-          var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-              if (form.checkValidity() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        }, false);
-      })();
-
-
-
-  $(document).ready(function(){
-    $('.main i').on('click',function(){
-        $('input').toggleClass('active');
-        if($('input').hasClass('active')){
-            $(this).attr('class',"fa fa-eye-slash fa-lg")
-            .prev('input').attr('type',"text");
-        }else{
-            $(this).attr('class',"fa fa-eye fa-lg")
-            .prev('input').attr('type','password');
-        }
-    });
-});
-
-//아이디 입력란에 keyup 이벤트가 일어 났을때 실행할 함수 등록 
-    // $("#id").keyup(function(){
-    //     //입력한 문자열을 읽어온다.
-    //     var id=$(this).val();
-    //     //ajax 요청을 해서 서버에 전송한다.
-    //     $.ajax({
-    //         method:"post",
-    //         url:"/idCheck",
-    //         data:{inputId:id},
-    //         success:function(data){
-    //             var obj=JSON.parse(data);
-    //             if(obj.canUse){//사용 가능한 아이디 라면 
-    //                 $("#overlapErr").hide();
-    //                 // 성공한 상태로 바꾸는 함수 호출
-    //                 successState("#id");
-                    
-    //             }else{//사용 가능한 아이디가 아니라면 
-    //                 $("#overlapErr").show();
-    //                 errorState("#id");
-    //             }
-    //         }
-    //     });
-    // });
-
-//비밀번호 코드
-    $("#pwd").keyup(function(){
-        var pwd=$(this).val();
-        // 비밀번호 검증할 정규 표현식
-        var reg=/^.{4,}$/;
-        if(reg.test(pwd)){//정규표현식을 통과 한다면
-                    $("#pwdRegErr").hide();
-                    successState("#pwd");
-        }else{//정규표현식을 통과하지 못하면
-                    $("#pwdRegErr").show();
-                    errorState("#pwd");
-        }
-    });
-    $("#rePwd").keyup(function(){
-        var rePwd=$(this).val();
-        var pwd=$("#pwd").val();
-        // 비밀번호 같은지 확인
-        if(rePwd==pwd){//비밀번호 같다면
-            $("#rePwdErr").hide();
-            successState("#rePwd");
-        }else{//비밀번호 다르다면
-            $("#rePwdErr").show();
-            errorState("#rePwd");
-        }
-    });
-    $("#email").keyup(function(){
-        var email=$(this).val();
-        // 이메일 검증할 정규 표현식
-        var reg=/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(reg.test(email)){//정규표현식을 통과 한다면
-                    $("#emailErr").hide();
-                    successState("#email");
-        }else{//정규표현식을 통과하지 못하면
-                    $("#emailErr").show();
-                    errorState("#email");
-        }
-    });
-    // 성공 상태로 바꾸는 함수
-    function successState(sel){
-        $(sel)
-        .parent()
-        .removeClass("has-error")
-        .addClass("has-success")
-        .find(".glyphicon")
-        .removeClass("glyphicon-remove")
-        .addClass("glyphicon-ok")
-        .show();
- 
-        $("#myForm button[type=submit]")
-                    .removeAttr("disabled");
-    };
-    // 에러 상태로 바꾸는 함수
-    function errorState(sel){
-        $(sel)
-        .parent()
-        .removeClass("has-success")
-        .addClass("has-error")
-        .find(".glyphicon")
-        .removeClass("glyphicon-ok")
-        .addClass("glyphicon-remove")
-        .show();
- 
-        $("#myForm button[type=submit]")
-                    .attr("disabled","disabled");
-    };
-
-
-    </script>
   </body>
 </html>

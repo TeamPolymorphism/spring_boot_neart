@@ -107,7 +107,7 @@ public class MemberDetailsController {
 
 		memberService.modify(memberVO);
 
-		return "/user/mypage";
+		return "redirect:/";
 
 	}
 
@@ -124,7 +124,7 @@ public class MemberDetailsController {
 	*/
 
 	//회원탈퇴하기
-	@RequestMapping("/user/delete")
+	@RequestMapping("/delete")
 	public String delete(MemberVO memberVO,String id, Model model) {
 
 		log.info("delete()...");
@@ -135,7 +135,7 @@ public class MemberDetailsController {
 		
 		model.addAttribute("remove_view", memberService.read(id));
 
-		return "redirect:/";
+		return "/user/delete";
 	}
 
 	//회원한 탈퇴 로그인 불가
