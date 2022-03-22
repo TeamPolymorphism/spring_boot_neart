@@ -10,22 +10,13 @@ import com.teamPM.neart.vo.ProductVO;
 public interface ProductService {
 	
 	public int getTotalCount();
-	//리스트
-	public List<ProductVO> getProductList(Criteria criteria); 
+	public List<ProductVO> getProductList(Criteria criteria); //리스트
 	
-	//상세페이지(조회)
-	ProductVO detailProduct(int productid);	
+	ProductVO detailProduct(int productid);	//상세페이지(조회)
+	void insertProduct(ProductVO productboard);	//등록
+	void deleteProduct(int productid); //삭제
+	void modifyProduct(ProductVO ProductVO); //수정
+	void upHitProduct(int productid); //조회수
 	
-	//등록
-	void insertProduct(ProductVO productboard);	
-	
-	//삭제
-	void deleteProduct(int productid); 
-	
-	//수정
-	void modifyProduct(ProductVO ProductVO); 
-	
-	//조회수
-	void upHitProduct(int productid); 
 
 }

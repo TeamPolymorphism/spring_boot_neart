@@ -32,12 +32,26 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor
 @ToString
 public class OrderdetailsVO {
-	//주문내역에 필요한 VO
-	int membernum;
-	Timestamp orderdate;
-	int orderid;
-	int totalquantity;
-	String productname;
-	int price;
+	
+		//주문내역에 필요한 VO
+		private int membernum;
+		private String ordersdate;
+		private int ordersid;
+		private int totalquantity;
+		private String productname;
+		private int price;
+		private int productid;
+		
+		private List<OrderdetailsVO> orderdetailsVO;
+		
+		public int getTotal() {
+			int total = 0;
+			
+			for (OrderdetailsVO orderdetailsVO : orderdetailsVO) {
+				total = orderdetailsVO.getPrice() * orderdetailsVO.getTotalquantity();
+			}
+			
+			return total;
+		}
 	
 }

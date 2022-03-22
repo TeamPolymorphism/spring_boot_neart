@@ -24,63 +24,51 @@ public class ProductServiceImpl implements ProductService {
 	//페이징
 	@Override
 	public int getTotalCount() {
-		log.info("++++++++++ Product ++++++++++ getTotalCount");
+		log.info("--------getTotalCount");
 		return productMapper.getTotalCount();
 	}
 
 	//페이징 + 리스트
 	@Override
 	public List<ProductVO> getProductList(Criteria criteria) {
-		log.info("++++++++++ Product ++++++++++ getProductList(Criteria)");
+		log.info("--------getProductList(Criteria)");
 		return productMapper.getProductList(criteria);
 	}
 
 
 	@Override
 	public ProductVO detailProduct(int productid) {
-		log.info("++++++++++ Product ++++++++++ detailProduct");
+		log.info("--------detailProduct");
 		
 		upHitProduct(productid); //조회수
 		
 		return productMapper.detailProduct(productid) ;
 	}
 
-	//product & image 테이블
 	@Override
 	public void insertProduct(ProductVO productboard) {
-		log.info("++++++++++ Product ++++++++++ insertProduct");
-		
-		String imgtype = productboard.getImgtype();
-		log.info("=================="+ "imgtype: "+imgtype+"==================");
-
-		//테이블 각각 뽑아내기 - set product table
+		log.info("--------insertProduct");
 		productMapper.insertProduct(productboard);
-		//테이블 각각 뽑아내기 - set filePath into Image table
-		productMapper.insertImage(productboard.getFilePath());
-		
-		productMapper.insrtImageType("product");
 		
 	}
 
 	@Override
 	public void deleteProduct(int productid) {
-		log.info("++++++++++ Product ++++++++++ deleteProduct");
+		log.info("--------deleteProduct");
 		productMapper.deleteProduct(productid);
-		productMapper.deleteImage(productid);
-		productMapper.deleteImageType(productid);
 		
 	}
 
 	@Override
 	public void modifyProduct(ProductVO ProductVO) {
-		log.info("++++++++++ Product ++++++++++ modifyProduct");
+		log.info("--------modifyProduct");
 		productMapper.modifyProduct(ProductVO);
 		
 	}
 
 	@Override
 	public void upHitProduct(int productid) {
-		log.info("++++++++++ Product ++++++++++ upHitProduct");
+		log.info("--------upHitProduct");
 		productMapper.upHitProduct(productid);
 		
 	}

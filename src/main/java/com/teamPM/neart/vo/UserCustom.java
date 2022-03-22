@@ -45,4 +45,14 @@ public class UserCustom extends User {
 
 		return authorities;
 	}
+	
+	//회원한 탈퇴 로그인 불가
+		@Override
+		public boolean isEnabled() {
+			if(user.getEnabled() == 1){
+				return true;
+			}
+			return false;
+		}
+		
 }

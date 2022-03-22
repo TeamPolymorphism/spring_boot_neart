@@ -1,5 +1,7 @@
 package com.teamPM.neart.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -56,14 +58,6 @@ public class MemberService {
 	   
 	   userMapper.delete(id);
   }
-  
-	/*
-	 * public void remove(String id) {
-	 * 
-	 * log.info("remove()...");
-	 * 
-	 * userMapper.remove(id); }
-	 */
  
  public void withdraw(MemberVO memberVO) {
 	   
@@ -80,12 +74,26 @@ public class MemberService {
 }
  
  //OrderdetailsVO orderdetailsVO
- public OrderdetailsVO detail(int membernum){
+ public List<OrderdetailsVO> detail(int membernum){
 	   
-		log.info("get() ..");
+		log.info("detail() ..");
 		
 		return userMapper.detail(membernum);
 	}
+ 
+ public OrderdetailsVO orderreceipt(int ordersid) {
+	   
+	   log.info("orderreceipt()...");
+	   
+	   return userMapper.orderreceipt(ordersid);
+}
+ 
+ public List<OrderdetailsVO> receiptlist(int ordersid) {
+	   
+	   log.info("receiptlist()...");
+	   
+	   return userMapper.receiptlist(ordersid);
+}
    
    public void addAdmin(MemberVO userVO) {
 	   

@@ -245,7 +245,7 @@
             <div class="form-group has-feedback">
                 <label class="control-label" for="pwd">비밀번호</label>
                 <input class="form-control" type="password" name="password" id="pwd"/>
-                <span id="pwdRegErr" class="help-block">4글자 이상 입력하세요.</span>
+                <span id="pwdRegErr" class="help-block">1글자 이상 입력하세요.</span>
                 <span class="glyphicon glyphicon-ok form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
@@ -261,17 +261,11 @@
               <div class="invalid-feedback">
               </div>
             </div>
-
-            <div class="form-group has-feedback">
-                <label class="control-label" for="email">이메일</label>
-                <input class="form-control" type="text" name="email" id="email" placeholder="___@___"/>
-                <span id="emailErr" class="help-block">올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.</span>
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
-            </div>
+            
             <div class="row">
               <div class="col-md-3 mb-3">
-                <label for="country">생년월일</label>
-                <input type="text" class="form-control" id="year" name="year" required>
+                <label for="country">생년</label>
+                <input type="text" class="form-control" id="year" name="year" required maxlength='4'>
                 <!-- <select class="custom-select d-block w-100" id="year" required>
                   <option value="">선택</option>
                   <option>010</option>
@@ -283,20 +277,20 @@
               </div>
               <div class="col-md-2 mb-3">
                 <label for="state">월</label>
-                <input type="text" class="form-control" id="month" name="month" required>
+                <input type="text" class="form-control" id="month" name="month" required maxlength='2'>
                 <div class="invalid-feedback">
                 </div>
               </div>
               <div class="col-md-2 mb-3">
                 <label for="zip">일</label>
-                <input type="text" class="form-control" id="date" name="day" placeholder="" required>
+                <input type="text" class="form-control" id="date" name="day" placeholder="" required maxlength='2'>
                 <div class="invalid-feedback">
                 </div>
               </div>
             </div>
             <div class="mb-3">
               <label for="address">전화번호</label>
-              <input type="text" class="form-control" id="phonenum" name="phonenum" placeholder="010부터 입력하세요." required>
+              <input type="text" class="form-control" id="phonenum" name="phonenum" placeholder="010부터 입력하세요." maxlength='11' required>
               <div class="invalid-feedback">
               </div>
             </div>
@@ -316,7 +310,7 @@
               <label class="custom-control-label" for="save-info">약관에 동의합니다.</label>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-block" type="submit" style="color: white;">Sign In</button>
+            <button class="btn btn-block btn-warning" type="submit" style="color: white;">Sign In</button>
           </form:form>
         </div>
       </div>
@@ -574,6 +568,7 @@ NEART &copy;<script>document.write(new Date().getFullYear());</script> ALL RIGHT
             errorState("#rePwd");
         }
     });
+    <!--
     $("#email").keyup(function(){
         var email=$(this).val();
         // 이메일 검증할 정규 표현식
@@ -586,6 +581,7 @@ NEART &copy;<script>document.write(new Date().getFullYear());</script> ALL RIGHT
                     errorState("#email");
         }
     });
+    -->
     // 성공 상태로 바꾸는 함수
     function successState(sel){
         $(sel)

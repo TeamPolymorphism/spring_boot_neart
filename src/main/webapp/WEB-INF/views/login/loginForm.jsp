@@ -227,12 +227,10 @@
 		      <input type="id" id="id" class="form-control" name="username" placeholder="아이디" required autofocus>
 		      <label for="inputPassword" class="sr-only">패스워드</label>
 		      <input type="password" id="password" name="password" class="form-control" placeholder="패스워드" required>
-		      <div class="checkbox mb-3">
-		        <label>
-		          <input type="checkbox" value="remember-me">기억하기
-		        </label>
+		      <div class="checkbox  mt-4 mb-3">
+		        <button class="btn btn-lg btn-block btn-warning" type="submit" style="color: white;">Login</button>
 		      </div>
-		      <button class="btn btn-lg btn-block" type="submit" style="color: white;">Login</button>
+		      
 	     
       <div class="d-flex justify-content-between" style="padding: 20px 0px;">
       <a href="#" style="color: black;">아이디/비밀번호 찾기</a>

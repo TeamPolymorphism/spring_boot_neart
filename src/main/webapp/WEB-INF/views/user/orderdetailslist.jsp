@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,13 +10,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>MYPAGE_EDIT</title>
+    <title>MYPAGE</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link  rel="stylesheet" type="text/css" href="css/signin.css">
+    <link rel="stylesheet" type="text/css" href="css/mypage.css">
 
     <!-- password eye form -->
     <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -64,7 +64,7 @@
 				<nav class="limiter-menu-desktop p-l-45">
 					
 					<!-- Logo desktop -->		
-					<a href="home-03.html" class="logo">
+					<a href="/" class="logo">
 						<img src="neart-source/logo/logo_w.png" alt="IMG-LOGO">
 					</a>
 
@@ -72,7 +72,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="product.html">ART-PRODUCT</a>
+								<a href="">ART-PRODUCT</a>
 								<!-- <ul class="sub-menu">
 									<li><a href="index.html">frame</a></li>
 									<li><a href="home-02.html"></a></li>
@@ -81,11 +81,11 @@
 							</li>
 
 							<li class="label1">
-								<a href="subscription-detail.html">SUBSCRIPTION (구독)</a>
+								<a href="product.html">SUBSCRIPTION (구독)</a>
 							</li>
 
 							<li>
-								<a href="artist.html">ARTIST</a>
+								<a href="shoping-cart.html">ARTIST</a>
 							</li>
 						</ul>
 						<ul class="main-menu">
@@ -95,8 +95,11 @@
 						</ul>
 					</div>	
 
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m h-full">	
+					<!-- Icon header 반응형 클 때-->
+					<div class="wrap-icon-header flex-w flex-r-m h-full">
+						<sec:authorize access="isAuthenticated()">
+						<h6><sec:authentication property="principal.user.name"/>님</h6>
+						<a href="${pageContext.request.contextPath}/logout" method="POST">
 						<div class="flex-c-m h-full bor6">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
@@ -104,7 +107,8 @@
 									1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 							</div>
 						</div>
-						
+						<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+							
 						<div class="flex-c-m h-full  bor6">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
@@ -116,6 +120,8 @@
 									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
 							</div>
 						</div>
+						</a>
+						</sec:authorize>
 
 						<div class="flex-c-m h-full p-r-10 bor6">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
@@ -133,14 +139,17 @@
 			</div>	
 		</div>
 
-		<!-- Header Mobile -->
+		<!-- Header Mobile 반응형 작아질 때 -->
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="home-03.html"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
+				<a href="/"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
+			<sec:authorize access="isAuthenticated()">
+			<h6><sec:authentication property="principal.user.name"/>님</h6>
+			<a href="${pageContext.request.contextPath}/logout" method="POST">
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
@@ -148,6 +157,9 @@
 						1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 				</div>
 			</div>
+			</a>
+			<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+			
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
@@ -159,6 +171,8 @@
 						56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
 				</div>
 			</div>
+			</a>
+			</sec:authorize>
 
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="flex-c-m h-full p-r-5">
@@ -193,15 +207,15 @@
 				</li>
 
 				<li>
-					<a href="subscription-detail.html">SUBSCRIPTION 구독</a>
+					<a href="product.html">SUBSCRIPTION 구독</a>
 				</li>
 
 				<li>
-					<a href="artist.html" class="label1 rs1" data-label1="hot">ARTIST</a>
+					<a href="shoping-cart.html" class="label1 rs1" data-label1="hot">ARTIST</a>
 				</li>
 
 				<li>
-					<a href="about.html">ABOUT</a>
+					<a href="blog.html">ABOUT</a>
 				</li>
 			</ul>
 		</div>
@@ -226,81 +240,92 @@
 
 
 <main>
-  <div class="py-5 text-center">
-    <h2>회원정보수정</h2>
-  </div>
+<div class="container">
+  <div class="row">
+    
 
-  <div class="card-container">
-      <div class="row">
-        <div class="signin-md-1">
-          <form:form action="${pageContext.request.contextPath}/update" method="post">
-            <div class="form-group has-feedback">
-                <label class="control-label" for="id">아이디</label>
-                <input class="form-control" type="text" name="id" value="${update_view.id}"/>
-                <!-- <span id="overlapErr" class="help-block">사용할 수 없는 아이디 입니다.</span> -->
-                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+  <!-- MYPAGE / li안에 li는 불가능 -->
+    <div class="col-md-4 order-md-1 mb-4" style="color: black;">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span >MYPAGE</span>
+        <!-- <span class="badge badge-secondary badge-pill">3</span> -->
+      </h4>
+      <hr class="mb-4" style="border: solid 2px black;">
+      <h4><sec:authentication property="principal.user.name"/> 님</h4>
+      <hr class="mb-3" style="border: solid 2px white;">
+      <ul class="list-group mb-4" style="padding: 5px;">
+          <div>
+            <h6 class="mb-2">나의 쇼핑정보</h6>
+            <div style="padding: 2px;">
+			<a href="${pageContext.request.contextPath}/orderdetailslist?membernum=<sec:authentication property="principal.user.membernum" />" class="text-muted">주문조회</a>
+			</div>
+			<div style="margin: 2px;">
+			<a href="${pageContext.request.contextPath}/ordercancel?membernum=<sec:authentication property="principal.user.membernum" />" class="text-muted">반품/교환/취소</a>
+			</div>
+          </div>
+        <hr class="mb-3" style="border: solid 2px white;">
+          <div>
+            <h6 class="mb-2">나의 참여내역</h6>
+            <div style="padding: 2px;">
+              <a href="#" class="text-muted">1:1문의</a>
             </div>
-            <div class="form-group has-feedback">
-                <label class="control-label" for="password">비밀번호</label>
-                <button class="btn btn-light btn-block" type="submit">비밀번호 수정</button>
+            <div style="padding: 2px;">
+              <a href="#" class="text-muted">Q & A</a>
             </div>
+          </div>
+        <hr class="mb-3" style="border: solid 2px white;">
+          <div>
+            <h6 class="mb-2">나의 정보관리</h6>
+            <div style="padding: 2px;">
+				<a href="${pageContext.request.contextPath}/update?id=<sec:authentication property="principal.user.id" />" class="text-muted">회원정보수정</a>
+			</div>
+          </div>
+        </ul>
+    </div>
 
-            <div class="mb-3">
-              <label for="name">이름</label>
-              <input type="text" class="form-control" name="name" value="${update_view.name}" required>
-              <div class="invalid-feedback">
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="country">생년월일</label>
-                <input type="text" class="form-control" name="year" value="${update_view.year}" required>
-                <!-- <select class="custom-select d-block w-100" id="year" required>
-                  <option value="">선택</option>
-                  <option>010</option>
-                  <option>011</option>
-                  <option>012</option>
-                </select> -->
-                <div class="invalid-feedback">
-                </div>
-              </div>
-              <div class="col-md-2 mb-3">
-                <label for="state">월</label>
-                <input type="text" class="form-control" name="month" value="${update_view.month}" required>
-                <div class="invalid-feedback">
-                </div>
-              </div>
-              <div class="col-md-2 mb-3">
-                <label for="zip">일</label>
-                <input type="text" class="form-control" placeholder="" name="day" value="${update_view.day}" required>
-                <div class="invalid-feedback">
-                </div>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="address">전화번호</label>
-              <input type="text" class="form-control" placeholder="010부터 입력하세요." name="phonenum" value="${update_view.phonenum}" required>
-              <div class="invalid-feedback">
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="address">주소</label>
-              <input type="text" class="form-control" name="address" value="${update_view.address}" required>
-              <div class="invalid-feedback">
-              </div>
-            </div>
-            <hr class="mb-4"> 
-            <button class="btn btn-block btn-warning" type="submit" style="color: white;">회원 정보 수정 확인</button>
-          </form:form>
-         <p class="mb-1 mt-3" style="text-decoration: underline">
-			<a href="${pageContext.request.contextPath}/delete?id=<sec:authentication property="principal.user.id" />"style="color: black">회원탈퇴</a>
-		</p>
-        </div>
-      </div>
-  </div>
-  	
-  
+
+
+    
+			<div class="col-md-8 order-md-2" style="color: black;">
+			<div class="d-flex justify-content-between">
+			  <h4 class="mb-0" style="font-weight: bold;">최근 주문내역</h4>
+			</div>
+			  <hr class="mb-0" style="border: solid 2px black;">
+			<table class="table">
+			  <thead style="height: 20px;">
+				<tr style="height: 20px;">
+				  <th>주문일</th>
+				  <th>주문내역</th>
+				  <th>수량</th>
+				  <th>금액</th>
+				</tr>
+			  </thead>
+			  <c:forEach var="detail" items="${orderdetails_view}">
+			  <tbody style=" line-height: center;">
+				<tr>
+				  <td>${detail.ordersdate}</td>
+				  <td> <!--  style="word-break:break-all;"
+					<img
+						src="images/product-08.jpg"
+						class="card-img-top"
+						alt="..."
+						style="width: 50px; height: 50px; overflow: hidden;"> 
+						
+						
+						<a href="${pageContext.request.contextPath}/orderreceipt?id=<sec:authentication property="principal.user.id" />" class="text-muted">${detail.productname}</a>
+						 -->
+						<a href="${pageContext.request.contextPath}/orderreceipt?ordersid=${detail.ordersid}">${detail.productname}</a>
+					  </td>
+				  <td>${detail.totalquantity}</td>
+				  <td>${detail.price}</td>
+				</tr>
+				
+			  </tbody>
+			</c:forEach>
+			</table>
+</div>
+</div>
+
 </main>
 
 

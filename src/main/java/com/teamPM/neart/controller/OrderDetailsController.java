@@ -1,5 +1,7 @@
 package com.teamPM.neart.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -47,11 +49,123 @@ public class OrderDetailsController {
 		log.info("orderdetails() ..");
 		log.info("OrderdetailsVO" + orderdetailsVO);
 
+		
 		int membernum = orderdetailsVO.getMembernum();
+		List<OrderdetailsVO> orderdetailsList = memberService.detail(membernum);
+		
+		orderdetailsVO.setOrderdetailsVO(orderdetailsList);
+		
+		model.addAttribute("orderdetails_view", orderdetailsList);
+		//log.info("orderdetailsVO.getTotal()=====" + orderdetailsVO.getTotal());
+		
+		//model.addAttribute("orderdetails_total", orderdetailsVO.getTotal());
+		
+		log.info("memberService.detail(membernum)========" + memberService.detail(membernum));
+		
 
-		model.addAttribute("orderdetails_view", memberService.detail(membernum));
 
 		return "/user/orderdetails";
+
+	}
+	
+	@RequestMapping("/orderreceipt")
+	public String orderreceipt(OrderdetailsVO orderdetailsVO, int ordersid, Model model) {
+		
+		log.info("orderreceipt()..." );
+
+		memberService.orderreceipt(orderdetailsVO.getOrdersid());
+		
+		
+		List<OrderdetailsVO> receiptlist = memberService.receiptlist(ordersid);
+
+		System.out.println("orderreceipt 타나여//////");
+				
+		model.addAttribute("orderreceipt_view", memberService.orderreceipt(ordersid));
+		
+		
+		model.addAttribute("orderdetails_view", receiptlist);
+
+		log.info("receiptlist()...==============================" +  memberService.receiptlist(ordersid));
+
+		
+		return "/user/orderreceipt";
+
+	}
+	
+	/*
+	 * @RequestMapping("/orderreceipt") public String receiptlist(OrderdetailsVO
+	 * orderdetailsVO, Model model) {
+	 * 
+	 * log.info("receiptlist() .."); log.info("OrderdetailsVO" + orderdetailsVO);
+	 * 
+	 * 
+	 * int ordersid = orderdetailsVO.getOrdersid(); List<OrderdetailsVO>
+	 * orderdetailsList = memberService.detail(ordersid);
+	 * 
+	 * orderdetailsVO.setOrderdetailsVO(orderdetailsList);
+	 * 
+	 * model.addAttribute("orderdetails_view", orderdetailsList);
+	 * //log.info("orderdetailsVO.getTotal()=====" + orderdetailsVO.getTotal());
+	 * 
+	 * //model.addAttribute("orderdetails_total", orderdetailsVO.getTotal());
+	 * 
+	 * log.info("memberService.detail(membernum)========" +
+	 * memberService.detail(ordersid));
+	 * 
+	 * return "/user/orderreceipt";
+	 * 
+	 * }
+	 */
+	
+	@RequestMapping("/orderdetailslist")
+	public String orderdetailslist(OrderdetailsVO orderdetailsVO, Model model) {
+
+		log.info("orderdetailslist() ..");
+		log.info("OrderdetailsVO" + orderdetailsVO);
+
+		
+		int membernum = orderdetailsVO.getMembernum();
+		List<OrderdetailsVO> orderdetailsList = memberService.detail(membernum);
+		
+		orderdetailsVO.setOrderdetailsVO(orderdetailsList);
+		
+		model.addAttribute("orderdetails_view", orderdetailsList);
+		//log.info("orderdetailsVO.getTotal()=====" + orderdetailsVO.getTotal());
+		
+		//model.addAttribute("orderdetails_total", orderdetailsVO.getTotal());
+		
+		log.info("memberService.detail(membernum)========" + memberService.detail(membernum));
+		
+
+
+		return "/user/orderdetailslist";
+
+	}
+	
+	
+	
+	@RequestMapping("/ordercancel")
+	public String ordercancel(OrderdetailsVO orderdetailsVO, Model model) {
+
+		log.info("ordercancel() ..");
+		log.info("OrderdetailsVO" + orderdetailsVO);
+
+		
+		int membernum = orderdetailsVO.getMembernum();
+		List<OrderdetailsVO> orderdetailsList = memberService.detail(membernum);
+		
+		orderdetailsVO.setOrderdetailsVO(orderdetailsList);
+		
+		model.addAttribute("orderdetails_view", orderdetailsList);
+		//log.info("orderdetailsVO.getTotal()=====" + orderdetailsVO.getTotal());
+		
+		//model.addAttribute("orderdetails_total", orderdetailsVO.getTotal());
+		
+		log.info("memberService.detail(membernum)========" + memberService.detail(membernum));
+		
+
+
+		return "/user/ordercancel";
 
 	}
 	

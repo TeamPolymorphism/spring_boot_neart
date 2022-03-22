@@ -8,12 +8,9 @@
 <title>작품 페이지</title>
 </head>
 <body>
-	<span><a href="/">Home</a></span>
-	<h1>상품 목록입니다.</h1>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
 		<tr>
 			<td>작품번호</td>
-			<td>작품</td>
 			<td>작품명</td>
 			<td>작가</td>
 			<td>사이즈</td>
@@ -26,12 +23,11 @@
 		<c:forEach items="${productBoard}" var="product">
 			<tr>
 				<td>${product.productid}</td>
-				<td><img src="${product.filePath}"></td>
 				<td><a href="detailProduct?productid=${product.productid}">${product.productname}</a></td>
 				<td>${product.artist}</td>
 				<td>${product.productsize}</td>
 				<td>${product.price}</td>
-				<td>${product.stock}</td>
+				<td>${product.quantity}</td>
 				<td>${product.productdate}</td>
 				<td>${product.producthit}</td>
 			</tr>
