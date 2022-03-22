@@ -18,8 +18,8 @@ public interface ProductMapper {
 	 * 01. 사진포함 상품 목록
 	 * 
 	 * */
-	public int getTotalCount(); 	// 페이징 전체
-	List<ProductVO> getProductList(Criteria criteria); 
+	public int getTotalCount(); 
+	List<ProductVO> getProductList(); 
 	
 	
 

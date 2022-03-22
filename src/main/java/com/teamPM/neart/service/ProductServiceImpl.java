@@ -22,17 +22,17 @@ public class ProductServiceImpl implements ProductService {
 	private ProductMapper productMapper;
 
 	//페이징
-	@Override
+	/*@Override
 	public int getTotalCount() {
 		log.info("++++++++++ Product ++++++++++ getTotalCount");
 		return productMapper.getTotalCount();
-	}
+	}*/
 
 	//페이징 + 리스트
 	@Override
-	public List<ProductVO> getProductList(Criteria criteria) {
-		log.info("++++++++++ Product ++++++++++ getProductList(Criteria)");
-		return productMapper.getProductList(criteria);
+	public List<ProductVO> getProductList() {
+		log.info("++++++++++ Product ++++++++++ getProductList()");
+		return productMapper.getProductList();
 	}
 
 
