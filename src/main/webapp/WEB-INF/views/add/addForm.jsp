@@ -63,7 +63,7 @@
 				<nav class="limiter-menu-desktop p-l-45">
 					
 					<!-- Logo desktop -->		
-					<a href="home-03.html" class="logo">
+					<a href="/" class="logo">
 						<img src="neart-source/logo/logo_w.png" alt="IMG-LOGO">
 					</a>
 
@@ -71,7 +71,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="product.html">ART-PRODUCT</a>
+								<a href="/listProduct">ART-PRODUCT</a>
 								<!-- <ul class="sub-menu">
 									<li><a href="index.html">frame</a></li>
 									<li><a href="home-02.html"></a></li>
@@ -80,16 +80,16 @@
 							</li>
 
 							<li class="label1">
-								<a href="subscription-detail.html">SUBSCRIPTION (구독)</a>
+								<a href="/subscription">SUBSCRIPTION (구독)</a>
 							</li>
 
 							<li>
-								<a href="artist.html">ARTIST</a>
+								<a href="/artist">ARTIST</a>
 							</li>
 						</ul>
 						<ul class="main-menu">
 							<li>
-								<a href="about.html">ABOUT</a>
+								<a href="/about">ABOUT</a>
 							</li>
 						</ul>
 					</div>	
@@ -97,7 +97,7 @@
 					<!-- Icon header -->
 					<div class="wrap-icon-header flex-w flex-r-m h-full">	
 						<div class="flex-c-m h-full bor6">
-							<a href="login.html">
+							<a href="/login">
 								<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 									<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
 									preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
@@ -138,7 +138,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="home-03.html"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
+				<a href="/"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -182,7 +182,7 @@
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
 				<li>
-					<a href="product.html">ART-PRODUCT</a>
+					<a href="/listProduct">ART-PRODUCT</a>
 					<!-- <ul class="sub-menu-m">
 									<li><a href="index.html">frame</a></li>
 									<li><a href="home-02.html"></a></li>
@@ -194,15 +194,15 @@
 				</li>
 
 				<li>
-					<a href="subscription-detail.html">SUBSCRIPTION 구독</a>
+					<a href="/subscription">SUBSCRIPTION 구독</a>
 				</li>
 
 				<li>
-					<a href="artist.html" class="label1 rs1" data-label1="hot">ARTIST</a>
+					<a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
 				</li>
 
 				<li>
-					<a href="about.html">ABOUT</a>
+					<a href="/about">ABOUT</a>
 				</li>
 			</ul>
 		</div>
@@ -338,25 +338,25 @@
 
         <ul>
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/subscription" class="stext-107 cl7 hov-cl1 trans-04">
               정기 구독
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/listProduct" class="stext-107 cl7 hov-cl1 trans-04">
               아트 포스터
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/artist" class="stext-107 cl7 hov-cl1 trans-04">
               작가
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/about" class="stext-107 cl7 hov-cl1 trans-04">
               니아트 소개
             </a>
           </li>
@@ -370,13 +370,13 @@
 
         <ul>
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/board/list" class="stext-107 cl7 hov-cl1 trans-04">
               공지사항
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/qnaboard/list" class="stext-107 cl7 hov-cl1 trans-04">
               문의게시판 
             </a>
           </li>
@@ -404,15 +404,15 @@
         </p>
 
         <div class="p-t-27">
-          <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+          <a href="https://ko-kr.facebook.com/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
             <i class="fa fa-facebook"></i>
           </a>
 
-          <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+          <a href="https://www.instagram.com/?hl=ko" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
             <i class="fa fa-instagram"></i>
           </a>
 
-          <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+          <a href="https://www.pinterest.co.kr/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
             <i class="fa fa-pinterest-p"></i>
           </a>
         </div>

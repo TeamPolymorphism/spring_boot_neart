@@ -57,7 +57,7 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="/product/listProduct">ART-PRODUCT</a>
+								<a href="/listProduct">ART-PRODUCT</a>
 								<!-- <ul class="sub-menu">
 									<li><a href="index.html">frame</a></li>
 									<li><a href="home-02.html"></a></li>
@@ -70,12 +70,12 @@
 							</li>
 
 							<li>
-								<a href="artist.html">ARTIST</a>
+								<a href="/artist">ARTIST</a>
 							</li>
 						</ul>
 						<ul class="main-menu">
 							<li>
-								<a href="about.html">ABOUT</a>
+								<a href="/about">ABOUT</a>
 							</li>
 						</ul>
 					</div>	
@@ -148,7 +148,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="home-03.html"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
+				<a href="/"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -215,7 +215,7 @@
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
 				<li>
-					<a href="/product/listProduct">ART-PRODUCT</a>
+					<a href="/listProduct">ART-PRODUCT</a>
 					<!-- <ul class="sub-menu-m">
 									<li><a href="index.html">frame</a></li>
 									<li><a href="home-02.html"></a></li>
@@ -227,15 +227,15 @@
 				</li>
 
 				<li>
-					<a href="subscription-detail.html">SUBSCRIPTION 구독</a>
+					<a href="/subscription">SUBSCRIPTION 구독</a>
 				</li>
 
 				<li>
-					<a href="artist.html" class="label1 rs1" data-label1="hot">ARTIST</a>
+					<a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
 				</li>
 
 				<li>
-					<a href="blog.html">ABOUT</a>
+					<a href="/about">ABOUT</a>
 				</li>
 			</ul>
 		</div>
@@ -468,7 +468,7 @@
 								</div>
 									
 								<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-									<a href="subscription-detail.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									<a href="/subscription" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 										구독 서비스 안내
 									</a>
 								</div>
@@ -540,7 +540,7 @@
 					<div class="block1 wrap-pic-w">
 						<img src="neart-source/image/banner-artist.jpg" alt="IMG-BANNER">
 
-						<a href="/product/listProduct" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="/listProduct" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
 									ARTIST
@@ -920,7 +920,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0 label-new " data-label="New">
-							<img src="neart-source/image/01111.jpg" alt="IMG-PRODUCT">
+							<img src="neart-source/image/01.jpg" alt="IMG-PRODUCT">
 
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								미리보기
@@ -952,7 +952,7 @@
 					<!-- Block2 -->
 					<div class="block2">
 						<div class="block2-pic hov-img0">
-							<img src="neart-source/image/0222.jpg" alt="IMG-PRODUCT">
+							<img src="neart-source/image/02.jpg" alt="IMG-PRODUCT">
 
 							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								미리보기
@@ -1454,25 +1454,25 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/subscription" class="stext-107 cl7 hov-cl1 trans-04">
 								정기 구독
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/listProduct" class="stext-107 cl7 hov-cl1 trans-04">
 								아트 포스터
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/artist" class="stext-107 cl7 hov-cl1 trans-04">
 								작가
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/about" class="stext-107 cl7 hov-cl1 trans-04">
 								니아트 소개
 							</a>
 						</li>
@@ -1486,13 +1486,13 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/board/list" class="stext-107 cl7 hov-cl1 trans-04">
 								공지사항
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/qnaboard/list" class="stext-107 cl7 hov-cl1 trans-04">
 								문의게시판 
 							</a>
 						</li>
@@ -1520,15 +1520,15 @@
 					</p>
 
 					<div class="p-t-27">
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<a href="https://ko-kr.facebook.com/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 							<i class="fa fa-facebook"></i>
 						</a>
 
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<a href="https://www.instagram.com/?hl=ko" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 							<i class="fa fa-instagram"></i>
 						</a>
 
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+						<a href="https://www.pinterest.co.kr/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 							<i class="fa fa-pinterest-p"></i>
 						</a>
 					</div>
@@ -1730,7 +1730,7 @@ NEART &copy;<script>document.write(new Date().getFullYear());</script> ALL RIGHT
 									</a>
 								</div>
 
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
+								<a href="https://ko-kr.facebook.com/" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
 									<i class="fa fa-facebook"></i>
 								</a>
 

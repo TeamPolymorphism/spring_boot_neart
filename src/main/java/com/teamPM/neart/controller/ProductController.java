@@ -3,31 +3,24 @@ package com.teamPM.neart.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.teamPM.neart.page.Criteria;
 import com.teamPM.neart.page.PageVO;
 import com.teamPM.neart.service.AwsS3Service;
 import com.teamPM.neart.service.ProductService;
+import com.teamPM.neart.service.StorageFileNotFoundException;
 import com.teamPM.neart.vo.ProductVO;
 
-import com.teamPM.neart.service.StorageFileNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -40,25 +33,25 @@ public class ProductController {
 	private AwsS3Service awsS3Service;
 
 	// 페이징 + 상품목록
-	@GetMapping("/product/listProduct")
-	public ModelAndView listProduct(Criteria cri, ModelAndView model) {
+	@GetMapping("/listProduct")
+	public ModelAndView listProduct(ModelAndView model) {
 		log.info("++++++++++ paging----listProduct");
-		log.info("Criteria " + cri);
+		//log.info("Criteria " + cri);
 
 		model.setViewName("product/listProduct"); //return할때 들어가는 주소 
-		model.addObject("productBoard", productService.getProductList(cri)); //model.addattribute와 같음 
-		int total = productService.getTotalCount();
+		model.addObject("productBoard", productService.getProductList()); //model.addattribute와 같음 
+		//int total = productService.getTotalCount();
 
-		log.info("total " + total);
+		//log.info("total " + total);
 
-		model.addObject("pageMaker", new PageVO(cri, total));
+		//model.addObject("pageMaker", new PageVO(cri, total));
 
 		return model;
 	}
 	
 
 	// 관리자 상품상세
-	@GetMapping("/product/detailProduct")
+	@GetMapping("/detailProduct")
 	public ModelAndView productDetail(ProductVO productVO, ModelAndView model) {
 
 		log.info("++++++++++ Controller----detailProduct");
@@ -69,30 +62,16 @@ public class ProductController {
 		return model;
 	}
 
-	/*
-	 * 회원 상품상세
-	 * 
-	 * @GetMapping("/product/userDetailProduct") public ModelAndView
-	 * userDetailProduct(ProductVO productVO,ModelAndView model) {
-	 * 
-	 * log.info("++++++++++ Controller----productDetail"); log.info("ProductVO" +
-	 * productVO); model.setViewName("/product/userDetailProduct"); int productid = productVO.getProductid();
-	 * model.addObject("userDetailProduct",
-	 * productService.detailProduct(productid));
-	 * 
-	 * return model; }
-	 */
-
 	
 	// 작품등록 화면으로 이동
-	@GetMapping("/product/insertProduct")
+	@GetMapping("/insertProduct")
 	public ModelAndView productWrite(ModelAndView model) {
 		log.info("++++++++++++ controller----insertProduct ++++++++++");
 		model.setViewName( "/product/insertProduct");
 		return model;
 	}
 	// 작품등록 화면
-	@PostMapping("/product/upload")
+	@PostMapping("/upload")
 	public ModelAndView upload(@RequestPart(required = false) MultipartFile file, //RequestPart는 @RequestParam POST 데이타 포함된 인자의 이름을 가지고 접근할 수 있다.
 								RedirectAttributes redirectAttributes,
 								@ModelAttribute ProductVO productVO,
@@ -118,7 +97,7 @@ public class ProductController {
 		
 			
 		productService.insertProduct(productVO);
-		model.setViewName("redirect:/product/listProduct");
+		model.setViewName("redirect:/listProduct");
 
 		return model; // 완료 후 목록으로 이동
 	}
@@ -129,7 +108,7 @@ public class ProductController {
 	/**
      * Amazon S3에 이미지 업로드 된 파일을 삭제 + db 상품 삭제
      */
-	@GetMapping("/product/deleteProduct")
+	@GetMapping("/deleteProduct")
 	public ModelAndView deleteProduct(@RequestPart(required = false) String filePath,
 										ProductVO productVO, 
 										ModelAndView model) throws IOException  {
@@ -147,7 +126,7 @@ public class ProductController {
 
 
 	// 작품수정 진행
-	@GetMapping("/product/modifyProduct")
+	@GetMapping("/modifyProduct")
 	public ModelAndView productModify(ProductVO productVO, ModelAndView model) {
 		log.info("++++++++++++++ controller----modifyProduct----Start");
 		int productid = productVO.getProductid();

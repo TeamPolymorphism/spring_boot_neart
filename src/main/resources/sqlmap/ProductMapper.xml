@@ -27,8 +27,7 @@
 	<!-- 열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
 	<select id="getProductList" resultType="com.teamPM.neart.vo.ProductVO">
 	   <![CDATA[
-	            SELECT * FROM (
-	              SELECT ROWNUM AS RNUM, A.* FROM (
+	          
 	                       SELECT
 	                       		product.productid as productid,
 	                       		product.productname as productname,
@@ -53,8 +52,7 @@
 	                         	image.imgid = imagetype.imgid
 	                         	order by 
 	                         	product.productid desc 
-	             ) A WHERE ROWNUM <= #{pageNum} * #{amount}
-	         ) WHERE RNUM > (#{pageNum}-1) * #{amount}
+	        
 	      
 	   
 	   ]]>
@@ -94,7 +92,6 @@
    <![CDATA[
 		insert into product (productid, productname, productcontent, artist, productsize, price, stock, producthit) 
 	values (product_seq.nextval, #{productname}, #{productcontent}, #{artist}, #{productsize}, #{price}, #{stock}, 0)
-
    ]]>
 	</insert>
 

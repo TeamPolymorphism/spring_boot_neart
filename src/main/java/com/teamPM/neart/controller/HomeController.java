@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,4 +34,14 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@GetMapping("/artist")
+	public void artist() {
+		System.out.println("----artist..");
+	}  
+	
+	@GetMapping("/about")
+	public void about() {
+		System.out.println("----about..");
+	}  
 }
