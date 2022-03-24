@@ -81,16 +81,16 @@
 							</li>
 
 							<li class="label1">
-								<a href="subscription-detail.html">SUBSCRIPTION (구독)</a>
+								<a href="/subscription">SUBSCRIPTION (구독)</a>
 							</li>
 
 							<li>
-								<a href="artist.html">ARTIST</a>
+								<a href="/artist">ARTIST</a>
 							</li>
 						</ul>
 						<ul class="main-menu">
 							<li>
-								<a href="about.html">ABOUT</a>
+								<a href="/about">ABOUT</a>
 							</li>
 						</ul>
 					</div>	
@@ -102,7 +102,7 @@
 						</div>
 
 						<div class="flex-c-m h-full bor6">
-							<a href="mypage.html">
+							<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
 								<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
 									<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.95em" height="1em" 
 										preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 

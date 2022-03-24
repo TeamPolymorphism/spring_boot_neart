@@ -13,12 +13,13 @@ public interface BoardService {
 	ReplyVO getReply(int bid);
 	void register(BoardVO board); //공지사항 작성
 	void register2(BoardVO board); //QnA 작성
-	void remove(int bid);
+	void removeBoard(int bid);
 	void modify(BoardVO board);
 	void upHit(int bid);
 	
 	//답글 처리 함수
 	void updateShape(int bgroup, int bstep);
+	void removeReply(int bid);
 	void insertReply(ReplyVO board);
 	void insertReply2(BoardVO board);
 	void insertReplyBoard(BoardVO board);
@@ -28,5 +29,5 @@ public interface BoardService {
 	public int qnaGetTotalCount();
 	public List<BoardVO> noticeGetList(Criteria criteria);
 	List<BoardVO> qnaGetList(Criteria criteria);
-	//void updateShape(int bgroup, int bstep); //추가
+	
 }

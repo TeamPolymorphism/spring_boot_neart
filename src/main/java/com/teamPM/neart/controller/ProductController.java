@@ -119,7 +119,7 @@ public class ProductController {
 		
 		log.info("-------------------controller-------file----delete--------------------------"); 
 		awsS3Service.delete(productVO.getFilePath()); // s3 사진 삭제
-		model.setViewName("redirect:/product/listProduct");
+		model.setViewName("redirect:/listProduct");
 		
 		return model;
 	}
@@ -140,7 +140,7 @@ public class ProductController {
 	public ModelAndView doModifyProduct(ProductVO productVO, ModelAndView model) {
 		log.info("++++++++++++++ controller----modifyProduct----Finish");
 		productService.modifyProduct(productVO);
-		model.setViewName("redirect:/product/listProduct");
+		model.setViewName("redirect:/listProduct");
 
 		return model;
 	}

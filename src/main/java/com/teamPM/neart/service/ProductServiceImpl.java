@@ -65,9 +65,12 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void deleteProduct(int productid) {
 		log.info("++++++++++ Product ++++++++++ deleteProduct");
-		productMapper.deleteProduct(productid);
-		productMapper.deleteImage(productid);
+		productMapper.deleteCartImg(productid);
 		productMapper.deleteImageType(productid);
+		productMapper.deleteImage(productid);
+		productMapper.deleteProduct(productid);
+		
+		
 		
 	}
 

@@ -83,11 +83,11 @@
 					
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="/nlist" class="flex-c-m trans-04 p-lr-25">
 							공지게시판
 						</a>
 
-						<a href="#" class="flex-c-m trans-04 p-lr-25">
+						<a href="/qlist" class="flex-c-m trans-04 p-lr-25">
 							Q&A게시판
 						</a>
 					</div>
@@ -115,16 +115,16 @@
 							</li>
 
 							<li class="label1">
-								<a href="subscription-detail.html">SUBSCRIPTION (구독)</a>
+								<a href="/subscription">SUBSCRIPTION (구독)</a>
 							</li>
 
 							<li>
-								<a href="shoping-cart.html">ARTIST</a>
+								<a href="/artist">ARTIST</a>
 							</li>
 						</ul>
 						<ul class="main-menu">
 							<li>
-								<a href="about.html">ABOUT</a>
+								<a href="/about">ABOUT</a>
 							</li>
 						</ul>
 					</div>	
@@ -136,7 +136,7 @@
 						</div>
 
 						<div class="flex-c-m h-full bor6">
-							<a href="mypage.html">
+							<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
 								<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
 									<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.95em" height="1em" 
 										preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
@@ -165,7 +165,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="home-03.html"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
+				<a href="/"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -175,7 +175,7 @@
 				</div>
 
 				<div class="flex-c-m h-full bor6">
-					<a href="mypage.html">
+					<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
 						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
 							<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.95em" height="1em" 
 								preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
@@ -255,11 +255,11 @@
 
 				<li>
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
+						<a href="/nlist" class="flex-c-m p-lr-10 trans-04">
 							공지게시판
 						</a>
 
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
+						<a href="/qlist" class="flex-c-m p-lr-10 trans-04">
 							Q&A게시판
 						</a>
 					</div>
@@ -280,15 +280,15 @@
 				</li>
 
 				<li>
-					<a href="subscription-detail.html">SUBSCRIPTION (구독)</a>
+					<a href="/subscription">SUBSCRIPTION (구독)</a>
 				</li>
 
 				<li>
-					<a href="artist.html" class="label1 rs1" data-label1="hot">ARTIST</a>
+					<a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
 				</li>
 
 				<li>
-					<a href="about.html">ABOUT</a>
+					<a href="/about">ABOUT</a>
 				</li>
 			</ul>
 		</div>
@@ -673,25 +673,25 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/subscription" class="stext-107 cl7 hov-cl1 trans-04">
 								정기 구독
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="listProduct" class="stext-107 cl7 hov-cl1 trans-04">
 								아트 포스터
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/artist" class="stext-107 cl7 hov-cl1 trans-04">
 								작가
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/about" class="stext-107 cl7 hov-cl1 trans-04">
 								니아트 소개
 							</a>
 						</li>
@@ -705,14 +705,14 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/nlist" class="stext-107 cl7 hov-cl1 trans-04">
 								공지사항
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								문의게시판 
+							<a href="/qlist" class="stext-107 cl7 hov-cl1 trans-04">
+								Q&A게시판 
 							</a>
 						</li>
 

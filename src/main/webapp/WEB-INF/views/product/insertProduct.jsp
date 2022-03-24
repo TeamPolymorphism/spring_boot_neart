@@ -119,8 +119,8 @@
 
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m trans-04 p-lr-25"> 공지게시판 </a> <a
-							href="#" class="flex-c-m trans-04 p-lr-25"> Q&A게시판 </a>
+						<a href="/nlist" class="flex-c-m trans-04 p-lr-25"> 공지게시판 </a> <a
+							href="/qlist" class="flex-c-m trans-04 p-lr-25"> Q&A게시판 </a>
 					</div>
 				</div>
 			</div>
@@ -142,13 +142,13 @@
 									<li><a href="home-03.html"></a></li>
 								</ul> --></li>
 
-							<li class="label1"><a href="subscription-detail.html">SUBSCRIPTION
+							<li class="label1"><a href="/subscription">SUBSCRIPTION
 									(구독)</a></li>
 
-							<li><a href="artist.html">ARTIST</a></li>
+							<li><a href="/artist">ARTIST</a></li>
 						</ul>
 						<ul class="main-menu">
-							<li><a href="about.html">ABOUT</a></li>
+							<li><a href="/about">ABOUT</a></li>
 						</ul>
 					</div>
 					<!-- Icon header -->
@@ -160,7 +160,7 @@
 						</div>
 
 						<div class="flex-c-m h-full bor6">
-							<a href="mypage.html">
+							<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
 								<div
 									class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
 									<i class=""><svg xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +196,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
-				<a href="home-03.html"><img src="neart-source/logo/logo_b.png"
+				<a href="/"><img src="neart-source/logo/logo_b.png"
 					alt="IMG-LOGO"></a>
 			</div>
 
@@ -208,7 +208,7 @@
 				</div>
 
 				<div class="flex-c-m h-full bor6">
-					<a href="mypage.html">
+					<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
 						<div
 							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
 							<i class=""><svg xmlns="http://www.w3.org/2000/svg"
@@ -293,8 +293,8 @@
 					</sec:authorize></li>
 				<li>
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04"> 공지게시판 </a> <a
-							href="#" class="flex-c-m p-lr-10 trans-04"> Q&A게시판 </a>
+						<a href="/nlist" class="flex-c-m p-lr-10 trans-04"> 공지게시판 </a> <a
+							href="/qlist" class="flex-c-m p-lr-10 trans-04"> Q&A게시판 </a>
 					</div>
 				</li>
 			</ul>
@@ -309,12 +309,12 @@
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
 					</span>--></li>
 
-				<li><a href="subscription-detail.html">SUBSCRIPTION (구독)</a></li>
+				<li><a href="/subscription">SUBSCRIPTION (구독)</a></li>
 
-				<li><a href="artist.html" class="label1 rs1" data-label1="hot">ARTIST</a>
+				<li><a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
 				</li>
 
-				<li><a href="about.html">ABOUT</a></li>
+				<li><a href="/about">ABOUT</a></li>
 			</ul>
 		</div>
 
@@ -406,13 +406,11 @@
 			<div class="d-flex justify-content-between">
 				<h4 class="mb-0" style="font-weight: bold; color: black;">상품 등록</h4>
 			</div>
-
 			<hr class="mb-0" style="border: solid 2px black;">
 			<div class="m-t-30"></div>
 			<div class="container">
 				<!-- "등록"을 누르면 /upload 실행 -->
-				<form action="upload" method="post" enctype="multipart/form-data"">
-
+				<form action="upload" method="post" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="productname">작품명</label> <input type="text"
 							class="form-control" id="productname" name="productname"
@@ -479,16 +477,16 @@
 						<h4 class="stext-301 cl0 p-b-30">카테고리</h4>
 
 						<ul>
-							<li class="p-b-10"><a href="#"
+							<li class="p-b-10"><a href="/subscription"
 								class="stext-107 cl7 hov-cl1 trans-04"> 정기 구독 </a></li>
 
-							<li class="p-b-10"><a href="#"
+							<li class="p-b-10"><a href="listProduct"
 								class="stext-107 cl7 hov-cl1 trans-04"> 아트 포스터 </a></li>
 
-							<li class="p-b-10"><a href="#"
+							<li class="p-b-10"><a href="/artist"
 								class="stext-107 cl7 hov-cl1 trans-04"> 작가 </a></li>
 
-							<li class="p-b-10"><a href="#"
+							<li class="p-b-10"><a href="/about"
 								class="stext-107 cl7 hov-cl1 trans-04"> 니아트 소개 </a></li>
 						</ul>
 					</div>
@@ -497,11 +495,11 @@
 						<h4 class="stext-301 cl0 p-b-30">게시판</h4>
 
 						<ul>
-							<li class="p-b-10"><a href="#"
+							<li class="p-b-10"><a href="/nlist"
 								class="stext-107 cl7 hov-cl1 trans-04"> 공지사항 </a></li>
 
-							<li class="p-b-10"><a href="#"
-								class="stext-107 cl7 hov-cl1 trans-04"> 문의게시판 </a></li>
+							<li class="p-b-10"><a href="/qlist"
+								class="stext-107 cl7 hov-cl1 trans-04"> Q&A게시판 </a></li>
 
 							<li class="p-b-10"><a href="#"
 								class="stext-107 cl7 hov-cl1 trans-04"> 리뷰게시판 </a></li>

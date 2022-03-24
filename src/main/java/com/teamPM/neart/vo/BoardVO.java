@@ -36,4 +36,5 @@ public class BoardVO {
 	private int bindent;
 	private int bgroup;
 	private int bstep;
+	private String id;
 }

@@ -17,12 +17,13 @@ public interface BoardMapper {
 	ReplyVO readReply(int bid);
 	void insert(BoardVO board); //공지사항 작성
 	void insert2(BoardVO board); //QnA 작성
-	void delete(int bid);
+	void deleteBoard(int bid);
 	void update(BoardVO board);
 	void updateHit(int bid);
 	
 	//답글 처리 관련
 	void updateShape(int bgroup, int bstep);
+	void deleteReply(int bid);
 	void insertReply(ReplyVO board);
 	void insertReply2(BoardVO board);
 	void insertReplyBoard(BoardVO board);

@@ -28,8 +28,9 @@ public class NoticeBoardController {
 	@Autowired
 	private BoardService boardService;
 
-	@GetMapping("/board/list")
-	public ModelAndView list(ModelAndView mav, Criteria cri) {
+	@GetMapping("/nlist")
+	public ModelAndView
+	list(ModelAndView mav, Criteria cri) {
 		log.info("list..");
 		mav.setViewName("board/noticeBoardList");
 		mav.addObject("list", boardService.noticeGetList(cri));
@@ -40,7 +41,7 @@ public class NoticeBoardController {
 		return mav;
 	}
 
-	@GetMapping("/board/content_view/{bid}")
+	@GetMapping("/n_content_view/{bid}")
 	public ModelAndView content_view(BoardVO board, ModelAndView mav) {
 		log.info("content..");
 		mav.setViewName("board/content_view");
@@ -49,7 +50,7 @@ public class NoticeBoardController {
 		return mav;
 	}
 
-	@GetMapping("/board/write_view")
+	@GetMapping("/n_write_view")
 	public ModelAndView write_view(ModelAndView mav) {
 		log.info("notice_write_view..");
 		mav.setViewName("board/write_view");
@@ -57,21 +58,21 @@ public class NoticeBoardController {
 		return mav;
 	}
 
-	@PostMapping("/board/write")
+	@PostMapping("/n_write")
 	public ModelAndView write(BoardVO board, ModelAndView mav) {
 		log.info("notice_write..");
 		boardService.register(board);
-		mav.setViewName("redirect:list");
+		mav.setViewName("redirect:nlist");
 
 		return mav;
 	}
 
-	@DeleteMapping("/board/list/{bid}")
+	@DeleteMapping("/nlist/{bid}")
 	public ResponseEntity<String> delete(BoardVO board, Model model) {
 		ResponseEntity<String> entity = null;
 		log.info("delete..");
 		try {
-			boardService.remove(board.getBid());
+			boardService.removeBoard(board.getBid());
 			// 삭제가 성공하면 성공 상태메시지 저장
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {
@@ -84,7 +85,7 @@ public class NoticeBoardController {
 
 	}
 
-	@GetMapping("/board/modify_view/{bid}")
+	@GetMapping("/n_modify_view/{bid}")
 	public ModelAndView modify_view(BoardVO board, ModelAndView mav) {
 		log.info("modify_view..");
 		
@@ -94,7 +95,7 @@ public class NoticeBoardController {
 		return mav;
 	}
 
-	@PutMapping("/board/modify/{bid}")
+	@PutMapping("/n_modify/{bid}")
 	public ResponseEntity<String> modify(@RequestBody BoardVO board, Model model) {
 		ResponseEntity<String> entity = null;
 		log.info("modify..");
