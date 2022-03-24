@@ -239,13 +239,16 @@
       <a class="justify-content-end" href="/addForm" style="color: black;">회원가입</a>
       </div>
       <p style="font-size: 20px;">SNS로 로그인하기</p>
-
+		
       <div class="d-flex justify-content-center">
       <a href="/oauth2/authorization/kakao">
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="60" style="margin: 10px;"><defs><style>.cls-1{fill:#fae300;}.cls-2{fill:#391b1b;}</style></defs><circle class="cls-1" cx="50" cy="50" r="50"/><path class="cls-2" d="M50,31.38c-13.6,0-24.6,8.74-24.59,19.49,0,7,4.69,13.12,11.7,16.54-.52,1.92-1.86,7-2.13,8-.33,1.34.49,1.32,1,1s6.74-4.59,9.47-6.45a29.67,29.67,0,0,0,4.56.33c13.6,0,24.6-8.74,24.59-19.48S63.57,31.37,50,31.38" transform="translate(0 0)"/></svg>
       </a>
-      <a href="#" >
-        <!-- <img class="naver" src="images/naver.png" alt="" width="50" height="50" style="margin: 15px;"> -->
+      <a href="/oauth2/authorization/naver" >
+        <img class="naver" src="images/naver.png" alt="" width="50" height="50" style="margin: 15px;">
+      </a>
+      <a href="/oauth2/authorization/google" >
+        <img class="google" src="images/google.png" alt="" width="58" height="58" style="margin: 11px 6px;">
       </a>
       </div>
       <p class="mt-5 mb-3 text-muted">&copy; 2020-2022</p>

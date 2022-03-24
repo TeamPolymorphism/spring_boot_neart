@@ -21,23 +21,23 @@
 	</p>
 	<p>
 		아이디:
-		<sec:authentication property="principal.user.id" />
+		<sec:authentication property="principal.mvo.id" />
 	</p>
 	<p>
 		비밀번호:
-		<sec:authentication property="principal.user.password" />
+		<sec:authentication property="principal.mvo.password" />
 	</p>
 	<p>
 		이름:
-		<sec:authentication property="principal.user.name" />
+		<sec:authentication property="principal.mvo.name" />
 	</p>
 	<p>
 		전화:
-		<sec:authentication property="principal.user.phonenum" />
+		<sec:authentication property="principal.mvo.phonenum" />
 	</p>
 	<p>
 		주소:
-		<sec:authentication property="principal.user.address" />
+		<sec:authentication property="principal.mvo.address" />
 	</p>
 	<p>
 		<a href="<c:url value="/" />">홈</a>
@@ -60,7 +60,7 @@
 
 
 	<p>
-		<a href="mypage?id=<sec:authentication property="principal.user.id" />">마이페이지</a>
+		<a href="mypage?id=<sec:authentication property="principal.mvo.id" />">마이페이지</a>
 	</p>
 
 

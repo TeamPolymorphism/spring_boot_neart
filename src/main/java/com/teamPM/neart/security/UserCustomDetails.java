@@ -22,6 +22,7 @@ import com.teamPM.neart.vo.AuthVO;
 import com.teamPM.neart.vo.MemberVO;
 import com.teamPM.neart.vo.UserCustom;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -33,16 +34,17 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-@Service
+@Getter
+@Setter
 @NoArgsConstructor
 public class UserCustomDetails implements UserDetails, OAuth2User {
-	private MemberVO mvo;
+	private MemberVO user;
 	private Map<String, Object> attributes;
 	//private OAuth2UserInfo oAuth2UserInfo;
 	
 	//UserDetails : Form 로그인 시 사용
 	public UserCustomDetails(MemberVO mvo) {
-		this.mvo = mvo;
+		this.user = mvo;
 	}
 	
 	/*
@@ -52,8 +54,8 @@ public class UserCustomDetails implements UserDetails, OAuth2User {
 		this.attributes = attributes;
 	}
 	 */
-	public UserCustomDetails(MemberVO mvo, Map<String, Object> map) {
-		this.mvo = mvo;
+	public UserCustomDetails(MemberVO mvo, Map<String, Object> attributes) {
+		this.user = mvo;
 		this.attributes = attributes;
 	}
 
@@ -62,17 +64,18 @@ public class UserCustomDetails implements UserDetails, OAuth2User {
 	 해당 유저의 권한 목록 리턴
 	 */
 	@Override
-	   public Collection<? extends GrantedAuthority> getAuthorities() {
-	      List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-	  			System.out.println("------ 나와라");
+	 public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+             System.out.println("------ 나와라");
 
-	      for (AuthVO auth : mvo.getAuthList()) {
-	         authorities.add(new SimpleGrantedAuthority(auth.getAuthority()));
+        for (AuthVO auth : user.getAuthList()) {
+           authorities.add(new SimpleGrantedAuthority(auth.getAuthority()));
 
-	      }
-	  		System.out.println("***** 나와라");
-	      return authorities;
-	   }
+        }
+          System.out.println("***** 나와라");
+        return authorities;
+     }
+
 
 	/*
 	 UserDetails 구현
@@ -81,14 +84,14 @@ public class UserCustomDetails implements UserDetails, OAuth2User {
 	@Override
 	public String getPassword() {
 		System.out.println("비번 나와라");
-		return mvo.getPassword();
+		return user.getPassword();
 		
 	}
 
 	@Override
 	public String getUsername() {
 		System.out.println("아이디 나와라");
-		return mvo.getName();
+		return user.getName();
 	}
 
 	/*
@@ -117,7 +120,7 @@ public class UserCustomDetails implements UserDetails, OAuth2User {
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	/*
@@ -127,7 +130,7 @@ public class UserCustomDetails implements UserDetails, OAuth2User {
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	public Map<String, Object> getAttributes() {

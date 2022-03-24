@@ -11,7 +11,7 @@ public interface UserMapper {
 	
    
    public MemberVO getUser(String username); // xml로 처리하겟다 = UserMapper.xml에 있음
-
+   
    public int memberJoin(MemberVO memberVO); // xml로 처리하겟다 = UserMapper.xml에 있음
    //public MemberVO insertAuth(MemberVO memberVO); // xml로 처리하겟다 = UserMapper.xml에 있음(String username); // xml로 처리하겟다 = UserMapper.xml에 있음
    

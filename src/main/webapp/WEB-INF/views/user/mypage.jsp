@@ -304,7 +304,7 @@
 				<!-- <span class="badge badge-secondary badge-pill">3</span> -->
 			  </h4>
 			  <hr class="mb-4" style="border: solid 2px black;">
-			  <h4><sec:authentication property="principal.user.name"/> 님</h4>
+			  <h4><sec:authentication property="principal.mvo.name"/> 님</h4>
 			  <hr class="mb-3" style="border: solid 2px white;">
 			  <ul class="list-group mb-4" style="padding: 5px;">
 				  <div>

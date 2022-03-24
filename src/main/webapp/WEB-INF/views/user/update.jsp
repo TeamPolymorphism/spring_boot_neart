@@ -37,11 +37,11 @@
 
 	<p>
 		<a
-			href="mypage?id=<sec:authentication property="principal.user.id" />">마이페이지</a>
+			href="mypage?id=<sec:authentication property="principal.mvo.id" />">마이페이지</a>
 	</p>
 	<p>
 		<a
-			href="delete?id=<sec:authentication property="principal.user.id" />">회원탈퇴</a>
+			href="delete?id=<sec:authentication property="principal.mvo.id" />">회원탈퇴</a>
 	</p>
 
 </body>

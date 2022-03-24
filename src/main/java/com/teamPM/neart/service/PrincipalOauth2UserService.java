@@ -7,12 +7,14 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import com.teamPM.neart.config.oauth.GoogleUserInfo;
 import com.teamPM.neart.config.oauth.KakaoUserInfo;
 import com.teamPM.neart.config.oauth.NaverUserInfo;
 import com.teamPM.neart.config.oauth.OAuth2UserInfo;
@@ -30,10 +32,12 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 	
-	@Autowired
-	private @Lazy BCryptPasswordEncoder bCryptPasswordEncoder;
-
-	@Autowired
+	 
+	/*
+	 * @Autowired private @Lazy BCryptPasswordEncoder bCryptPasswordEncoder;
+	 */
+	
+	@Setter(onMethod_ = @Autowired)
 	private UserMapper mapper;
 
 	@Override // userRequest는 code를 받아서 accessToken을 응답받은 객체
@@ -55,26 +59,42 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		if (userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
 			// getRegistrationId로 어떤 oauth로 로그인했는지 확인 가능
 			userInfo = new NaverUserInfo((Map) oauth2User.getAttributes().get("response"));
-
+			
 		} else if (userRequest.getClientRegistration().getRegistrationId().equals("kakao")) {
 
 			userInfo = new KakaoUserInfo(oauth2User.getAttributes());
+		} else if (userRequest.getClientRegistration().getRegistrationId().equals("google")) {
+		
+		userInfo = new GoogleUserInfo(oauth2User.getAttributes());
 		}
 
 		log.info("======1=====" + userInfo.getEmail());
+		
 		String email = userInfo.getEmail();
+		log.info("======121=====" + email);
+		
 		MemberVO mvo = mapper.isEmail(email); // 이미 가입이 되어있는지 조회
-		System.out.println("111111" + mvo);
-		log.info("getEmail===" + userInfo.getEmail());
-
+		System.out.println("===111111======" + mapper.isEmail(email));
+		
+		
+		 
 		
 		if (mvo == null) {// 가입되어 있지 않다면 가입진행
 			 mvo = new MemberVO();
+			 
+			 String password = "userusersu";
+			 System.out.println("userVO.getPassword====확인" + mvo.getPassword());
+				
+			 BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder();
+				
+			 String encode = passEncoder.encode(password); 
+			 System.out.println("passEncoder====확인" + passEncoder);
 		
 			 log.info("======2====="); 
 			 mvo.setId(userInfo.getEmail());
 			 log.info("======3====="); // 소셜은 로그인창에 아이디와 비밀번호를 입력하여 로그인하지 않기때문에 아이디 컬럼에 고유식별자 삽입 
-			 mvo.setPassword(userInfo.getProvider() + "_" + userInfo.getProviderId()); // 비밀번호를 임의로 provider+providerId 로 생성
+			 mvo.setPassword(passEncoder.encode(encode));
+			 //mvo.setPassword(userInfo.getProvider() + "_" + userInfo.getProviderId()); // 비밀번호를 임의로 provider+providerId 로 생성
 			 log.info("======4====="); 
 			 mvo.setName(userInfo.getName());
 			 log.info("======5=====");
@@ -95,10 +115,13 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 			 //mapper.insertAuth();// 권한 db에 입력
 			 mapper.insertAuthorities();
 			 			 
-			 
 			 mvo = mapper.getUser(userInfo.getEmail());
 			 
 			 log.info("======1==4===");
+		}
+		else {
+			System.out.println("뭐야=====" + mvo);
+			mvo = mapper.getUser(mvo.getId());
 		}
 
 		System.out.println("mvo=====확인" + mvo);

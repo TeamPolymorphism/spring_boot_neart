@@ -5,7 +5,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
+
 public class KakaoUserInfo implements OAuth2UserInfo {
 	private Map<String, Object> attributes;
 

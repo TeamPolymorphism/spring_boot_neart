@@ -14,11 +14,11 @@
 <h1>관리자 페이지 입니다.</h1>
 
 <p>principal: <sec:authentication property="principal"/></p>
-<p>아이디: <sec:authentication property="principal.user.id"/></p>
-<p>비밀번호: <sec:authentication property="principal.user.password"/></p>
-<p>이름: <sec:authentication property="principal.user.name"/></p>
-<p>전화: <sec:authentication property="principal.user.phonenum"/></p>
-<p>주소: <sec:authentication property="principal.user.address"/></p>
+<p>아이디: <sec:authentication property="principal.mvo.id"/></p>
+<p>비밀번호: <sec:authentication property="principal.mvo.password"/></p>
+<p>이름: <sec:authentication property="principal.mvo.name"/></p>
+<p>전화: <sec:authentication property="principal.mvo.phonenum"/></p>
+<p>주소: <sec:authentication property="principal.mvo.address"/></p>
 <p><a href="<c:url value="/" />">홈</a></p>
 
 <sec:authorize access="isAnonymous()">

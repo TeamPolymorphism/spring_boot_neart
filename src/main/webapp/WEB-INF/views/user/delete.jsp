@@ -22,7 +22,7 @@
 	</form:form>
 
 			<p>
-		<a href="mypage?id=<sec:authentication property="principal.user.id" />">마이페이지로 가기</a>
+		<a href="mypage?id=<sec:authentication property="principal.mvo.id" />">마이페이지로 가기</a>
 	</p>
 	
 
