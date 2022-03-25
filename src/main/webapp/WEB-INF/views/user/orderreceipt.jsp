@@ -6,12 +6,9 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-
         <title>MYPAGE</title>
 
         <!-- Bootstrap core CSS -->
@@ -22,62 +19,34 @@
         <link rel="stylesheet" type="text/css" href="css/mypage.css">
 
         <!-- password eye form -->
-        <link
-            rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
         <!--===============================================================================================-->
         <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="vendor/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="fonts/iconic/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="fonts/linearicons-v1.0.0/icon-font.min.css">
+        <link rel="stylesheet" type="text/css" href="fonts/linearicons-v1.0.0/icon-font.min.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="vendor/css-hamburgers/hamburgers.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="vendor/animsition/css/animsition.min.css">
+        <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="vendor/daterangepicker/daterangepicker.css">
+        <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="vendor/MagnificPopup/magnific-popup.css">
+        <link rel="stylesheet" type="text/css" href="vendor/MagnificPopup/magnific-popup.css">
         <!--===============================================================================================-->
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+        <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
         <!--===============================================================================================-->
         <link rel="stylesheet" type="text/css" href="css/util.css">
         <!--===============================================================================================-->
@@ -93,7 +62,7 @@
                     <nav class="limiter-menu-desktop p-l-45">
 
                         <!-- Logo desktop -->
-                        <a href="#" class="logo">
+                        <a href="/" class="logo">
                             <img src="neart-source/logo/logo_w.png" alt="IMG-LOGO">
                         </a>
 
@@ -101,128 +70,95 @@
                         <div class="menu-desktop">
                             <ul class="main-menu">
                                 <li>
-                                    <a href="">ART-PRODUCT</a>
+                                    <a href="/listProduct">ART-PRODUCT</a>
                                     <!-- <ul class="sub-menu"> <li><a href="index.html">frame</a></li> <li><a
                                     href="home-02.html"></a></li> <li><a href="home-03.html"></a></li> </ul> -->
                                 </li>
 
                                 <li class="label1">
-                                    <a href="product.html">SUBSCRIPTION (구독)</a>
+                                    <a href="/subscription">SUBSCRIPTION (구독)</a>
                                 </li>
 
                                 <li>
-                                    <a href="shoping-cart.html">ARTIST</a>
+                                    <a href="/artist">ARTIST</a>
                                 </li>
                             </ul>
                             <ul class="main-menu">
                                 <li>
-                                    <a href="about.html">ABOUT</a>
+                                    <a href="/about">ABOUT</a>
                                 </li>
                             </ul>
                         </div>
 
-                        <!-- Icon header -->
+                        <!-- Icon header 반응형 클 때-->
                         <div class="wrap-icon-header flex-w flex-r-m h-full">
+                        <a href="${pageContext.request.contextPath}/logout" method="POST">
                             <div class="flex-c-m h-full bor6">
-                                <div
-                                    class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
-                                    <i class="">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            aria-hidden="true"
-                                            role="img"
-                                            width="1em"
-                                            height="1em"
-                                            preserveaspectratio="xMidYMid meet"
-                                            viewbox="0 0 24 24"><path
-                                            fill="currentColor"
-                                            d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1
-									1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg>
-                                    </i>
+                                <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+                                    <i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                                        preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1
+										1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
                                 </div>
                             </div>
+                            <a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+						
 
-                            <div class="flex-c-m h-full  bor6">
-                                <div
-                                    class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
-                                    <i class="">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            aria-hidden="true"
-                                            role="img"
-                                            width="0.97em"
-                                            height="1em"
-                                            preserveaspectratio="xMidYMid meet"
-                                            viewbox="0 0 496 512"><path
-                                            fill="currentColor"
-                                            d="M248 8C111 8 0 119 0
+                            <div class="flex-c-m h-full bor6">
+                                <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+                                    <i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em"
+                                    preserveaspectratio="xMidYMid meet" viewbox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0
 									256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7
 									200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7
 									0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84
 									39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9
-									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg>
-                                    </i>
+									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
                                 </div>
                             </div>
+                            </a>
 
                             <div class="flex-c-m h-full p-r-10 bor6">
-                                <div
-                                    class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                                    data-notify="2">
+                                <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-cart">
                                     <i class="zmdi zmdi-shopping-cart"></i>
                                 </div>
                             </div>
 
-                            <div class="flex-c-m h-full p-lr-19">
+                            <!-- <div class="flex-c-m h-full p-lr-19">
                                 <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
                                     <i class="zmdi zmdi-menu"></i>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </nav>
                 </div>
             </div>
 
-            <!-- Header Mobile -->
+            <!-- Header Mobile 반응형 작아질 때 -->
             <div class="wrap-header-mobile">
                 <!-- Logo moblie -->
                 <div class="logo-mobile">
-                    <a href="index.html"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
+                    <a href="/"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
                 </div>
 
                 <!-- Icon header -->
+                <a href="${pageContext.request.contextPath}/logout" method="POST">
                 <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                     <div
                         class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
                         <i class="">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true"
-                                role="img"
-                                width="1em"
-                                height="1em"
-                                preserveaspectratio="xMidYMid meet"
-                                viewbox="0 0 24 24"><path
-                                fill="currentColor"
-                                d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
+                        preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1
 						1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg>
                         </i>
                     </div>
                 </div>
+                </a>
+			<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
                 <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                     <div
                         class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
                         <i class="">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true"
-                                role="img"
-                                width="0.97em"
-                                height="1em"
-                                preserveaspectratio="xMidYMid meet"
-                                viewbox="0 0 496 512"><path
-                                fill="currentColor"
-                                d="M248 8C111 8 0 119 0
+                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em"
+                        preserveaspectratio="xMidYMid meet" viewbox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0
 						256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7
 						200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7
 						0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84
@@ -231,12 +167,11 @@
                         </i>
                     </div>
                 </div>
+                </a>
 
                 <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                     <div class="flex-c-m h-full p-r-5">
-                        <div
-                            class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                            data-notify="2">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11" >
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
                     </div>
@@ -254,24 +189,19 @@
             <div class="menu-mobile">
                 <ul class="main-menu-m">
                     <li>
-                        <a href="product.html">ART-PRODUCT</a>
-                        <!-- <ul class="sub-menu-m"> <li><a href="index.html">frame</a></li> <li><a
-                        href="home-02.html"></a></li> <li><a href="home-03.html"></a></li> </ul> -->
-                        <span class="arrow-main-menu-m">
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </span>
+                        <a href="/listProduct">ART-PRODUCT</a>
                     </li>
 
                     <li>
-                        <a href="product.html">SUBSCRIPTION 구독</a>
+                        <a href="/subscription">SUBSCRIPTION 구독</a>
                     </li>
 
                     <li>
-                        <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">ARTIST</a>
+                        <a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
                     </li>
 
                     <li>
-                        <a href="blog.html">ABOUT</a>
+                        <a href="/about">ABOUT</a>
                     </li>
                 </ul>
             </div>
@@ -285,7 +215,6 @@
                 <form class="container-search-header">
                     <div class="wrap-search-header">
                         <input class="plh0" type="text" name="search" placeholder="Search...">
-
                         <button class="flex-c-m trans-04">
                             <i class="zmdi zmdi-search"></i>
                         </button>
@@ -297,7 +226,6 @@
         <main>
             <div class="container">
                 <div class="row">
-
                     <!-- MYPAGE / li안에 li는 불가능 -->
                     <div class="col-md-4 order-md-1 mb-4" style="color: black;">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -380,9 +308,9 @@
 	                                            style="width: 100px; height: 100px; overflow: hidden;">
 	                                    </td>
 	                                    <%-- <td style="font-weight: bold; font-size: 20px;">${receiptlist.ordersid}</td> --%>
-	                                    <td style="font-weight: bold; font-size: 20px;">${receiptlist.productname}</td>
-	                                    <td style="font-weight: bold; font-size: 20px;">${receiptlist.totalquantity}</td>
-	                                    <td style="font-weight: bold; font-size: 20px;">배송중</td>
+	                                    <td style="font-weight: bold; font-size: 18px; line-height: 100px;">${receiptlist.productname}</td>
+	                                    <td style="font-weight: bold; font-size: 18px; line-height: 100px;">${receiptlist.totalquantity}</td>
+	                                    <td style="font-weight: bold; font-size: 18px; line-height: 100px;">배송중</td>
 	                                </tr>
 	                            </tbody>
                             </c:forEach>
@@ -397,29 +325,21 @@
                         <table class="table mb-5">
                             <thead style="height: 20px;">
                                 <tr style="height: 20px;">
-                                    <th
-                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">주문자</th>
-                                    <th
-                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">
+                                    <th style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">주문자</th>
+                                    <th style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">
 										<sec:authentication property="principal.user.name"/></th>
-                                    <th
-                                        style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">아이디</th>
-                                    <th
-                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">
+                                    <th style="font-weight: normal; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">아이디</th>
+                                    <th style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">
                                         <sec:authentication property="principal.user.id"/></th>
                                 </tr>
                             </thead>
                             <!--<c:forEach var="dto" items="${list}">-->
                             <tbody style=" line-height: center;">
                                 <tr>
-                                    <td
-                                        style="font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">전화번호</td>
-                                    <td
-                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);"></td>
-                                    <td
-                                        style="font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">휴대폰번호</td>
-                                    <td
-                                        style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">
+                                    <td style="font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">전화번호</td>
+                                    <td style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);"></td>
+                                    <td style="font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189); border-right: 1px solid rgb(189, 189, 189);">휴대폰번호</td>
+                                    <td style="font-weight: bold; font-size: 15px; border-bottom: 1px solid rgb(189, 189, 189);">
                                         <sec:authentication property="principal.user.phonenum"/></td>
                                 </tr>
                             </tbody>
@@ -505,170 +425,177 @@
                 </div>
             </main>
 
-            <!-- Footer -->
-            <footer class="bg3 p-t-75 p-b-32">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-lg-3 p-b-50">
-                            <h4 class="stext-301 cl0 p-b-30">
-                                카테고리
-                            </h4>
+            	<!-- Footer -->
+<footer class="bg3 p-t-75 p-b-32">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-lg-3 p-b-50">
+        <h4 class="stext-301 cl0 p-b-30">
+          카테고리
+        </h4>
 
-                            <ul>
-                                <li class="p-b-10">
-                                    <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                        정기 구독
-                                    </a>
-                                </li>
+        <ul>
+          <li class="p-b-10">
+            <a href="/subscription" class="stext-107 cl7 hov-cl1 trans-04">
+              정기 구독
+            </a>
+          </li>
 
-                                <li class="p-b-10">
-                                    <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                        아트 포스터
-                                    </a>
-                                </li>
+          <li class="p-b-10">
+            <a href="/listProduct" class="stext-107 cl7 hov-cl1 trans-04">
+              아트 포스터
+            </a>
+          </li>
 
-                                <li class="p-b-10">
-                                    <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                        작가
-                                    </a>
-                                </li>
+          <li class="p-b-10">
+            <a href="/artist" class="stext-107 cl7 hov-cl1 trans-04">
+              작가
+            </a>
+          </li>
 
-                                <li class="p-b-10">
-                                    <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                        니아트 소개
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+          <li class="p-b-10">
+            <a href="/about" class="stext-107 cl7 hov-cl1 trans-04">
+              니아트 소개
+            </a>
+          </li>
+        </ul>
+      </div>
 
-                        <div class="col-sm-6 col-lg-3 p-b-50">
-                            <h4 class="stext-301 cl0 p-b-30">
-                                게시판
-                            </h4>
+      <div class="col-sm-6 col-lg-3 p-b-50">
+        <h4 class="stext-301 cl0 p-b-30">
+          게시판
+        </h4>
 
-                            <ul>
-                                <li class="p-b-10">
-                                    <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                        공지사항
-                                    </a>
-                                </li>
+        <ul>
+          <li class="p-b-10">
+            <a href="/board/list" class="stext-107 cl7 hov-cl1 trans-04">
+              공지사항
+            </a>
+          </li>
 
-                                <li class="p-b-10">
-                                    <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                        문의게시판
-                                    </a>
-                                </li>
+          <li class="p-b-10">
+            <a href="/qnaboard/list" class="stext-107 cl7 hov-cl1 trans-04">
+              문의게시판 
+            </a>
+          </li>
 
-                                <li class="p-b-10">
-                                    <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                        리뷰게시판
-                                    </a>
-                                </li>
+          <li class="p-b-10">
+            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+              리뷰게시판
+            </a>
+          </li>
 
-                            </ul>
-                        </div>
+        </ul>
+      </div>
 
-                        <div class="col-sm-6 col-lg-3 p-b-50">
-                            <h4 class="stext-301 cl0 p-b-30">
-                                브랜드
-                            </h4>
+      <div class="col-sm-6 col-lg-3 p-b-50">
+        <h4 class="stext-301 cl0 p-b-30">
+          브랜드
+        </h4>
 
-                            <p class="stext-107 cl7 size-201">
-                                상호 : 주식회사 니아트
-                                <br>
-                                대표 : 폴리모피즘
-                                <br>
-                                주소 : 서울특별시 금천구 가산동 426-5 월드 메르디앙 벤처 센터 2차 312호
-                                <br>
-                                통신판매업신고번호 : 2022-서울금천구-2호
-                                <br>
-                                사업자등록정보 : 012-34-5678
-                            </p>
+        <p class="stext-107 cl7 size-201">
+          상호 : 주식회사 니아트 <br>
+          대표 : 폴리모피즘 <br>
+          주소 : 서울특별시 금천구 가산동 426-5 월드 메르디앙 벤처 센터 2차 312호 <br>
+          통신판매업신고번호 : 2022-서울금천구-2호 <br>
+          사업자등록정보 : 012-34-5678
+        </p>
 
-                            <div class="p-t-27">
-                                <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
+        <div class="p-t-27">
+          <a href="https://ko-kr.facebook.com/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+            <i class="fa fa-facebook"></i>
+          </a>
 
-                                <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
+          <a href="https://www.instagram.com/?hl=ko" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+            <i class="fa fa-instagram"></i>
+          </a>
 
-                                <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                                    <i class="fa fa-pinterest-p"></i>
-                                </a>
-                            </div>
-                        </div>
+          <a href="https://www.pinterest.co.kr/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+            <i class="fa fa-pinterest-p"></i>
+          </a>
+        </div>
+      </div>
 
-                        <div class="col-sm-6 col-lg-3 p-b-50">
-                            <h4 class="stext-301 cl0 p-b-30">
-                                contect
-                            </h4>
+      <div class="col-sm-6 col-lg-3 p-b-50">
+        <h4 class="stext-301 cl0 p-b-30">
+          contect
+        </h4>
 
-                            <form>
-                                <div class="wrap-input1 w-full p-b-4">
-                                    <input
-                                        class="input1 bg-none plh1 stext-107 cl7"
-                                        type="text"
-                                        name="email"
-                                        placeholder="email@example.com">
-                                    <div class="focus-input1 trans-04"></div>
-                                </div>
+        <form>
+          <div class="wrap-input1 w-full p-b-4">
+            <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+            <div class="focus-input1 trans-04"></div>
+          </div>
 
-                                <div class="p-t-18">
-                                    <button
-                                        class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-                                        Subscribe
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+          <div class="p-t-18">
+            <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
-                    <div class="p-t-40">
-                        <div class="flex-c-m flex-w p-b-18">
-                            <a href="#" class="m-all-1">
-                                <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
-                            </a>
+    <div class="p-t-40">
+      <div class="flex-c-m flex-w p-b-18">
+        <a href="#" class="m-all-1">
+          <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+        </a>
 
-                            <a href="#" class="m-all-1">
-                                <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
-                            </a>
+        <a href="#" class="m-all-1">
+          <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+        </a>
 
-                            <a href="#" class="m-all-1">
-                                <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
-                            </a>
+        <a href="#" class="m-all-1">
+          <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+        </a>
 
-                            <a href="#" class="m-all-1">
-                                <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
-                            </a>
+        <a href="#" class="m-all-1">
+          <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+        </a>
 
-                            <a href="#" class="m-all-1">
-                                <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
-                            </a>
-                        </div>
+        <a href="#" class="m-all-1">
+          <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+        </a>
+      </div>
 
-                        <p class="stext-107 cl6 txt-center">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY
-                            3.0. -->
-                            NEART &copy;<script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            ALL RIGHTS RESERVED.
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY
-                            3.0. -->
+      <p class="stext-107 cl6 txt-center">
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+NEART &copy;<script>document.write(new Date().getFullYear());</script> ALL RIGHTS RESERVED.
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
-                        </p>
-                    </div>
-                </div>
-            </footer>
+      </p>
+    </div>
+  </div>
+</footer>
 
-            <!-- Back to top -->
-            <div class="btn-back-to-top" id="myBtn">
-                <span class="symbol-btn-back-to-top">
-                    <i class="zmdi zmdi-chevron-up"></i>
-                </span>
-            </div>
 
-    </body>
+<!-- Back to top -->
+<div class="btn-back-to-top" id="myBtn">
+  <span class="symbol-btn-back-to-top">
+    <i class="zmdi zmdi-chevron-up"></i>
+  </span>
+</div>
+
+
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
 </html>

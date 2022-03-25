@@ -308,7 +308,7 @@
 
 			<div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
 				<ul class="sidebar-link w-full">
-					<li class="p-b-13"><a href="/board/list"
+					<li class="p-b-13"><a href="/nlist"
 						class="stext-102 cl2 hov-cl1 trans-04"> Notice </a></li>
 
 					<li class="p-b-13"><sec:authorize access="isAuthenticated()">
@@ -319,7 +319,7 @@
 					<li class="p-b-13"><a href="#"
 						class="stext-102 cl2 hov-cl1 trans-04"> My Wishlist </a></li>
 
-					<li class="p-b-13"><a href="/qnaboard/list"
+					<li class="p-b-13"><a href="/qlist"
 						class="stext-102 cl2 hov-cl1 trans-04"> Q&A </a></li>
 
 					<li class="p-b-13"><a href="#"
@@ -914,10 +914,10 @@
 					<h4 class="stext-301 cl0 p-b-30">게시판</h4>
 
 					<ul>
-						<li class="p-b-10"><a href="/board/list"
+						<li class="p-b-10"><a href="/nlist"
 							class="stext-107 cl7 hov-cl1 trans-04"> 공지사항 </a></li>
 
-						<li class="p-b-10"><a href="/qnaboard/list"
+						<li class="p-b-10"><a href="/qlist"
 							class="stext-107 cl7 hov-cl1 trans-04"> 문의게시판 </a></li>
 
 						<li class="p-b-10"><a href="#"

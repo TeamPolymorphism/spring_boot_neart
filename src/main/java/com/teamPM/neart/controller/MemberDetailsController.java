@@ -34,7 +34,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @AllArgsConstructor
 @Controller
-//@SessionAttributes("user")
 public class MemberDetailsController {
 
 	@Autowired
@@ -43,8 +42,7 @@ public class MemberDetailsController {
 	@Autowired
 	UserCustomDetailsService UserCustomDetailsService;
 
-	// GetMapping 데이터값을 주소창에 보여주는 건데 + 보안에 취약함
-	//내 페이지 보여주기
+	// 내 페이지 보여주기 by seolin
 	@GetMapping("/mypage")
 	public String mypage(MemberVO memberVO, Model model) {
 
@@ -53,13 +51,11 @@ public class MemberDetailsController {
 
 		String id = memberVO.getId();
 
-		//model.addAttribute("mypage_view", memberService.read(id));
-
 		return "/user/mypage";
 
 	}
 
-	//회원정보수정 get
+	// 회원정보수정 가져오기 by seolin
 	@GetMapping("/update")
 	public String update(MemberVO memberVO, Model model) {
 
@@ -73,10 +69,8 @@ public class MemberDetailsController {
 
 	}
 
-	//회원정보수정 post랑 수정 후 세션값 받기
+	// 회원정보수정 post랑 수정 후 세션값 받기 by seolin
 	@PostMapping("/update")
-	// @RequestMapping(method = RequestMethod.POST, value = "/user/update")
-	// @ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public String modify(HttpSession session, HttpServletRequest request, MemberVO memberVO, Model model) {
 
 		log.info("modify() ...");
@@ -111,60 +105,58 @@ public class MemberDetailsController {
 
 	}
 
-	/*
-	@GetMapping("/user/delete") 
+	@GetMapping("/deletecheck")
 	public String remove(MemberVO memberVO, Model model) {
 
-		log.info("remove() ...");
-		String id = memberVO.getId();
-		model.addAttribute("remove_view", memberService.read(id));
+		log.info("deletecheck() ...");
+
+		return "/user/deletecheck";
+	}
+
+	@GetMapping("/delete")
+	public String checkmore(MemberVO memberVO, Model model) {
+
+		log.info("userdelete() ...");
 
 		return "/user/delete";
 	}
-	*/
 
-	//회원탈퇴하기
-	@RequestMapping("/delete")
-	public String delete(MemberVO memberVO,String id, Model model) {
+	// 회원탈퇴하기 by seolin
+	@RequestMapping("/userdelete")
+	public String delete(HttpServletRequest request, MemberVO memberVO, String id, Model model) {
 
 		log.info("delete()...");
-
 		memberService.delete(memberVO.getId());
-
-		System.out.println("delete 타나여//////");
 		
-		model.addAttribute("remove_view", memberService.read(id));
-
-		return "/user/delete";
+		request.getSession().invalidate();
+	    request.getSession(true);
+		
+		return "redirect:/logout";
 	}
 
-	//회원한 탈퇴 로그인 불가
-	@RequestMapping("/")
-	public String withdraw(Principal principal, HttpServletRequest request, HttpSession session) {
-		System.out.println("------withdraw");
-		System.out.println("탈퇴한 회원--------"+ principal);
-		
-		/*
-		int enabled = principal.getEnabled();
-		
-		if(enabled == 0) {
-			
-			session.invalidate();
-			
-			System.out.println("------회원탈퇴하셨습니다");
-			
-			
-			return "/home";
-		}
-		*/
-		/*
-		if (session == 1 || !request.isRequestedSessionIdValid()) {
-		    System.out.println("세션이 무효화 상태입니다.");
-		}
-		
-		session.invalidate();
-		*/
-		return "/home";
-	}
-
+	/*
+	 * //회원한 탈퇴 로그인 불가 by seolin
+	 * 
+	 * @RequestMapping("/") public String withdraw(Principal principal,
+	 * HttpServletRequest request, HttpSession session) {
+	 * System.out.println("------withdraw"); System.out.println("탈퇴한 회원--------"+
+	 * principal);
+	 * 
+	 * 
+	 * int enabled = principal.getEnabled();
+	 * 
+	 * if(enabled == 0) {
+	 * 
+	 * session.invalidate();
+	 * 
+	 * System.out.println("------회원탈퇴하셨습니다");
+	 * 
+	 * 
+	 * return "/home"; } if (session == 1 || !request.isRequestedSessionIdValid()) {
+	 * System.out.println("세션이 무효화 상태입니다."); }
+	 * 
+	 * session.invalidate();
+	 * 
+	 * return "/home"; }
+	 */
 }
