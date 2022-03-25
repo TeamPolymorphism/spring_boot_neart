@@ -23,7 +23,7 @@
     <link rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
     <!--===============================================================================================-->	
-    <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+      <link rel="icon" type="image/png" href="images/icons/favicon.png"/>
     <!--===============================================================================================-->
       <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -64,7 +64,7 @@
 				<nav class="limiter-menu-desktop p-l-45">
 					
 					<!-- Logo desktop -->		
-					<a href="home-03.html" class="logo">
+					<a href="/" class="logo">
 						<img src="neart-source/logo/logo_w.png" alt="IMG-LOGO">
 					</a>
 
@@ -72,31 +72,25 @@
 					<div class="menu-desktop">
 						<ul class="main-menu">
 							<li>
-								<a href="product.html">ART-PRODUCT</a>
-								<!-- <ul class="sub-menu">
-									<li><a href="index.html">frame</a></li>
-									<li><a href="home-02.html"></a></li>
-									<li><a href="home-03.html"></a></li>
-								</ul> -->
+								<a href="/listProduct">ART-PRODUCT</a>
 							</li>
-
 							<li class="label1">
-								<a href="subscription-detail.html">SUBSCRIPTION (구독)</a>
+								<a href="/subscription">SUBSCRIPTION (구독)</a>
 							</li>
-
 							<li>
-								<a href="artist.html">ARTIST</a>
+								<a href="/artist">ARTIST</a>
 							</li>
 						</ul>
 						<ul class="main-menu">
 							<li>
-								<a href="about.html">ABOUT</a>
+								<a href="/about">ABOUT</a>
 							</li>
 						</ul>
 					</div>	
 
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m h-full">	
+					<!-- Icon header 반응형 클 때-->
+					<div class="wrap-icon-header flex-w flex-r-m h-full">
+						<a href="${pageContext.request.contextPath}/logout" method="POST">
 						<div class="flex-c-m h-full bor6">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
@@ -104,8 +98,8 @@
 									1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 							</div>
 						</div>
-						
-						<div class="flex-c-m h-full  bor6">
+					<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+						<div class="flex-c-m h-full bor6">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
 									preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
@@ -116,31 +110,32 @@
 									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
 							</div>
 						</div>
-
+					</a>
 						<div class="flex-c-m h-full p-r-10 bor6">
-							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-cart">
 								<i class="zmdi zmdi-shopping-cart"></i>
 							</div>
 						</div>
 							
-						<div class="flex-c-m h-full p-lr-19">
+						<!-- <div class="flex-c-m h-full p-lr-19">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
 								<i class="zmdi zmdi-menu"></i>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</nav>
 			</div>	
 		</div>
 
-		<!-- Header Mobile -->
+		<!-- Header Mobile 반응형 작아질 때 -->
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="home-03.html"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
+				<a href="/"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
+			<a href="${pageContext.request.contextPath}/logout" method="POST">
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
@@ -148,6 +143,8 @@
 						1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 				</div>
 			</div>
+			</a>
+		<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
 					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
@@ -159,10 +156,11 @@
 						56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
 				</div>
 			</div>
+			</a>
 
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="flex-c-m h-full p-r-5">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">
 						<i class="zmdi zmdi-shopping-cart"></i>
 					</div>
 				</div>
@@ -181,27 +179,16 @@
 		<div class="menu-mobile">
 			<ul class="main-menu-m">
 				<li>
-					<a href="product.html">ART-PRODUCT</a>
-					<!-- <ul class="sub-menu-m">
-									<li><a href="index.html">frame</a></li>
-									<li><a href="home-02.html"></a></li>
-									<li><a href="home-03.html"></a></li>
-								</ul> -->
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
+					<a href="/listProduct">ART-PRODUCT</a>
 				</li>
-
 				<li>
-					<a href="subscription-detail.html">SUBSCRIPTION 구독</a>
+					<a href="/subscription">SUBSCRIPTION 구독</a>
 				</li>
-
 				<li>
-					<a href="artist.html" class="label1 rs1" data-label1="hot">ARTIST</a>
+					<a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
 				</li>
-
 				<li>
-					<a href="about.html">ABOUT</a>
+					<a href="/about">ABOUT</a>
 				</li>
 			</ul>
 		</div>
@@ -215,7 +202,6 @@
 			<form class="container-search-header">
 				<div class="wrap-search-header">
 					<input class="plh0" type="text" name="search" placeholder="Search...">
-
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
@@ -305,9 +291,7 @@
 
 
 
-
-
-<!-- Footer -->
+	<!-- Footer -->
 <footer class="bg3 p-t-75 p-b-32">
   <div class="container">
     <div class="row">
@@ -318,25 +302,25 @@
 
         <ul>
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/subscription" class="stext-107 cl7 hov-cl1 trans-04">
               정기 구독
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/listProduct" class="stext-107 cl7 hov-cl1 trans-04">
               아트 포스터
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/artist" class="stext-107 cl7 hov-cl1 trans-04">
               작가
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/about" class="stext-107 cl7 hov-cl1 trans-04">
               니아트 소개
             </a>
           </li>
@@ -350,13 +334,13 @@
 
         <ul>
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/board/list" class="stext-107 cl7 hov-cl1 trans-04">
               공지사항
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/qnaboard/list" class="stext-107 cl7 hov-cl1 trans-04">
               문의게시판 
             </a>
           </li>
@@ -384,15 +368,15 @@
         </p>
 
         <div class="p-t-27">
-          <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+          <a href="https://ko-kr.facebook.com/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
             <i class="fa fa-facebook"></i>
           </a>
 
-          <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+          <a href="https://www.instagram.com/?hl=ko" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
             <i class="fa fa-instagram"></i>
           </a>
 
-          <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+          <a href="https://www.pinterest.co.kr/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
             <i class="fa fa-pinterest-p"></i>
           </a>
         </div>
@@ -460,5 +444,24 @@ NEART &copy;<script>document.write(new Date().getFullYear());</script> ALL RIGHT
 </div>
 
 
-  </body>
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/slick/slick.min.js"></script>
+	<script src="js/slick-custom.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/isotope/isotope.pkgd.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
 </html>
