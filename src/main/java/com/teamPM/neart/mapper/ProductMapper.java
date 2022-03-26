@@ -18,8 +18,10 @@ public interface ProductMapper {
 	 * 01. 사진포함 상품 목록
 	 * 
 	 * */
-	public int getTotalCount(); 
+	//public int getTotalCount(); 
 	List<ProductVO> getProductList(); 
+	List<ProductVO> newProductList(); // 신상품
+	List<ProductVO> bestProductList(); // 인기상품
 	
 	
 
@@ -65,6 +67,7 @@ public interface ProductMapper {
 	 * 
 	 * */	
 	public void modifyProduct(ProductVO productboard);  
+	
 	
 
 

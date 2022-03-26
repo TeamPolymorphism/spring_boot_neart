@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.teamPM.neart.mapper.CartMapper">
+    
+   <insert id="insertCart" >
+	<![CDATA[
+		insert into cart (cartid, cartquantity, price, filepath, totalprice, productid, membernum) values(cart_seq.nextval, 0, #{price}, #{filepath}, #{totalprice}, #{productid}, #{membernum})
+	]]>
+	</insert>
+	
+	<update id="plusProduct" >
+	<![CDATA[
+		update cart set cartquantity = + 1 where productid = #{productid}
+	]]>
+	</update>
+	
+	<update id="plusPrice" >
+	<![CDATA[
+		update cart set totalprice = price * cartquantity where productid = #{productid}
+	]]>
+	</update>
+	
+	<select id="cartTotalPrice" resultType="com.teamPM.neart.vo.CartVO">
+	<![CDATA[
+		SELECT membernum, SUM(totalprice) as allprice FROM cart where membernum = #{membernum} group by membernum
+	]]>
+	</select>
+		
+	<select id="productIdChk" resultType="com.teamPM.neart.vo.CartVO">
+	<![CDATA[
+		select count(*) from cart where productid = #{productid}
+	]]>
+	</select>
+	
+	
+	<select id="getCartList" resultType="com.teamPM.neart.vo.CartVO">
+   <![CDATA[
+    select
+		A.membernum
+		,A.productid
+		,A.productname
+		,A.price
+        ,A.filepath
+		,sum(A.cartquantity) as cartquantity
+		,sum(A.totalprice) as totalprice
+		from
+		(select 
+		cart.cartquantity
+		,cart.totalprice
+		,product.productid
+		,product.productname
+		,product.price
+		,member.membernum
+        ,image.filepath
+		from cart, product, member, image
+		where cart.productid = product.productid
+		and cart.membernum = member.membernum
+        and image.productid = product.productid) A
+		where A.membernum = #{membernum}
+		group by 
+		A.productid
+		,A.productname
+		,A.price
+		,A.membernum
+        ,A.filepath
+   ]]> 
+   </select>
+   
+    <delete id="deleteCart" >
+	<![CDATA[
+		delete from cart where productid = #{productid}
+	]]>
+	</delete>
+   
+   
+   
+</mapper>

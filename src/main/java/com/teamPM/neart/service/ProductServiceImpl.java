@@ -88,5 +88,21 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 	
+	
+	//신상품
+	@Override
+	public List<ProductVO> newProductList() {
+		log.info("++++++++++ Product ++++++++++ newProductList()");
+		return productMapper.newProductList();
+	}
+	
+	//신상품
+	@Override
+	public List<ProductVO> bestProductList() {
+		log.info("++++++++++ Product ++++++++++ bestProductList()");
+		return productMapper.bestProductList();
+	}
+
+	
 
 }

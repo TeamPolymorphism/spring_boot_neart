@@ -9,9 +9,11 @@ import com.teamPM.neart.vo.ProductVO;
 
 public interface ProductService {
 	
-	// public int getTotalCount();
+	//public int getTotalCount();
 	//리스트
 	public List<ProductVO> getProductList(); 
+	public List<ProductVO> newProductList();// 신상품
+	public List<ProductVO> bestProductList();// 인기상품
 	
 	//상세페이지(조회)
 	ProductVO detailProduct(int productid);	

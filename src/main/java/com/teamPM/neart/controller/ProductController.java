@@ -146,6 +146,19 @@ public class ProductController {
 	}
 	
 	
+	// 신상품
+		@GetMapping("/newlistProduct")
+		public ModelAndView newProductList(ModelAndView model) {
+			log.info("++++++++++ paging----newProductList");
+
+			model.setViewName("product/listProduct"); //return할때 들어가는 주소 
+			model.addObject("productBoard", productService.newProductList()); //model.addattribute와 같음 
+			
+
+			return model;
+		}
+	
+	
 	
 	@ExceptionHandler(StorageFileNotFoundException.class) //에러났을때 타는 것 같음
 	public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {

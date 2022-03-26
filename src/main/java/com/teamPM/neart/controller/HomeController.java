@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.teamPM.neart.service.CartService;
 import com.teamPM.neart.service.ProductService;
+import com.teamPM.neart.vo.MemberVO;
 
 @Controller
 public class HomeController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private CartService cartService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -37,6 +42,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("productBoard", productService.getProductList());
+		
 		
 		return "home";
 	}
