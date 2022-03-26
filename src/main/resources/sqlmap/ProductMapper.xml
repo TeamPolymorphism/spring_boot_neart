@@ -125,8 +125,7 @@
 	</select>
 	
 	<!-- 07. NEW 상품 목록 -->
-	<!-- 열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
-	<select id="newProductList" resultType="com.teamPM.neart.vo.ProductVO">
+	<select id="newProduct" resultType="com.teamPM.neart.vo.ProductVO">
 	   <![CDATA[
 	          
 	                      select * from(    
@@ -156,7 +155,7 @@
 	                         	order by 
 	                         	product.productdate desc )
                                 
-    						where rownum <=8;
+    						where rownum <=8
                                 
 	        
 	   
@@ -165,8 +164,7 @@
 	
 	
 	<!-- 08. BEST 상품 목록 -->
-	<!-- 열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
-	<select id="bestProductList" resultType="com.teamPM.neart.vo.ProductVO">
+	<select id="bestProduct" resultType="com.teamPM.neart.vo.ProductVO">
 	   <![CDATA[
 	          
 	                      select * from(    
@@ -196,11 +194,148 @@
 	                         	order by 
 	                         	product.producthit desc )
                                 
-    						where rownum <=8;
+    						where rownum <=4
 	        
 	      
 	   
 	   ]]>
+	</select>
+	
+	<!-- 09. ArtPoster 목록 -->
+	<select id="artPoster" resultType="com.teamPM.neart.vo.ProductVO">
+	   <![CDATA[
+	          
+	                      select * from(    
+    						SELECT
+	                       		product.productid as productid,
+	                       		product.productname as productname,
+	                       		product.productcontent as productcontent,
+	                       		product.artist as artist,
+	                       		product.productsize as productsize,
+	                       		product.stock as stock,
+	                       		product.price as price,
+	                       		product.productdate as productdate,
+	                       		product.producthit as producthit,
+	                       		image.imgid as imgid,
+	                       		image.filePath as filePath,
+	                       		imagetype.typeid as typeid,
+	                       		imagetype.imgtype as imgtype
+	                         FROM
+	                            product,
+	                            image,
+	                            imagetype
+	                         where
+	                         	product.productid = image.productid
+	                         	and
+	                         	image.imgid = imagetype.imgid 
+	                         	order by 
+	                         	product.productname desc )
+    						where productid in(104, 106, 107, 108, 109, 124, 121, 130)
+	        
+	      
+	   
+	   ]]>
+	</select>
+	
+	<!-- 10. fabricArt 목록 -->
+	<select id="fabricArt" resultType="com.teamPM.neart.vo.ProductVO">
+	   <![CDATA[
+	          
+	                      select * from(    
+    						SELECT
+	                       		product.productid as productid,
+	                       		product.productname as productname,
+	                       		product.productcontent as productcontent,
+	                       		product.artist as artist,
+	                       		product.productsize as productsize,
+	                       		product.stock as stock,
+	                       		product.price as price,
+	                       		product.productdate as productdate,
+	                       		product.producthit as producthit,
+	                       		image.imgid as imgid,
+	                       		image.filePath as filePath,
+	                       		imagetype.typeid as typeid,
+	                       		imagetype.imgtype as imgtype
+	                         FROM
+	                            product,
+	                            image,
+	                            imagetype
+	                         where
+	                         	product.productid = image.productid
+	                         	and
+	                         	image.imgid = imagetype.imgid 
+	                         	order by 
+	                         	product.productname desc )
+    						where productid in(105, 110, 115, 111, 116, 114, 117, 101)
+	        
+	      
+	   
+	   ]]>
+	</select>
+	
+	
+	<!-- 11. kids 목록 -->
+	<select id="kids" resultType="com.teamPM.neart.vo.ProductVO">
+	   <![CDATA[
+	          
+	                      select * from(    
+    						SELECT
+	                       		product.productid as productid,
+	                       		product.productname as productname,
+	                       		product.productcontent as productcontent,
+	                       		product.artist as artist,
+	                       		product.productsize as productsize,
+	                       		product.stock as stock,
+	                       		product.price as price,
+	                       		product.productdate as productdate,
+	                       		product.producthit as producthit,
+	                       		image.imgid as imgid,
+	                       		image.filePath as filePath,
+	                       		imagetype.typeid as typeid,
+	                       		imagetype.imgtype as imgtype
+	                         FROM
+	                            product,
+	                            image,
+	                            imagetype
+	                         where
+	                         	product.productid = image.productid
+	                         	and
+	                         	image.imgid = imagetype.imgid 
+	                         	order by 
+	                         	product.productname desc )
+    						where productid in(125, 121, 123, 129, 122, 126, 131, 132)
+	        
+	      
+	   
+	   ]]>
+	</select>
+	<!-- 02. 상품 상세 조회 -->
+	<select id="preview" resultType="com.teamPM.neart.vo.ProductVO">
+   <![CDATA[
+     SELECT
+	                       		product.productid as productid,
+	                       		product.productname as productname,
+	                       		product.productcontent as productcontent,
+	                       		product.artist as artist,
+	                       		product.productsize as productsize,
+	                       		product.stock as stock,
+	                       		product.price as price,
+	                       		product.productdate as productdate,
+	                       		product.producthit as producthit,
+	                       		image.imgid as imgid,
+	                       		image.filePath as filePath,
+	                       		imagetype.typeid as typeid,
+	                       		imagetype.imgtype as imgtype
+	                         FROM
+	                            product,
+	                            image,
+	                            imagetype
+	                         where
+	                         	product.productid = image.productid
+	                         	and
+	                         	image.imgid = imagetype.imgid
+      and product.productid = #{productid}
+   ]]>
 	</select>
 
 

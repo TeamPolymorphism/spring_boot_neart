@@ -48,9 +48,9 @@ public class ProductController {
 
 		return model;
 	}
-	
 
-	// 관리자 상품상세
+
+	// 작품 상세
 	@GetMapping("/detailProduct")
 	public ModelAndView productDetail(ProductVO productVO, ModelAndView model) {
 
@@ -61,7 +61,21 @@ public class ProductController {
 
 		return model;
 	}
+	
+	
+	// 작품 미리보기
+	@GetMapping("/preview")
+	public ModelAndView preview(ProductVO productVO, ModelAndView model) {
+		log.info("++++++++++ Controller----preview");
+		model.setViewName("product/preview"); //return할때 들어가는 주소
+		int productid = productVO.getProductid();
+		model.addObject("preview", productService.preview(productid)); //model.addattribute와 같음 
 
+		return model;
+	}
+	
+	
+	
 	
 	// 작품등록 화면으로 이동
 	@GetMapping("/insertProduct")
@@ -145,6 +159,62 @@ public class ProductController {
 		return model;
 	}
 	
+	// 신상품
+	@GetMapping("/newProduct")
+	public ModelAndView newProduct(ModelAndView model) {
+		log.info("++++++++++ paging----newProduct");
+
+		model.setViewName("product/newProduct"); 
+		model.addObject("productNew", productService.newProduct()); 
+		
+
+		return model;
+	}
+
+	//베스트상품
+	@GetMapping("/bestProduct")
+	public ModelAndView bestProduct(ModelAndView model) {
+		log.info("++++++++++ paging----bestProduct");
+
+		model.setViewName("product/bestProduct");  
+		model.addObject("productBest", productService.bestProduct());
+		
+
+		return model;
+	}
+	
+	// ArtPoster
+	@GetMapping("/artPoster")
+	public ModelAndView artPoster(ModelAndView model) {
+		log.info("++++++++++ paging----artPoster");
+		model.setViewName("product/artPoster"); 
+		model.addObject("artPoster", productService.artPoster()); 
+		return model;
+	}
+
+	//FabricArt
+	@GetMapping("/fabricArt")
+	public ModelAndView fabricArt(ModelAndView model) {
+		log.info("++++++++++ paging----FabricArt");
+
+		model.setViewName("product/fabricArt");  
+		model.addObject("fabricArt", productService.fabricArt());
+		
+
+		return model;
+	}
+	
+	
+	@GetMapping("/kids")
+	public ModelAndView kids(ModelAndView model) {
+		log.info("++++++++++ paging----Kids");
+
+		model.setViewName("product/kids");  
+		model.addObject("kids", productService.kids());
+		
+
+		return model;
+	}
 	
 	
 	@ExceptionHandler(StorageFileNotFoundException.class) //에러났을때 타는 것 같음

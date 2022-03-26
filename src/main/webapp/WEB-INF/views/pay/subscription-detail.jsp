@@ -89,11 +89,11 @@ function iamport(){
 					</div>
 
 					<div class="right-top-bar flex-w h-full">
-						<a href="/board/list" class="flex-c-m trans-04 p-lr-25">
+						<a href="/nlist" class="flex-c-m trans-04 p-lr-25">
 							공지게시판
 						</a>
 
-						<a href="/qnaboard/list" class="flex-c-m trans-04 p-lr-25">
+						<a href="/qlist" class="flex-c-m trans-04 p-lr-25">
 							Q&A게시판
 						</a>
 					</div>
@@ -155,8 +155,9 @@ function iamport(){
 							</a>
 						</div>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
-							<i class="zmdi zmdi-shopping-cart"></i>
+						<div class="flex-c-m h-full p-r-10 bor6">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
+							<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
 						</div>
 
 						<a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify="0">
@@ -195,9 +196,10 @@ function iamport(){
 				</div>
 				
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart" data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
+				<div class="flex-c-m h-full p-r-10 bor6">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
+							<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
+						</div>
 
 				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti" data-notify="0">
 					<i class="zmdi zmdi-favorite-outline"></i>
@@ -476,6 +478,7 @@ function iamport(){
 					<div class="tab-content p-t-43">
 						<!-- - -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
+						<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
 							<div class="how-pos2 p-lr-15-md">
 								<p class="stext-102 cl6">
 									“집 안의 분위기 전환을 위한 인테리어 취향 스트리밍도 인기다.
@@ -483,6 +486,7 @@ function iamport(){
 									한 달에 한 번, 집에서 받아보는 커다란 그림 어떤 작품을 두느냐에 따라 우리의 공간은 도쿄의 싱그러운 정원이 되기도, 베를린의 힙한 카페가 되기도 합니다.
 									매월 정기 배송되는 A1 대형 사이즈의 다채로운 작품들로 정체된 일상을 깨워보세요. 동봉된 Editor’s letter가 새로운 일상의 가이드가 되어줍니다.
 								</p>
+							</div>
 							</div>
 						</div>
 
@@ -940,14 +944,14 @@ function iamport(){
 
 					<ul>
 						<li class="p-b-10">
-							<a href="/board/list" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="/nlist" class="stext-107 cl7 hov-cl1 trans-04">
 								공지사항
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="/qnaboard/list" class="stext-107 cl7 hov-cl1 trans-04">
-								문의게시판 
+							<a href="/qlist" class="stext-107 cl7 hov-cl1 trans-04">
+								 Q&A게시판 
 							</a>
 						</li>
 

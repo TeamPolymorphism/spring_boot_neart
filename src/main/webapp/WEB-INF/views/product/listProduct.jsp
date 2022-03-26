@@ -4,6 +4,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,10 +184,9 @@
 							</sec:authorize>
 						</div>
 
-						<div
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-							data-notify="2">
-							<i class="zmdi zmdi-shopping-cart"></i>
+						<div class="flex-c-m h-full p-r-10 bor6">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
+							<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
 						</div>
 
 						<a href="#"
@@ -230,11 +233,10 @@
 					</sec:authorize>
 				</div>
 
-				<div
-					class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-					data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
+				<div class="flex-c-m h-full p-r-10 bor6">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
+							<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
+						</div>
 
 				<a href="#"
 					class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
@@ -343,61 +345,7 @@
 		</div>
 	</header>
 
-	<!-- ★★★★★★★★ Cart ★★★★★★★ -->
-	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2"> cart </span>
-
-				<div
-					class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
-				</div>
-			</div>
-
-			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Bubble Gum 1 </a> <span class="header-cart-item-info"> 1 x
-								200,000원 </span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Only Check Trouser </a> <span class="header-cart-item-info">
-								1 x 250,000원 </span>
-						</div>
-					</li>
-				</ul>
-
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">최종 결제 금액 :
-						450,000원</div>
-
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.html"
-							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							장바구니 보러가기 </a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+	
 
 	<!-- Product 상품네비 -->
 	<!-- Product 상품네비  -->
@@ -406,23 +354,23 @@
 			<div class="flex-w flex-sb-m p-b-52">
 				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
 					<button
-						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1"
+						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
 						data-filter="*">ALL</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						data-filter=".women">NEW</button>
+						onclick = "location.href = 'bestProduct'">BEST</button>
+						
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						onclick = "location.href = 'newProduct'">NEW</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						data-filter=".men">BEST</button>
+						onclick = "location.href = 'artPoster'">ART POSTER</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						data-filter=".bag">ART POSTER</button>
+						onclick = "location.href = 'fabricArt'">FABRIC ART</button>
 
 					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						data-filter=".shoes">FABRIC ART</button>
-
-					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
-						data-filter=".watches">KIDS</button>
+						onclick = "location.href = 'kids'">KIDS</button>
 				</div>
 
 				<div class="flex-w flex-c-m m-tb-10">
@@ -594,9 +542,11 @@
 									<a href="detailProduct?productid=${product.productid}"
 										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 										${product.productname} </a> <span class="stext-105 cl3">
-										${product.price}원 </span>
+										<fmt:formatNumber
+													value="${product.price}" pattern="#,###" /> 원 </span>
 								</div>
 
+								<!-- 찜하기 하트 버튼 -->
 								<div class="block2-txt-child2 flex-r p-t-3">
 									<a href="#"
 										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
@@ -609,7 +559,6 @@
 							</div>
 						</div>
 					</div>
-
 				</c:forEach>
 			</div>
 			<!--===============================================================================================-->

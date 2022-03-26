@@ -88,5 +88,50 @@ public class ProductServiceImpl implements ProductService {
 		
 	}
 	
+	
+	//신상품
+	@Override
+	public List<ProductVO> newProduct() {
+		log.info("++++++++++ Product ++++++++++ newProduct()");
+		return productMapper.newProduct();
+	}
+	
+	//베스트상품
+	@Override
+	public List<ProductVO> bestProduct() {
+		log.info("++++++++++ Product ++++++++++ bestProduct()");
+		return productMapper.bestProduct();
+	}
+	
+	//ArtPoster
+	@Override
+	public List<ProductVO> artPoster() {
+		log.info("++++++++++ Product ++++++++++ artPoster()");
+		return productMapper.artPoster();
+	}
+	
+	//FabricArt
+	@Override
+	public List<ProductVO> fabricArt() {
+		log.info("++++++++++ Product ++++++++++ FabricArt()");
+		return productMapper.fabricArt();
+	}
+	
+	//Kids
+	@Override
+	public List<ProductVO> kids() {
+		log.info("++++++++++ Product ++++++++++ Kids()");
+		return productMapper.kids();
+	}
+	
+	//미리보기
+	@Override
+	public List<ProductVO> preview(int productid) {
+		log.info("++++++++++ Product ++++++++++ preview()");
+		return productMapper.preview(productid);
+	}
+
+
+	
 
 }

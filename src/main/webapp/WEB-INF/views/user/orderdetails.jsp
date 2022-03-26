@@ -2,6 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -118,9 +121,9 @@
 						</a>
 						</sec:authorize>
 
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
-							<i class="zmdi zmdi-shopping-cart"></i>
-						</div>
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
+<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
+</div>
 
 						<!-- <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11">
 							<i class="zmdi zmdi-favorite-outline"></i>
@@ -168,9 +171,9 @@
 
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="flex-c-m h-full p-r-5">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11">
-						<i class="zmdi zmdi-shopping-cart"></i>
-					</div>
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
+<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
+</div>
 				</div>
 			</div>
 

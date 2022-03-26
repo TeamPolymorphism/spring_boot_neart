@@ -4,16 +4,30 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<sec:authorize access="isAuthenticated()">
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+	<sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>관리자 | 작품상세</title>
+<title>Product</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="">
+
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" type="text/css" href="css/signin.css">
+<link rel="stylesheet" type="text/css" href="css/mypage.css">
+
+<!-- password eye form -->
+<link
+	rel="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="images/icons/favicon.png" />
 <!--===============================================================================================-->
@@ -66,6 +80,7 @@
 				<div class="content-topbar flex-sb-m h-full container">
 					<div class="left-top-bar">그림 정기구독으로 그림이 있는 일상을 NEART와 아트 컬렉팅을
 						시작하세요.</div>
+
 
 
 					<!-- ★★★★★★ ㅇㅇㅇ님 환영합니다 ★★★★★★ -->
@@ -141,8 +156,8 @@
 							<li><a href="/about">ABOUT</a></li>
 						</ul>
 					</div>
-
 					<!-- Icon header -->
+
 					<div class="wrap-icon-header flex-w flex-r-m">
 						<div
 							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
@@ -150,22 +165,23 @@
 						</div>
 
 						<div class="flex-c-m h-full bor6">
-							<a
-								href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
-								<div
-									class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
-									<i class=""><svg xmlns="http://www.w3.org/2000/svg"
-											aria-hidden="true" role="img" width="0.95em" height="1em"
-											preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512">
-											<path fill="currentColor"
-												d="M248 8C111 8 0 119 0 
-										256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
-										200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
-										0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
-										39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
-										56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z" /></svg></i>
-								</div>
-							</a>
+							<sec:authorize access="isAuthenticated()">
+								<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+									<div
+										class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
+										<i class=""><svg xmlns="http://www.w3.org/2000/svg"
+												aria-hidden="true" role="img" width="0.95em" height="1em"
+												preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512">
+												<path fill="currentColor"
+													d="M248 8C111 8 0 119 0 
+											256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
+											200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
+											0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
+											39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
+											56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z" /></svg></i>
+									</div>
+								</a>
+							</sec:authorize>
 						</div>
 
 						<div class="flex-c-m h-full p-r-10 bor6">
@@ -198,22 +214,23 @@
 				</div>
 
 				<div class="flex-c-m h-full bor6">
-					<a
-						href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
-						<div
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
-							<i class=""><svg xmlns="http://www.w3.org/2000/svg"
-									aria-hidden="true" role="img" width="0.95em" height="1em"
-									preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512">
-									<path fill="currentColor"
-										d="M248 8C111 8 0 119 0 
-								256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
-								200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
-								0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
-								39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
-								56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z" /></svg></i>
-						</div>
-					</a>
+					<sec:authorize access="isAuthenticated()">
+						<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+							<div
+								class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
+								<i class=""><svg xmlns="http://www.w3.org/2000/svg"
+										aria-hidden="true" role="img" width="0.95em" height="1em"
+										preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512">
+										<path fill="currentColor"
+											d="M248 8C111 8 0 119 0 
+									256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
+									200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
+									0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
+									39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
+									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z" /></svg></i>
+							</div>
+						</a>
+					</sec:authorize>
 				</div>
 
 				<div class="flex-c-m h-full p-r-10 bor6">
@@ -242,6 +259,7 @@
 					<div class="left-top-bar">그림 정기구독으로 그림이 있는 일상을 NEART와 아트 컬렉팅을
 						시작하세요.</div>
 				</li>
+
 
 				<!-- ★★★★★★ ㅇㅇㅇ님 환영합니다 ★★★★★★ -->
 				<!-- ★★★★★★ ㅇㅇㅇ님 환영합니다 ★★★★★★ -->
@@ -280,7 +298,6 @@
 							</a>
 						</div>
 					</sec:authorize></li>
-
 				<li>
 					<div class="right-top-bar flex-w h-full">
 						<a href="/nlist" class="flex-c-m p-lr-10 trans-04"> 공지게시판 </a> <a
@@ -328,313 +345,231 @@
 		</div>
 	</header>
 
-	<!-- Cart -->
-	<div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
 
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2"> cart </span>
-
-				<div
-					class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
-				</div>
-			</div>
-
-			<div class="header-cart-content flex-w js-pscroll">
-				<ul class="header-cart-wrapitem w-full">
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="product-detail.html"
-								class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Bubble Gum 1 </a> <span class="header-cart-item-info"> 1 x
-								200,000원 </span>
-						</div>
-					</li>
-
-					<li class="header-cart-item flex-w flex-t m-b-12">
-						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
-						</div>
-
-						<div class="header-cart-item-txt p-t-8">
-							<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-								Only Check Trouser </a> <span class="header-cart-item-info">
-								1 x 250,000원 </span>
-						</div>
-					</li>
-				</ul>
-
-				<div class="w-full">
-					<div class="header-cart-total w-full p-tb-40">최종 결제 금액 :
-						450,000원</div>
-
-					<div class="header-cart-buttons flex-w w-full">
-						<a href="shoping-cart.html"
-							class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-							장바구니 보러가기 </a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- breadcrumb -->
-	<div class="container">
-		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-			<a href="/listProduct" class="stext-109 cl8 hov-cl1 trans-04">
-				ART-PRODUCT <i class="fa fa-angle-right m-l-9 m-r-10"
-				aria-hidden="true"></i>
-			</a> <span class="stext-109 cl4"> ${detailProduct.productname} </span>
-		</div>
-	</div>
-
-	<!--===============================================================================================-->
-	<!--===============================================================================================-->
-	<!--===============================================================================================-->
-	<!-- ★★★★★★★★ 상품 상세 ★★★★★★★★★★★★ -->
-	<!-- ★★★★★★★★ 상품 상세 ★★★★★★★★★★★★ -->
-	<!-- ★★★★★★★★ 상품 상세 ★★★★★★★★★★★★ -->
-	<!-- Product Detail -->
-	<section class="sec-product-detail bg0 p-t-65 p-b-60">
+	<!-- Product 상품네비 -->
+	<!-- Product 상품네비  -->
+	<div class="bg0 m-t-23 p-b-140">
 		<div class="container">
-			<input type="hidden" name="productid"
-				value="${detailProduct.productid}">
-			<div class="row">
-				<div class="col-md-6 col-lg-7 p-b-30">
-					<div class="p-l-25 p-r-30 p-lr-0-lg">
-						<div class="wrap-slick3 flex-sb flex-w">
-							<div class="wrap-slick3-dots"></div>
-							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
+			<div class="flex-w flex-sb-m p-b-52">
+				<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+					<button
+						class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						onclick = "location.href = 'listProduct'">ALL</button>
 
-							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="${detailProduct.filePath}">
-									<div class="wrap-pic-w pos-relative">
-										<img src="${detailProduct.filePath}" alt="IMG-PRODUCT">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						onclick = "location.href = 'bestProduct'">BEST</button>
+						
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						onclick = "location.href = 'newProduct'">NEW</button>
 
-										<a
-											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="${detailProduct.filePath}"> <i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
-<!--  
-								<div class="item-slick3" data-thumb="${detailProduct.filePath}">
-									<div class="wrap-pic-w pos-relative">
-										<img src="${detailProduct.filePath}" alt="IMG-PRODUCT">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						onclick = "location.href = 'artPoster'">ART POSTER</button>
 
-										<a
-											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="${detailProduct.filePath}"> <i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						onclick = "location.href = 'fabricArt'">FABRIC ART</button>
 
-								<div class="item-slick3" data-thumb="${detailProduct.filePath}">
-									<div class="wrap-pic-w pos-relative">
-										<img src="${detailProduct.filePath}" alt="IMG-PRODUCT">
+					<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
+						onclick = "location.href = 'kids'">KIDS</button>
+				</div>
 
-										<a
-											class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-											href="${detailProduct.filePath}"> <i class="fa fa-expand"></i>
-										</a>
-									</div>
-								</div>-->
+				<div class="flex-w flex-c-m m-tb-10">
+					<div
+						class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+						<i
+							class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+						<i
+							class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+						필터
+					</div>
+
+					<!-- ★★★★★★★★ 상품 등록 버튼 ★★★★★★★★ -->
+					<!-- ★★★★★★★★ 상품 등록 버튼 ★★★★★★★★ -->
+
+					<div
+						class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+							fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+	  						<path
+								d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+						</svg>
+						<a href="insertProduct">작품등록</a>
+					</div>
+
+				</div>
+
+
+				<!-- Filter 상품 필터 -->
+				<div class="dis-none panel-filter w-full p-t-10">
+					<div
+						class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+						<div class="filter-col1 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">Sort By</div>
+
+							<ul>
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> Default </a></li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> Popularity </a></li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> Average rating </a></li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04 filter-link-active">
+										Newness </a></li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> Price: Low to High
+								</a></li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> Price: High to Low
+								</a></li>
+							</ul>
+						</div>
+
+						<div class="filter-col2 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">Price</div>
+
+							<ul>
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04 filter-link-active">
+										All </a></li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> $0.00 - $50.00 </a></li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> $50.00 - $100.00 </a></li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> $100.00 - $150.00 </a>
+								</li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> $150.00 - $200.00 </a>
+								</li>
+
+								<li class="p-b-6"><a href="#"
+									class="filter-link stext-106 trans-04"> $200.00+ </a></li>
+							</ul>
+						</div>
+
+						<div class="filter-col3 p-r-15 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">Color</div>
+
+							<ul>
+								<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
+									style="color: #222;"> <i class="zmdi zmdi-circle"></i>
+								</span> <a href="#" class="filter-link stext-106 trans-04"> Black </a>
+								</li>
+
+								<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
+									style="color: #4272d7;"> <i class="zmdi zmdi-circle"></i>
+								</span> <a href="#"
+									class="filter-link stext-106 trans-04 filter-link-active">
+										Blue </a></li>
+
+								<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
+									style="color: #b3b3b3;"> <i class="zmdi zmdi-circle"></i>
+								</span> <a href="#" class="filter-link stext-106 trans-04"> Grey </a></li>
+
+								<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
+									style="color: #00ad5f;"> <i class="zmdi zmdi-circle"></i>
+								</span> <a href="#" class="filter-link stext-106 trans-04"> Green </a>
+								</li>
+
+								<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
+									style="color: #fa4251;"> <i class="zmdi zmdi-circle"></i>
+								</span> <a href="#" class="filter-link stext-106 trans-04"> Red </a></li>
+
+								<li class="p-b-6"><span class="fs-15 lh-12 m-r-6"
+									style="color: #aaa;"> <i class="zmdi zmdi-circle-o"></i>
+								</span> <a href="#" class="filter-link stext-106 trans-04"> White </a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="filter-col4 p-b-27">
+							<div class="mtext-102 cl2 p-b-15">Tags</div>
+
+							<div class="flex-w p-t-4 m-r--5">
+								<a href="#"
+									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Fashion </a> <a href="#"
+									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Lifestyle </a> <a href="#"
+									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Denim </a> <a href="#"
+									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Streetstyle </a> <a href="#"
+									class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+									Crafts </a>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-6 col-lg-5 p-b-30 pt-5">
-					<div class="p-r-50 p-t-5 p-lr-0-lg">
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-							${detailProduct.productname}</h4>
-
-						<span class="mtext-106 cl2"><fmt:formatNumber
-													value="${detailProduct.price}" pattern="#,###" /> 원 </span>
-
-						<h4 class="mtext-104 cl3 p-t-23">Size :
-							${detailProduct.productsize} mm</h4>
-
-						<h4 class="mtext-104 cl3 p-t-10">Artist :
-							${detailProduct.artist}</h4>
-
-						<div class="flex-w flex-t p-b-10 p-t-30">
-							<div class="size-204 flex-w flex-m respon6-next">
-								<form action="/cart" method="post">
-									<input type="hidden" name="productid" value="${detailProduct.productid}">
-									<input type="hidden" name="cartquantity" value="0">
-									<input type="hidden" name="price" value="${detailProduct.price}">
-									<input type="hidden" name="filepath" value="${detailProduct.filePath}">
-									<input type="hidden" name="totalprice" value="${detailProduct.price}">
-									<input type="hidden" name="productname" value="${detailProduct.productname}">
-									<input type="hidden" name="membernum" value=<sec:authentication property="principal.user.membernum"/>>
-									<button
-										class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-										장바구니에 담기</button>
-								</form>
-							</div>
-						</div>
-					</div>
 
 
-				</div>
+
+
 			</div>
-		</div>
 
-		<div class="bor10 m-t-50 p-t-43 p-b-40">
-			<!-- Tab01 -->
-			<div class="tab01">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item p-b-10"><a class="nav-link active"
-						data-toggle="tab" href="#description" role="tab">제품 설명</a></li>
 
-					<li class="nav-item p-b-10"><a class="nav-link"
-						data-toggle="tab" href="#information" role="tab">제품 정보</a></li>
-
-					<li class="nav-item p-b-10"><a class="nav-link"
-						data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a></li>
-				</ul>
-
-				<!-- Tab panes -->
-				<div class="tab-content p-t-43">
-					<!-- - -->
-					<div class="tab-pane fade show active" id="description"
-						role="tabpanel">
-						<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-						<div class="how-pos2 p-lr-15-md">
-							<p class="stext-102 cl6">${detailProduct.productcontent}</p>
-						</div>
-						</div>
-					</div>
-
-					<!-- - -->
-					<div class="tab-pane fade" id="information" role="tabpanel">
-						<div class="row">
-							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-								<ul class="p-lr-28 p-lr-15-sm">
-									<li class="flex-w flex-t p-b-7"><span
-										class="stext-102 cl3 size-205"> 제품 무게 </span> <span
-										class="stext-102 cl6 size-206"> 2.4 kg </span></li>
-
-									<li class="flex-w flex-t p-b-7"><span
-										class="stext-102 cl3 size-205"> 제품 크기 </span> <span
-										class="stext-102 cl6 size-206">
-											${detailProduct.productsize} mm </span></li>
-
-									<li class="flex-w flex-t p-b-7"><span
-										class="stext-102 cl3 size-205"> 사용 공간 </span> <span
-										class="stext-102 cl6 size-206"> 거실, 매장 등 넓은공간에서부터 아이방,
-											주방 등 아담한 공간까지 </span></li>
-								</ul>
+			<!--===============================================================================================-->
+			<!--===============================================================================================-->
+			<!--===============================================================================================-->
+			<!-- ★★★★★★★★ kids ★★★★★★★★★★★★ -->
+			<!-- ★★★★★★★★ kids ★★★★★★★★★★★★ -->
+			<!-- ★★★★★★★★ kids ★★★★★★★★★★★★ -->
+			<div class="row isotope-grid">
+				<c:forEach items="${kids}" var="kids">
+					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+						<!-- Block2 -->
+						<div class="block2">
+							<div class="block2-pic hov-img0">
+								<img src="${kids.filePath}" alt="IMG-PRODUCT" width="315"
+									height="315"> <a href="#"
+									class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+									미리보기 </a>
 							</div>
-						</div>
-					</div>
 
-					<!-- - -->
-					<div class="tab-pane fade" id="reviews" role="tabpanel">
-						<div class="row">
-							<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-								<div class="p-b-30 m-lr-15-sm">
-									<!-- Review -->
-									<div class="flex-w flex-t p-b-68">
-										<div class="wrap-pic-s size-109 bor0 of-hidden m-r-18 m-t-6">
-											<img src="images/avatar-01.jpg" alt="AVATAR">
-										</div>
+							<div class="block2-txt flex-w flex-t p-t-14">
+								<div class="block2-txt-child1 flex-col-l ">
+									<a href="detailProduct?productid=${kids.productid}"
+										class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+										${kids.productname} </a> <span class="stext-105 cl3">
+										<fmt:formatNumber
+													value="${kids.price}" pattern="#,###" /> 원 </span>
+								</div>
 
-										<div class="size-207">
-											<div class="flex-w flex-sb-m p-b-17">
-												<span class="mtext-107 cl2 p-r-20"> Ariana Grande </span> <span
-													class="fs-18 cl11"> <i class="zmdi zmdi-star"></i> <i
-													class="zmdi zmdi-star"></i> <i class="zmdi zmdi-star"></i>
-													<i class="zmdi zmdi-star"></i> <i
-													class="zmdi zmdi-star-half"></i>
-												</span>
-											</div>
-
-											<p class="stext-102 cl6">Quod autem in homine
-												praestantissimum atque optimum est, id deseruit. Apud
-												ceteros autem philosophos</p>
-										</div>
-									</div>
-
-									<!-- Add review -->
-									<form class="w-full">
-										<h5 class="mtext-108 cl2 p-b-7">Add a review</h5>
-
-										<p class="stext-102 cl6">Your email address will not be
-											published. Required fields are marked *</p>
-
-										<div class="flex-w flex-m p-t-50 p-b-23">
-											<span class="stext-102 cl3 m-r-16"> Your Rating </span> <span
-												class="wrap-rating fs-18 cl11 pointer"> <i
-												class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-												class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-												class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-												class="item-rating pointer zmdi zmdi-star-outline"></i> <i
-												class="item-rating pointer zmdi zmdi-star-outline"></i> <input
-												class="dis-none" type="number" name="rating">
-											</span>
-										</div>
-
-										<div class="row p-b-25">
-											<div class="col-12 p-b-5">
-												<label class="stext-102 cl3" for="review">Your
-													review</label>
-												<textarea
-													class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"
-													id="review" name="review"></textarea>
-											</div>
-
-											<div class="col-sm-6 p-b-5">
-												<label class="stext-102 cl3" for="name">Name</label> <input
-													class="size-111 bor8 stext-102 cl2 p-lr-20" id="name"
-													type="text" name="name">
-											</div>
-
-											<div class="col-sm-6 p-b-5">
-												<label class="stext-102 cl3" for="email">Email</label> <input
-													class="size-111 bor8 stext-102 cl2 p-lr-20" id="email"
-													type="text" name="email">
-											</div>
-										</div>
-
-										<button
-											class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
-											Submit</button>
-									</form>
+								<!-- 찜하기 하트 버튼 -->
+								<div class="block2-txt-child2 flex-r p-t-3">
+									<a href="#"
+										class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+										<img class="icon-heart1 dis-block trans-04"
+										src="images/icons/icon-heart-01.png" alt="ICON"> <img
+										class="icon-heart2 dis-block trans-04 ab-t-l"
+										src="images/icons/icon-heart-02.png" alt="ICON">
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+
+				</c:forEach>
 			</div>
+			<!--===============================================================================================-->
+			<!--===============================================================================================-->
+			<!--===============================================================================================-->
+
+	
 		</div>
-		</div>
-
-		<div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
-			<span class="stext-107 cl6 p-lr-25"> <a href="listProduct">목록보기</a>
-			</span> <span class="stext-107 cl6 p-lr-25"> <a
-				href="deleteProduct?productid=${detailProduct.productid}">삭제</a>
-				&nbsp;&nbsp; <a
-				href="modifyProduct?productid=${detailProduct.productid}">수정하기</a>
-			</span>
-		</div>
-	</section>
-
-
-	<!--===============================================================================================-->
-	<!--===============================================================================================-->
-	<!--===============================================================================================-->
-
-
+	</div>
+	
+	</div>
 
 
 	<!-- Footer -->

@@ -18,8 +18,13 @@ public interface ProductMapper {
 	 * 01. 사진포함 상품 목록
 	 * 
 	 * */
-	public int getTotalCount(); 
+	//public int getTotalCount(); 
 	List<ProductVO> getProductList(); 
+	List<ProductVO> newProduct(); // 신상품
+	List<ProductVO> bestProduct(); // 인기상품
+	List<ProductVO> artPoster(); // Art Poster
+	List<ProductVO> fabricArt(); // Fabric Art
+	List<ProductVO> kids(); // Kids
 	
 	
 
@@ -29,6 +34,7 @@ public interface ProductMapper {
 	 * */
 	public ProductVO detailProduct(int productid);	// 작품 조회(content view) > 상품상세페이지	
 	public void upHitProduct(int productid);  // 조회수
+	List<ProductVO> preview(int productid); // 미리보기
 
 	
 
@@ -65,6 +71,7 @@ public interface ProductMapper {
 	 * 
 	 * */	
 	public void modifyProduct(ProductVO productboard);  
+	
 	
 
 

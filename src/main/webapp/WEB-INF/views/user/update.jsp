@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 <!doctype html>
 <html lang="en">
   <head>
@@ -112,10 +114,9 @@
 						</div>
 					</a>
 						<div class="flex-c-m h-full p-r-10 bor6">
-							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-cart">
-								<i class="zmdi zmdi-shopping-cart"></i>
-							</div>
-						</div>
+<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
+<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
+</div>
 							
 						<!-- <div class="flex-c-m h-full p-lr-19">
 							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
@@ -160,9 +161,9 @@
 
 			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
 				<div class="flex-c-m h-full p-r-5">
-					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">
-						<i class="zmdi zmdi-shopping-cart"></i>
-					</div>
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
+<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
+</div>
 				</div>
 			</div>
 
