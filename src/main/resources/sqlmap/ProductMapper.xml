@@ -123,7 +123,85 @@
 		select count(*) from product
 	]]>
 	</select>
-
+	
+	<!-- 07. NEW 상품 목록 -->
+	<!-- 열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
+	<select id="newProductList" resultType="com.teamPM.neart.vo.ProductVO">
+	   <![CDATA[
+	          
+	                      select * from(    
+    
+    						SELECT
+	                       		product.productid as productid,
+	                       		product.productname as productname,
+	                       		product.productcontent as productcontent,
+	                       		product.artist as artist,
+	                       		product.productsize as productsize,
+	                       		product.stock as stock,
+	                       		product.price as price,
+	                       		product.productdate as productdate,
+	                       		product.producthit as producthit,
+	                       		image.imgid as imgid,
+	                       		image.filePath as filePath,
+	                       		imagetype.typeid as typeid,
+	                       		imagetype.imgtype as imgtype
+	                         FROM
+	                            product,
+	                            image,
+	                            imagetype
+	                         where
+	                         	product.productid = image.productid
+	                         	and
+	                         	image.imgid = imagetype.imgid 
+	                         	order by 
+	                         	product.productdate desc )
+                                
+    						where rownum <=8;
+                                
+	        
+	   
+	   ]]>
+	</select>
+	
+	
+	<!-- 08. BEST 상품 목록 -->
+	<!-- 열개씩 뽑아내는거 한페이지에 출력해주는 역할 -->
+	<select id="bestProductList" resultType="com.teamPM.neart.vo.ProductVO">
+	   <![CDATA[
+	          
+	                      select * from(    
+    
+    						SELECT
+	                       		product.productid as productid,
+	                       		product.productname as productname,
+	                       		product.productcontent as productcontent,
+	                       		product.artist as artist,
+	                       		product.productsize as productsize,
+	                       		product.stock as stock,
+	                       		product.price as price,
+	                       		product.productdate as productdate,
+	                       		product.producthit as producthit,
+	                       		image.imgid as imgid,
+	                       		image.filePath as filePath,
+	                       		imagetype.typeid as typeid,
+	                       		imagetype.imgtype as imgtype
+	                         FROM
+	                            product,
+	                            image,
+	                            imagetype
+	                         where
+	                         	product.productid = image.productid
+	                         	and
+	                         	image.imgid = imagetype.imgid 
+	                         	order by 
+	                         	product.producthit desc )
+                                
+    						where rownum <=8;
+	        
+	      
+	   
+	   ]]>
+	</select>
 
 
 </mapper>
