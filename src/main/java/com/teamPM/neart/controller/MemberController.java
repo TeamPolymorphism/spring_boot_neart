@@ -39,7 +39,6 @@ public class MemberController {
 		return "/login/loginForm";
 	}
 	
-   
    @GetMapping("/addForm")
    public String userForm() {
       log.info("Welcome userForm");

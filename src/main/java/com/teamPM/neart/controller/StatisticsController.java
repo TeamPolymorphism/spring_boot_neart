@@ -25,8 +25,6 @@ public class StatisticsController {
 	@Autowired
 	private StatisticsService statisticService;
 	
-
-
 	@GetMapping("/income")
 	public ModelAndView adminDonationStat(ModelAndView mav)throws Exception {
 
@@ -67,10 +65,5 @@ public class StatisticsController {
 		return statisticService.getDailySales("2021", String.valueOf(month));
 	}
 	
-
-
-	
-		
-
-	}
+}
 

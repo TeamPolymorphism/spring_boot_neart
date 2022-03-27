@@ -73,7 +73,6 @@ public class MemberService {
 	  userMapper.orderdetails(orderdetailsVO);
 }
  
- //OrderdetailsVO orderdetailsVO
  public List<OrderdetailsVO> detail(int membernum){
 	   
 		log.info("detail() ..");

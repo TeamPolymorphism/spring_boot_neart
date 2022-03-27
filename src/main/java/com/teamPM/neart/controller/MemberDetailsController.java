@@ -42,7 +42,7 @@ public class MemberDetailsController {
 	@Autowired
 	UserCustomDetailsService UserCustomDetailsService;
 
-	// 내 페이지 보여주기 by seolin
+	// 내 페이지 보여주기
 	@GetMapping("/mypage")
 	public String mypage(MemberVO memberVO, Model model) {
 
@@ -55,7 +55,7 @@ public class MemberDetailsController {
 
 	}
 
-	// 회원정보수정 가져오기 by seolin
+	// 회원정보수정 페이지 가져오기
 	@GetMapping("/update")
 	public String update(MemberVO memberVO, Model model) {
 
@@ -69,7 +69,7 @@ public class MemberDetailsController {
 
 	}
 
-	// 회원정보수정 post랑 수정 후 세션값 받기 by seolin
+	// 회원정보 수정 후 세션값 받기
 	@PostMapping("/update")
 	public String modify(HttpSession session, HttpServletRequest request, MemberVO memberVO, Model model) {
 
@@ -104,15 +104,8 @@ public class MemberDetailsController {
 		return "redirect:/";
 
 	}
-
-	@GetMapping("/deletecheck")
-	public String remove(MemberVO memberVO, Model model) {
-
-		log.info("deletecheck() ...");
-
-		return "/user/deletecheck";
-	}
-
+	
+	//회원 탈퇴 창
 	@GetMapping("/delete")
 	public String checkmore(MemberVO memberVO, Model model) {
 
@@ -121,7 +114,16 @@ public class MemberDetailsController {
 		return "/user/delete";
 	}
 
-	// 회원탈퇴하기 by seolin
+	//회원탈퇴 체크 팝업창
+	@GetMapping("/deletecheck")
+	public String remove(MemberVO memberVO, Model model) {
+
+		log.info("deletecheck() ...");
+
+		return "/user/deletecheck";
+	}
+	
+	//회원탈퇴하기
 	@RequestMapping("/userdelete")
 	public String delete(HttpServletRequest request, MemberVO memberVO, String id, Model model) {
 
@@ -133,30 +135,5 @@ public class MemberDetailsController {
 		
 		return "redirect:/logout";
 	}
-
-	/*
-	 * //회원한 탈퇴 로그인 불가 by seolin
-	 * 
-	 * @RequestMapping("/") public String withdraw(Principal principal,
-	 * HttpServletRequest request, HttpSession session) {
-	 * System.out.println("------withdraw"); System.out.println("탈퇴한 회원--------"+
-	 * principal);
-	 * 
-	 * 
-	 * int enabled = principal.getEnabled();
-	 * 
-	 * if(enabled == 0) {
-	 * 
-	 * session.invalidate();
-	 * 
-	 * System.out.println("------회원탈퇴하셨습니다");
-	 * 
-	 * 
-	 * return "/home"; } if (session == 1 || !request.isRequestedSessionIdValid()) {
-	 * System.out.println("세션이 무효화 상태입니다."); }
-	 * 
-	 * session.invalidate();
-	 * 
-	 * return "/home"; }
-	 */
+	
 }

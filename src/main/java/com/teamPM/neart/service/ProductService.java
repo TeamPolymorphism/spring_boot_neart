@@ -21,16 +21,15 @@ public interface ProductService {
 	
 	//상세페이지(조회)
 	ProductVO detailProduct(int productid);	
-	public List<ProductVO> preview(int productid); // 미리보기
+
 	
 	//등록
 	void insertProduct(ProductVO productboard);	
 	
-	//삭제
-	void deleteProduct(int productid); 
 	
 	//수정
 	void modifyProduct(ProductVO ProductVO); 
+	
 	
 	//조회수
 	void upHitProduct(int productid); 

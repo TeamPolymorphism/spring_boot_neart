@@ -49,7 +49,6 @@ public class ProductController {
 		return model;
 	}
 
-
 	// 작품 상세
 	@GetMapping("/detailProduct")
 	public ModelAndView productDetail(ProductVO productVO, ModelAndView model) {
@@ -62,20 +61,7 @@ public class ProductController {
 		return model;
 	}
 	
-	
-	// 작품 미리보기
-	@GetMapping("/preview")
-	public ModelAndView preview(ProductVO productVO, ModelAndView model) {
-		log.info("++++++++++ Controller----preview");
-		model.setViewName("product/preview"); //return할때 들어가는 주소
-		int productid = productVO.getProductid();
-		model.addObject("preview", productService.preview(productid)); //model.addattribute와 같음 
 
-		return model;
-	}
-	
-	
-	
 	
 	// 작품등록 화면으로 이동
 	@GetMapping("/insertProduct")
@@ -117,27 +103,6 @@ public class ProductController {
 	}
 
 	
-	
-	
-	/**
-     * Amazon S3에 이미지 업로드 된 파일을 삭제 + db 상품 삭제
-     */
-	@GetMapping("/deleteProduct")
-	public ModelAndView deleteProduct(@RequestPart(required = false) String filePath,
-										ProductVO productVO, 
-										ModelAndView model) throws IOException  {
-		log.info("-------------------controller---------deleteProduct--------------------");
-		productService.deleteProduct(productVO.getProductid());//db에서 삭제
-		
-		log.info("================ deleteProduct: " + filePath + " :: ProductVO"+ productVO.getFile());
-		
-		log.info("-------------------controller-------file----delete--------------------------"); 
-		awsS3Service.delete(productVO.getFilePath()); // s3 사진 삭제
-		model.setViewName("redirect:/listProduct");
-		
-		return model;
-	}
-
 
 	// 작품수정 진행
 	@GetMapping("/modifyProduct")
@@ -205,6 +170,7 @@ public class ProductController {
 	}
 	
 	
+	// Kids
 	@GetMapping("/kids")
 	public ModelAndView kids(ModelAndView model) {
 		log.info("++++++++++ paging----Kids");

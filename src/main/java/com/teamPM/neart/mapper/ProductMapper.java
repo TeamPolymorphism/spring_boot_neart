@@ -34,7 +34,6 @@ public interface ProductMapper {
 	 * */
 	public ProductVO detailProduct(int productid);	// 작품 조회(content view) > 상품상세페이지	
 	public void upHitProduct(int productid);  // 조회수
-	List<ProductVO> preview(int productid); // 미리보기
 
 	
 
@@ -52,22 +51,9 @@ public interface ProductMapper {
 	
 	
 	
-	/*
-	 *  04. 상품 삭제 
-	 * 
-	 * */	
-	public void deleteProduct(int productid);  
-	@Delete("delete from image where productid=#{productid}")
-	void deleteImage(int productid);    // 작품 사진(image)삭제 -- image테이블 먼저 삭제후 product 테이블 삭제함
-	@Delete("delete from imagetype where imgid=#{imgid}")
-	void deleteImageType(int imgid); // imagetype 테이블 정보 또한 삭제
-	@Delete("delete from cart where productid=#{productid}")
-	void deleteCartImg(int productid); // cart에 있는 관련 상품 삭제
-	
-	
 	
 	/*
-	 *  05. 상품 수정
+	 *  04. 상품 수정
 	 * 
 	 * */	
 	public void modifyProduct(ProductVO productboard);  

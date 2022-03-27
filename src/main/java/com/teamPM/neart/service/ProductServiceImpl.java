@@ -63,18 +63,6 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void deleteProduct(int productid) {
-		log.info("++++++++++ Product ++++++++++ deleteProduct");
-		productMapper.deleteCartImg(productid);
-		productMapper.deleteImageType(productid);
-		productMapper.deleteImage(productid);
-		productMapper.deleteProduct(productid);
-		
-		
-		
-	}
-
-	@Override
 	public void modifyProduct(ProductVO ProductVO) {
 		log.info("++++++++++ Product ++++++++++ modifyProduct");
 		productMapper.modifyProduct(ProductVO);
@@ -124,14 +112,6 @@ public class ProductServiceImpl implements ProductService {
 		return productMapper.kids();
 	}
 	
-	//미리보기
-	@Override
-	public List<ProductVO> preview(int productid) {
-		log.info("++++++++++ Product ++++++++++ preview()");
-		return productMapper.preview(productid);
-	}
 
-
-	
 
 }

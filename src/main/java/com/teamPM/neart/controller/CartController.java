@@ -26,18 +26,15 @@ public class CartController {
 	@Autowired
 	private CartService cartService;
 
-	
 	@PostMapping("/cart")
 	public ModelAndView cart(CartVO cart, ModelAndView mav, ProductVO product) {
 		log.info("cartList..");
 		cartService.insertCart(cart);
-		mav.setViewName("redirect:/");
+		mav.setViewName("redirect:/listProduct");
 		
 		return mav;
 	}
-	
-	
-	
+
 	@GetMapping("/cart/list/{membernum}")
 	public ModelAndView cartList(CartVO cart, ModelAndView mav, MemberVO member) {
 		mav.addObject("cartList", cartService.getCartList(member.getMembernum()));
@@ -67,7 +64,6 @@ public class CartController {
 		return entity;
 
 	}
-	
 	
 
 }

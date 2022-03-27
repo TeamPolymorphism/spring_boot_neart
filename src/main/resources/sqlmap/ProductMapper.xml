@@ -95,14 +95,7 @@
    ]]>
 	</insert>
 
-	<!-- 04. 상품 삭제 -->
-	<delete id="deleteProduct">
-	<![CDATA[
-		delete from product where productid=#{productid}
-	]]>
-	</delete>
-
-	<!-- 05. 상품 수정 -->
+	<!-- 04. 상품 수정 -->
 	<update id="modifyProduct">
 	<![CDATA[
 		update product set productname = #{productname}, productcontent = #{productcontent}, artist = #{artist},
@@ -308,34 +301,6 @@
 	      
 	   
 	   ]]>
-	</select>
-	<!-- 02. 상품 상세 조회 -->
-	<select id="preview" resultType="com.teamPM.neart.vo.ProductVO">
-   <![CDATA[
-     SELECT
-	                       		product.productid as productid,
-	                       		product.productname as productname,
-	                       		product.productcontent as productcontent,
-	                       		product.artist as artist,
-	                       		product.productsize as productsize,
-	                       		product.stock as stock,
-	                       		product.price as price,
-	                       		product.productdate as productdate,
-	                       		product.producthit as producthit,
-	                       		image.imgid as imgid,
-	                       		image.filePath as filePath,
-	                       		imagetype.typeid as typeid,
-	                       		imagetype.imgtype as imgtype
-	                         FROM
-	                            product,
-	                            image,
-	                            imagetype
-	                         where
-	                         	product.productid = image.productid
-	                         	and
-	                         	image.imgid = imagetype.imgid
-      and product.productid = #{productid}
-   ]]>
 	</select>
 
 

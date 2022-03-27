@@ -43,31 +43,27 @@ public class OrderDetailsController {
 	@Autowired
 	UserCustomDetailsService UserCustomDetailsService;
 
+	//회원의 마이페이지에서 주문리스트
 	@RequestMapping("/orderdetails")
 	public String orderdetails(OrderdetailsVO orderdetailsVO, Model model) {
 
 		log.info("orderdetails() ..");
 		log.info("OrderdetailsVO" + orderdetailsVO);
 
-		
 		int membernum = orderdetailsVO.getMembernum();
 		List<OrderdetailsVO> orderdetailsList = memberService.detail(membernum);
 		
 		orderdetailsVO.setOrderdetailsVO(orderdetailsList);
 		
 		model.addAttribute("orderdetails_view", orderdetailsList);
-		//log.info("orderdetailsVO.getTotal()=====" + orderdetailsVO.getTotal());
-		
-		//model.addAttribute("orderdetails_total", orderdetailsVO.getTotal());
 		
 		log.info("memberService.detail(membernum)========" + memberService.detail(membernum));
-		
-
-
+	
 		return "/user/orderdetails";
 
 	}
 	
+	//회원의 주문영수증 출력
 	@RequestMapping("/orderreceipt")
 	public String orderreceipt(OrderdetailsVO orderdetailsVO, int ordersid, Model model) {
 		
@@ -75,99 +71,46 @@ public class OrderDetailsController {
 
 		memberService.orderreceipt(orderdetailsVO.getOrdersid());
 		
-		
 		List<OrderdetailsVO> receiptlist = memberService.receiptlist(ordersid);
 
-		System.out.println("orderreceipt 타나여//////");
-				
 		model.addAttribute("orderreceipt_view", memberService.orderreceipt(ordersid));
-		
 		
 		model.addAttribute("orderdetails_view", receiptlist);
 
 		log.info("receiptlist()...==============================" +  memberService.receiptlist(ordersid));
 
-		
 		return "/user/orderreceipt";
 
 	}
 	
-	/*
-	 * @RequestMapping("/orderreceipt") public String receiptlist(OrderdetailsVO
-	 * orderdetailsVO, Model model) {
-	 * 
-	 * log.info("receiptlist() .."); log.info("OrderdetailsVO" + orderdetailsVO);
-	 * 
-	 * 
-	 * int ordersid = orderdetailsVO.getOrdersid(); List<OrderdetailsVO>
-	 * orderdetailsList = memberService.detail(ordersid);
-	 * 
-	 * orderdetailsVO.setOrderdetailsVO(orderdetailsList);
-	 * 
-	 * model.addAttribute("orderdetails_view", orderdetailsList);
-	 * //log.info("orderdetailsVO.getTotal()=====" + orderdetailsVO.getTotal());
-	 * 
-	 * //model.addAttribute("orderdetails_total", orderdetailsVO.getTotal());
-	 * 
-	 * log.info("memberService.detail(membernum)========" +
-	 * memberService.detail(ordersid));
-	 * 
-	 * return "/user/orderreceipt";
-	 * 
-	 * }
-	 */
-	
+	//회원 주문리스트
 	@RequestMapping("/orderdetailslist")
 	public String orderdetailslist(OrderdetailsVO orderdetailsVO, Model model) {
 
 		log.info("orderdetailslist() ..");
 		log.info("OrderdetailsVO" + orderdetailsVO);
 
-		
 		int membernum = orderdetailsVO.getMembernum();
 		List<OrderdetailsVO> orderdetailsList = memberService.detail(membernum);
 		
 		orderdetailsVO.setOrderdetailsVO(orderdetailsList);
 		
 		model.addAttribute("orderdetails_view", orderdetailsList);
-		//log.info("orderdetailsVO.getTotal()=====" + orderdetailsVO.getTotal());
-		
-		//model.addAttribute("orderdetails_total", orderdetailsVO.getTotal());
 		
 		log.info("memberService.detail(membernum)========" + memberService.detail(membernum));
 		
-
-
 		return "/user/orderdetailslist";
 
 	}
 	
-	
-	
+	//회원 주문취소 공지
 	@RequestMapping("/ordercancel")
 	public String ordercancel(OrderdetailsVO orderdetailsVO, Model model) {
 
 		log.info("ordercancel() ..");
-		log.info("OrderdetailsVO" + orderdetailsVO);
-
-		
-		int membernum = orderdetailsVO.getMembernum();
-		List<OrderdetailsVO> orderdetailsList = memberService.detail(membernum);
-		
-		orderdetailsVO.setOrderdetailsVO(orderdetailsList);
-		
-		model.addAttribute("orderdetails_view", orderdetailsList);
-		//log.info("orderdetailsVO.getTotal()=====" + orderdetailsVO.getTotal());
-		
-		//model.addAttribute("orderdetails_total", orderdetailsVO.getTotal());
-		
-		log.info("memberService.detail(membernum)========" + memberService.detail(membernum));
-		
-
 
 		return "/user/ordercancel";
 
 	}
 	
-
 }

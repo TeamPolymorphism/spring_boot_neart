@@ -6,13 +6,13 @@
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 <!doctype html>
-<html lang="en">
+<html lang="kor">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>MYPAGE</title>
+        <title>주문상세조회</title>
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -74,8 +74,6 @@
                             <ul class="main-menu">
                                 <li>
                                     <a href="/listProduct">ART-PRODUCT</a>
-                                    <!-- <ul class="sub-menu"> <li><a href="index.html">frame</a></li> <li><a
-                                    href="home-02.html"></a></li> <li><a href="home-03.html"></a></li> </ul> -->
                                 </li>
 
                                 <li class="label1">
@@ -94,6 +92,7 @@
                         </div>
 
                         <!-- Icon header 반응형 클 때-->
+                        <sec:authorize access="isAuthenticated()">
                         <div class="wrap-icon-header flex-w flex-r-m h-full">
                         <a href="${pageContext.request.contextPath}/logout" method="POST">
                             <div class="flex-c-m h-full bor6">
@@ -120,16 +119,13 @@
                             </a>
 
                             <div class="flex-c-m h-full p-r-10 bor6">
-                                <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
-<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
-</div>
-                            </div>
-
-                            <!-- <div class="flex-c-m h-full p-lr-19">
-                                <div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
-                                    <i class="zmdi zmdi-menu"></i>
-                                </div>
-                            </div> -->
+								<a href="<c:url value="/cart/list/${principal.user.membernum}"/>">
+									<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-cart">
+										<i class="zmdi zmdi-shopping-cart"></i>
+									</div>
+								</a>
+							</div>
+						</sec:authorize>
                         </div>
                     </nav>
                 </div>
@@ -145,8 +141,7 @@
                 <!-- Icon header -->
                 <a href="${pageContext.request.contextPath}/logout" method="POST">
                 <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
-                    <div
-                        class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
                         <i class="">
                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em"
                         preserveaspectratio="xMidYMid meet" viewbox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1
@@ -173,12 +168,16 @@
                 </a>
 
                 <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
-                    <div class="flex-c-m h-full p-r-5">
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
-<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
-</div>
-                    </div>
-                </div>
+					<div class="flex-c-m h-full p-r-5">
+					<a href="<c:url value="/cart/list/${principal.user.membernum}"/>">
+						<div class="flex-c-m h-full p-r-10 bor6">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">
+								<i class="zmdi zmdi-shopping-cart"></i>
+							</div>
+						</div>
+						</a>
+					</div>
+				</div>
 
                 <!-- Button show menu -->
                 <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -194,15 +193,12 @@
                     <li>
                         <a href="/listProduct">ART-PRODUCT</a>
                     </li>
-
                     <li>
                         <a href="/subscription">SUBSCRIPTION 구독</a>
                     </li>
-
                     <li>
                         <a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
                     </li>
-
                     <li>
                         <a href="/about">ABOUT</a>
                     </li>
@@ -248,16 +244,6 @@
 								<a href="${pageContext.request.contextPath}/ordercancel?membernum=<sec:authentication property="principal.user.membernum" />" class="text-muted">반품/교환/취소</a>
 								</div>
 				          	</div>
-                            <hr class="mb-3" style="border: solid 2px white;">
-                            <div>
-                                <h6 class="mb-2">나의 참여내역</h6>
-                                <div style="padding: 2px;">
-                                    <a href="#" class="text-muted">1:1문의</a>
-                                </div>
-                                <div style="padding: 2px;">
-                                    <a href="#" class="text-muted">Q & A</a>
-                                </div>
-                            </div>
                             <hr class="mb-3" style="border: solid 2px white;">
                             <div>
                                 <h6 class="mb-2">나의 정보관리</h6>
@@ -429,148 +415,112 @@
             </main>
 
             	<!-- Footer -->
-<footer class="bg3 p-t-75 p-b-32">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-lg-3 p-b-50">
-        <h4 class="stext-301 cl0 p-b-30">
-          카테고리
-        </h4>
+	<footer class="bg3 p-t-75 p-b-32">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">카테고리</h4>
 
-        <ul>
-          <li class="p-b-10">
-            <a href="/subscription" class="stext-107 cl7 hov-cl1 trans-04">
-              정기 구독
-            </a>
-          </li>
+					<ul>
+						<li class="p-b-10"><a href="/subscription"
+							class="stext-107 cl7 hov-cl1 trans-04"> 정기 구독 </a></li>
 
-          <li class="p-b-10">
-            <a href="/listProduct" class="stext-107 cl7 hov-cl1 trans-04">
-              아트 포스터
-            </a>
-          </li>
+						<li class="p-b-10"><a href="/listProduct"
+							class="stext-107 cl7 hov-cl1 trans-04"> 아트 포스터 </a></li>
 
-          <li class="p-b-10">
-            <a href="/artist" class="stext-107 cl7 hov-cl1 trans-04">
-              작가
-            </a>
-          </li>
+						<li class="p-b-10"><a href="/artist"
+							class="stext-107 cl7 hov-cl1 trans-04"> 작가 </a></li>
 
-          <li class="p-b-10">
-            <a href="/about" class="stext-107 cl7 hov-cl1 trans-04">
-              니아트 소개
-            </a>
-          </li>
-        </ul>
-      </div>
+						<li class="p-b-10"><a href="/about"
+							class="stext-107 cl7 hov-cl1 trans-04"> 니아트 소개 </a></li>
+					</ul>
+				</div>
 
-      <div class="col-sm-6 col-lg-3 p-b-50">
-        <h4 class="stext-301 cl0 p-b-30">
-          게시판
-        </h4>
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">게시판</h4>
 
-        <ul>
-          <li class="p-b-10">
-            <a href="/board/list" class="stext-107 cl7 hov-cl1 trans-04">
-              공지사항
-            </a>
-          </li>
+					<ul>
+						<li class="p-b-10"><a href="/nlist"
+							class="stext-107 cl7 hov-cl1 trans-04"> 공지사항 </a></li>
 
-          <li class="p-b-10">
-            <a href="/qnaboard/list" class="stext-107 cl7 hov-cl1 trans-04">
-              문의게시판 
-            </a>
-          </li>
+						<li class="p-b-10"><a href="/qlist"
+							class="stext-107 cl7 hov-cl1 trans-04"> Q&A게시판 </a></li>
 
-          <li class="p-b-10">
-            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-              리뷰게시판
-            </a>
-          </li>
+						<li class="p-b-10"><a href="#"
+							class="stext-107 cl7 hov-cl1 trans-04"> 리뷰게시판 </a></li>
 
-        </ul>
-      </div>
+					</ul>
+				</div>
 
-      <div class="col-sm-6 col-lg-3 p-b-50">
-        <h4 class="stext-301 cl0 p-b-30">
-          브랜드
-        </h4>
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">브랜드</h4>
 
-        <p class="stext-107 cl7 size-201">
-          상호 : 주식회사 니아트 <br>
-          대표 : 폴리모피즘 <br>
-          주소 : 서울특별시 금천구 가산동 426-5 월드 메르디앙 벤처 센터 2차 312호 <br>
-          통신판매업신고번호 : 2022-서울금천구-2호 <br>
-          사업자등록정보 : 012-34-5678
-        </p>
+					<p class="stext-107 cl7 size-201">
+						상호 : 주식회사 니아트 <br> 대표 : 폴리모피즘 <br> 주소 : 서울특별시 금천구 가산동
+						426-5 월드 메르디앙 벤처 센터 2차 312호 <br> 통신판매업신고번호 : 2022-서울금천구-2호 <br>
+						사업자등록정보 : 012-34-5678
+					</p>
 
-        <div class="p-t-27">
-          <a href="https://ko-kr.facebook.com/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-            <i class="fa fa-facebook"></i>
-          </a>
+					<div class="p-t-27">
+						<a href="https://ko-kr.facebook.com/"
+							class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+							class="fa fa-facebook"></i>
+						</a> <a href="https://www.instagram.com/?hl=ko"
+							class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+							class="fa fa-instagram"></i>
+						</a> <a href="https://www.pinterest.co.kr/"
+							class="fs-18 cl7 hov-cl1 trans-04 m-r-16"> <i
+							class="fa fa-pinterest-p"></i>
+						</a>
+					</div>
+				</div>
 
-          <a href="https://www.instagram.com/?hl=ko" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-            <i class="fa fa-instagram"></i>
-          </a>
+				<div class="col-sm-6 col-lg-3 p-b-50">
+					<h4 class="stext-301 cl0 p-b-30">contect</h4>
 
-          <a href="https://www.pinterest.co.kr/" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-            <i class="fa fa-pinterest-p"></i>
-          </a>
-        </div>
-      </div>
+					<form>
+						<div class="wrap-input1 w-full p-b-4">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<div class="focus-input1 trans-04"></div>
+						</div>
+					</form>
+						<div class="p-t-18">
+							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
+									onclick = "location.href = 'subscription'">
+								Subscribe
+							</button>
+						</div>
+				</div>
+			</div>
 
-      <div class="col-sm-6 col-lg-3 p-b-50">
-        <h4 class="stext-301 cl0 p-b-30">
-          contect
-        </h4>
+			<div class="p-t-40">
+				<div class="flex-c-m flex-w p-b-18">
+					<a href="#" class="m-all-1"> <img
+						src="images/icons/icon-pay-01.png" alt="ICON-PAY">
+					</a> <a href="#" class="m-all-1"> <img
+						src="images/icons/icon-pay-02.png" alt="ICON-PAY">
+					</a> <a href="#" class="m-all-1"> <img
+						src="images/icons/icon-pay-03.png" alt="ICON-PAY">
+					</a> <a href="#" class="m-all-1"> <img
+						src="images/icons/icon-pay-04.png" alt="ICON-PAY">
+					</a> <a href="#" class="m-all-1"> <img
+						src="images/icons/icon-pay-05.png" alt="ICON-PAY">
+					</a>
+				</div>
 
-        <form>
-          <div class="wrap-input1 w-full p-b-4">
-            <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-            <div class="focus-input1 trans-04"></div>
-          </div>
+				<p class="stext-107 cl6 txt-center">
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					NEART &copy;
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					ALL RIGHTS RESERVED.
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 
-          <div class="p-t-18">
-            <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-              Subscribe
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="p-t-40">
-      <div class="flex-c-m flex-w p-b-18">
-        <a href="#" class="m-all-1">
-          <img src="images/icons/icon-pay-01.png" alt="ICON-PAY">
-        </a>
-
-        <a href="#" class="m-all-1">
-          <img src="images/icons/icon-pay-02.png" alt="ICON-PAY">
-        </a>
-
-        <a href="#" class="m-all-1">
-          <img src="images/icons/icon-pay-03.png" alt="ICON-PAY">
-        </a>
-
-        <a href="#" class="m-all-1">
-          <img src="images/icons/icon-pay-04.png" alt="ICON-PAY">
-        </a>
-
-        <a href="#" class="m-all-1">
-          <img src="images/icons/icon-pay-05.png" alt="ICON-PAY">
-        </a>
-      </div>
-
-      <p class="stext-107 cl6 txt-center">
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-NEART &copy;<script>document.write(new Date().getFullYear());</script> ALL RIGHTS RESERVED.
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-
-      </p>
-    </div>
-  </div>
-</footer>
+				</p>
+			</div>
+		</div>
+	</footer>
 
 
 <!-- Back to top -->

@@ -44,14 +44,13 @@ public class OrderdetailsVO {
 		
 		private List<OrderdetailsVO> orderdetailsVO;
 		
-		public int getTotal() {
-			int total = 0;
-			
-			for (OrderdetailsVO orderdetailsVO : orderdetailsVO) {
-				total = orderdetailsVO.getPrice() * orderdetailsVO.getTotalquantity();
-			}
-			
-			return total;
-		}
+		/*
+		 * public int getTotal() { int total = 0;
+		 * 
+		 * for (OrderdetailsVO orderdetailsVO : orderdetailsVO) { total =
+		 * orderdetailsVO.getPrice() * orderdetailsVO.getTotalquantity(); }
+		 * 
+		 * return total; }
+		 */
 	
 }

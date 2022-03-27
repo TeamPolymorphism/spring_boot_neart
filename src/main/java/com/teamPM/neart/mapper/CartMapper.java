@@ -13,7 +13,7 @@ public interface CartMapper {
 	public List<CartVO> getCartList(int membernum); //장바구니 조회
 	public void plusProduct(int productid); //상품 누적
 	public void plusPrice(int productid); //가격 누적
-	public void deleteCart(int cartid); //장바구니 삭제
+	public void deleteCart(int productid); //장바구니 삭제
 	public CartVO cartTotalPrice(int membernum); //카트 총가격
 	
 }

@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-	<sec:authorize access="isAuthenticated()">
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
 <title>공지사항 수정</title>
 <meta charset="UTF-8">
@@ -142,102 +140,127 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li><a href="listProduct">ART-PRODUCT</a> <!-- <ul class="sub-menu">
-									<li><a href="index.html">frame</a></li>
-									<li><a href="home-02.html"></a></li>
-									<li><a href="home-03.html"></a></li>
-								</ul> --></li>
+							<li><a href="${pageContext.request.contextPath}/listProduct">ART-PRODUCT</a></li>
 
-							<li class="label1"><a href="/subscription">SUBSCRIPTION
+							<li class="label1"><a href="${pageContext.request.contextPath}/subscription">SUBSCRIPTION
 									(구독)</a></li>
 
-							<li><a href="/artist">ARTIST</a></li>
+							<li><a href="${pageContext.request.contextPath}/artist">ARTIST</a></li>
 						</ul>
 						<ul class="main-menu">
-							<li><a href="/about">ABOUT</a></li>
+							<li><a href="${pageContext.request.contextPath}/about">ABOUT</a></li>
 						</ul>
 					</div>
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m">
-						<div
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
+					
+					<!-- Icon header 반응형 클 때  -->
+					<div class="wrap-icon-header flex-w flex-r-m h-full">
+					<sec:authorize access="isAnonymous()">
+						<a href="/login">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
+									preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
+									1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
+							</div>
+						</a>
 						</div>
-
-						<div class="flex-c-m h-full bor6">
-							<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
-								<div
-									class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
-									<i class=""><svg xmlns="http://www.w3.org/2000/svg"
-											aria-hidden="true" role="img" width="0.95em" height="1em"
-											preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512">
-											<path fill="currentColor"
-												d="M248 8C111 8 0 119 0 
-										256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
-										200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
-										0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
-										39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
-										56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z" /></svg></i>
+					</sec:authorize>
+					
+						<sec:authorize access="isAuthenticated()">
+						<h6><sec:authentication property="principal.user.name"/>님</h6>
+							<a href="${pageContext.request.contextPath}/logout" method="POST">
+								<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+									<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
+									preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
+									1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 								</div>
-							</a>
-						</div>
-
-						<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
-<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
-</div>
-
-						<a href="#"
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-							data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
+					</div>
+						<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+							<div class="flex-c-m h-full bor6">
+								<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
+									<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.95em" height="1em" 
+									preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
+									256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
+									200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
+									0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
+									39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
+									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
+								</div>
+							</div>
+						</a>
+						
+						
+					<div class="flex-c-m h-full p-r-5">
+						<a href="<c:url value="${pageContext.request.contextPath}/cart/list/${principal.user.membernum}"/>">
+							<div class="flex-c-m h-full p-r-10 bor6">
+								<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">
+									<i class="zmdi zmdi-shopping-cart"></i>
+								</div>
+							</div>
 						</a>
 					</div>
+			</sec:authorize>
+					</div>
 				</nav>
-			</div>
+			</div>	
 		</div>
 
-		<!-- Header Mobile -->
+		<!-- Header Mobile 반응형 작아질 때 -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->
+			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="/"><img
-					src="${pageContext.request.contextPath}/neart-source/logo/logo_b.png"
-					alt="IMG-LOGO"></a>
+				<a href="/"><img src="${pageContext.request.contextPath}/neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
-			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div
-					class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
-				</div>
-
-				<div class="flex-c-m h-full bor6">
-					<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
-						<div
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
-							<i class=""><svg xmlns="http://www.w3.org/2000/svg"
-									aria-hidden="true" role="img" width="0.95em" height="1em"
-									preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512">
-									<path fill="currentColor"
-										d="M248 8C111 8 0 119 0 
-								256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
-								200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
-								0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
-								39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
-								56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z" /></svg></i>
+			<sec:authorize access="isAnonymous()">
+				<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+					<a href="/login">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+							<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
+								preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
+								1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 						</div>
 					</a>
 				</div>
-
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
-<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
-</div>
-
-				<a href="#"
-					class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-					data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+					<h6><sec:authentication property="principal.user.name"/>님</h6>
+					<a href="${pageContext.request.contextPath}/logout" method="POST">
+						<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+							<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
+								preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
+								1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
+						</div>
+					</a>	
+				</div>
+				<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+				<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+					<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join" >
+						<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
+							preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
+							256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
+							200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
+							0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
+							39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
+							56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
+					</div>
+				</div>
 				</a>
-			</div>
+			
+
+				<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+					<div class="flex-c-m h-full p-r-5">
+					<a href="<c:url value="/cart/list/${principal.user.membernum}"/>">
+						<div class="flex-c-m h-full p-r-10 bor6">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">
+								<i class="zmdi zmdi-shopping-cart"></i>
+							</div>
+						</div>
+						</a>
+					</div>
+				</div>
+			</sec:authorize>
 
 			<!-- Button show menu -->
 			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -413,19 +436,18 @@
 					<div class="col-sm-6 col-lg-3 p-b-50">
 						<h4 class="stext-301 cl0 p-b-30">contect</h4>
 
-						<form>
-							<div class="wrap-input1 w-full p-b-4">
-								<input class="input1 bg-none plh1 stext-107 cl7" type="text"
-									name="email" placeholder="email@example.com">
-								<div class="focus-input1 trans-04"></div>
-							</div>
-
-							<div class="p-t-18">
-								<button
-									class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-									Subscribe</button>
-							</div>
-						</form>
+					<form>
+						<div class="wrap-input1 w-full p-b-4">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<div class="focus-input1 trans-04"></div>
+						</div>
+					</form>
+						<div class="p-t-18">
+							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
+									onclick = "location.href = 'subscription'">
+								Subscribe
+							</button>
+						</div>
 					</div>
 				</div>
 

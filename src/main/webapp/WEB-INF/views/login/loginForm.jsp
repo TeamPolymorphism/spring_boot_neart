@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="kor">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <title>SIGNIN_NEART</title>
+    <title>LOGIN_NEART</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +19,7 @@
     <link  rel="stylesheet" type="text/css" href="css/signin.css">
     <link  rel="stylesheet" type="text/css" href="css/login.css">
 <!--===============================================================================================-->	
-<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -70,11 +69,6 @@
 						<ul class="main-menu">
 							<li>
 								<a href="/listProduct">ART-PRODUCT</a>
-								<!-- <ul class="sub-menu">
-									<li><a href="index.html">frame</a></li>
-									<li><a href="home-02.html"></a></li>
-									<li><a href="home-03.html"></a></li>
-								</ul> -->
 							</li>
 
 							<li class="label1">
@@ -92,86 +86,19 @@
 						</ul>
 					</div>	
 
-					<!-- Icon header -->
-					<div class="wrap-icon-header flex-w flex-r-m h-full">	
-						<div class="flex-c-m h-full bor6">
-							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
-								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
-									preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
-									1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
-							</div>
-						</div>
-						
-            <!--
-						<div class="flex-c-m h-full  bor6">
-							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
-								<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
-									preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
-									256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
-									200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
-									0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
-									39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
-									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
-							</div>
-						</div>-->
-
-						<div class="flex-c-m h-full p-r-10 bor6">
-							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
-							<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
-						</div>
-						</div>
-							
-						<div class="flex-c-m h-full p-lr-19">
-							<div class="icon-header-item cl0 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
-								<i class="zmdi zmdi-menu"></i>
-							</div>
-						</div>
-					</div>
-				</nav>
+					<!-- Icon header 반응형 클 때-->
+					</nav>		
+				</div>
 			</div>	
-		</div>
 
-		<!-- Header Mobile -->
+
+		<!-- Header Mobile 반응형 작아질 때 -->
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->		
 			<div class="logo-mobile">
 				<a href="/"><img src="neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
-			<!-- Icon header -->
-			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
-					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
-						preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
-						1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
-				</div>
-			</div>
-			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
-					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
-						preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
-						256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
-						200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
-						0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
-						39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
-						56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
-				</div>
-			</div>
-
-			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
-				<div class="flex-c-m h-full p-r-10 bor6">
-							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">		
-							<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i class="zmdi zmdi-shopping-cart"></i></a>
-						</div>
-			</div>
-
-			<!-- Button show menu -->
-			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-				<span class="hamburger-box">
-					<span class="hamburger-inner"></span>
-				</span>
-			</div>
-		</div>
 
 
 		<!-- Menu Mobile -->
@@ -179,29 +106,19 @@
 			<ul class="main-menu-m">
 				<li>
 					<a href="/listProduct">ART-PRODUCT</a>
-					<!-- <ul class="sub-menu-m">
-									<li><a href="index.html">frame</a></li>
-									<li><a href="home-02.html"></a></li>
-									<li><a href="home-03.html"></a></li>
-								</ul> -->
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
 				</li>
-
 				<li>
 					<a href="/subscription">SUBSCRIPTION 구독</a>
 				</li>
-
 				<li>
 					<a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
 				</li>
-
 				<li>
 					<a href="/about">ABOUT</a>
 				</li>
 			</ul>
 		</div>
+		
 
 		<!-- Modal Search -->
 		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
@@ -233,7 +150,6 @@
 		      <input type="password" id="password" name="password" class="form-control" placeholder="패스워드" required>
 		      <div class="checkbox mb-3">
 		        <label>
-		          <input type="checkbox" value="remember-me">기억하기
 		        </label>
 		      </div>
 		      <button class="btn btn-lg btn-block" type="submit" style="color: white;">Login</button>
@@ -252,7 +168,7 @@
         <img class="naver" src="images/naver.png" alt="" width="50" height="50" style="margin: 15px;">
       </a>
       <a href="/oauth2/authorization/google" >
-        <img class="google" src="images/google.png" alt="" width="58" height="58" style="margin: 11px 6px;">
+        <img class="google" src="images/google01.png" alt="" width="55" height="55" style="margin: 13px 6px;">
       </a>
       </div>
       <p class="mt-5 mb-3 text-muted">&copy; 2020-2022</p>
@@ -305,14 +221,14 @@
 
         <ul>
           <li class="p-b-10">
-            <a href="/board/list" class="stext-107 cl7 hov-cl1 trans-04">
+            <a href="/nlist" class="stext-107 cl7 hov-cl1 trans-04">
               공지사항
             </a>
           </li>
 
           <li class="p-b-10">
-            <a href="/qnaboard/list" class="stext-107 cl7 hov-cl1 trans-04">
-              문의게시판 
+            <a href="/qlist" class="stext-107 cl7 hov-cl1 trans-04">
+              Q&A게시판 
             </a>
           </li>
 
@@ -358,18 +274,18 @@
           contect
         </h4>
 
-        <form>
-          <div class="wrap-input1 w-full p-b-4">
-            <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
-            <div class="focus-input1 trans-04"></div>
-          </div>
-
-          <div class="p-t-18">
-            <button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-              Subscribe
-            </button>
-          </div>
-        </form>
+       				<form>
+						<div class="wrap-input1 w-full p-b-4">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
+							<div class="focus-input1 trans-04"></div>
+						</div>
+					</form>
+						<div class="p-t-18">
+							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
+									onclick = "location.href = 'subscription'">
+								Subscribe
+							</button>
+						</div>
       </div>
     </div>
 

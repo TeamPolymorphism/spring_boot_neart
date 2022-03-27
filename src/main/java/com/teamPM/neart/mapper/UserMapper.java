@@ -31,16 +31,13 @@ public interface UserMapper {
    
    
 
-  	//로그인한 회원조회
-  
-	//MemberVO get(String id);
+  	//회원페이지 및 주문조회
    MemberVO read(String id);
 	
    void modify(MemberVO memberVO);
    void update(MemberVO memberVO);
 	
    void delete(String id);
-   //void remove(String id);
    
    void withdraw(MemberVO memberVO);
    

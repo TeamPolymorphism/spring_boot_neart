@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="kor">
 <head>
-<title>Document</title>
+<title>회원탈퇴 팝업</title>
 
 	<!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 	<div style="padding:20px;">
 		<input type="button" class="btn btn-warning" value="회원 탈퇴 취소" onclick="self.close();" />
 		<a href="${pageContext.request.contextPath}/userdelete?id=<sec:authentication property="principal.user.id" />"
-	    value="move to close" onclick="moveClose();" type="button" class="btn btn-warning" style="color: black">회원탈퇴</a>
+	    value="move to close" onclick="moveClose();" type="button" class="btn btn-danger" style="color: black">회원탈퇴</a>
     </div>
 </body>
 </html>

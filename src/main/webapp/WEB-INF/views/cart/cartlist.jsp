@@ -1,15 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
 <!DOCTYPE>
-<html lang="en">
+<html lang="kor">
 <head>
 <title>장바구니</title>
 <meta charset="UTF-8">
@@ -121,11 +119,7 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li><a href="listProduct">ART-PRODUCT</a> <!-- <ul class="sub-menu">
-									<li><a href="index.html">frame</a></li>
-									<li><a href="home-02.html"></a></li>
-									<li><a href="home-03.html"></a></li>
-								</ul> --></li>
+							<li><a href="/listProduct">ART-PRODUCT</a></li>
 
 							<li class="label1"><a href="/subscription">SUBSCRIPTION
 									(구독)</a></li>
@@ -136,156 +130,139 @@
 							<li><a href="/about">ABOUT</a></li>
 						</ul>
 					</div>
-					<!-- Icon header -->
+					
+					<!-- Icon header 반응형 클 때-->
 					<div class="wrap-icon-header flex-w flex-r-m">
-						<div
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-							<i class="zmdi zmdi-search"></i>
-						</div>
-
-						<div class="flex-c-m h-full bor6">
-							<a
-								href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
-								<div
-									class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
-									<i class=""><svg xmlns="http://www.w3.org/2000/svg"
-											aria-hidden="true" role="img" width="0.95em" height="1em"
-											preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512">
-											<path fill="currentColor"
-												d="M248 8C111 8 0 119 0 
-										256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
-										200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
-										0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
-										39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
-										56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z" /></svg></i>
+						<sec:authorize access="isAuthenticated()">
+						<h6><sec:authentication property="principal.user.name"/>님</h6>
+							<a href="${pageContext.request.contextPath}/logout" method="POST">
+								<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+									<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
+									preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
+									1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 								</div>
-							</a>
-						</div>
-
-						<div
-							class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart" >
-							<a href="<c:url value="/cart/list/${principal.user.membernum}"/>"><i
-								class="zmdi zmdi-shopping-cart"></i></a>
-						</div>
-
-						<a href="#"
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-							data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
+					</div>
+						<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+							<div class="flex-c-m h-full bor6">
+								<div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
+									<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.95em" height="1em" 
+									preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
+									256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
+									200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
+									0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
+									39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
+									56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
+								</div>
+							</div>
+						</a>
+						<div class="flex-c-m h-full p-r-5">
+						<a href="<c:url value="/cart/list/${principal.user.membernum}"/>">
+							<div class="flex-c-m h-full p-r-10 bor6">
+								<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">
+									<i class="zmdi zmdi-shopping-cart"></i>
+								</div>
+							</div>
 						</a>
 					</div>
+			</sec:authorize>
+					</div>
 				</nav>
-			</div>
+			</div>	
 		</div>
 
-		<!-- Header Mobile 반응형 클 때-->
+		<!-- Header Mobile 반응형 작아질 때 -->
 		<div class="wrap-header-mobile">
-			<!-- Logo moblie -->
+			<!-- Logo moblie -->		
 			<div class="logo-mobile">
-				<a href="/"><img
-					src="${pageContext.request.contextPath}/neart-source/logo/logo_b.png"
-					alt="IMG-LOGO"></a>
+				<a href="/"><img src="${pageContext.request.contextPath}/neart-source/logo/logo_b.png" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
-			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
-				<div
-					class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
-					<i class="zmdi zmdi-search"></i>
+			<sec:authorize access="isAuthenticated()">
+			<h6><sec:authentication property="principal.user.name"/>님</h6>
+			<a href="${pageContext.request.contextPath}/logout" method="POST">
+			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em" height="1em" 
+						preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="currentColor" d="M4 15h2v5h12V4H6v5H4V3a1 1 0 0 1 
+						1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zm6-4V8l5 4l-5 4v-3H2v-2h8z"/></svg></i>
 				</div>
-
-				<div class="flex-c-m h-full bor6">
-					<a
-						href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
-						<div
-							class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti2 js-show-join">
-							<i class=""><svg xmlns="http://www.w3.org/2000/svg"
-									aria-hidden="true" role="img" width="0.95em" height="1em"
-									preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512">
-									<path fill="currentColor"
-										d="M248 8C111 8 0 119 0 
-								256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
-								200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
-								0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
-								39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
-								56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z" /></svg></i>
-						</div>
-					</a>
-				</div>
-
-				<div
-					class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti js-show-cart"
-					data-notify="2">
-					<i class="zmdi zmdi-shopping-cart"></i>
-				</div>
-
-				<a href="#"
-					class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 icon-header-noti"
-					data-notify="0"> <i class="zmdi zmdi-favorite-outline"></i>
-				</a>
 			</div>
-
+			</a>
+			<a href="${pageContext.request.contextPath}/orderdetails?membernum=<sec:authentication property="principal.user.membernum" />">
+				
+			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti2 js-show-join">
+					<i class=""><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="0.97em" height="1em" 
+						preserveAspectRatio="xMidYMid meet" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 
+						256s111 248 248 248s248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 
+						200 200s-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm160 0c17.7 
+						0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 
+						39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1c-10.2 8.5-11.5 23.6-3.1 33.8c30 36 74.1 56.6 120.9 
+						56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8c-10.1-8.4-25.3-7.1-33.8 3.1z"/></svg></i>
+				</div>
+			</div>
+			</a>
+			
+			<div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+					<div class="flex-c-m h-full p-r-5">
+					<a href="<c:url value="${pageContext.request.contextPath}/cart/list/${principal.user.membernum}"/>">
+						<div class="flex-c-m h-full p-r-10 bor6">
+							<div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-cart">
+								<i class="zmdi zmdi-shopping-cart"></i>
+							</div>
+						</div>
+						</a>
+					</div>
+				</div>
+			</sec:authorize>
+			
 			<!-- Button show menu -->
 			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-				<span class="hamburger-box"> <span class="hamburger-inner"></span>
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
 				</span>
 			</div>
 		</div>
 
 
-		<!-- Menu Mobile 반응형 작을 때 -->
+		<!-- Menu Mobile -->
 		<div class="menu-mobile">
-			<ul class="topbar-mobile">
-				<li>
-					<div class="left-top-bar">그림 정기구독으로 그림이 있는 일상을 NEART와 아트 컬렉팅을
-						시작하세요.</div>
-				</li>
-
-				<li>
-					<div class="right-top-bar flex-w h-full">
-						<a href="/nlist" class="flex-c-m p-lr-10 trans-04"> 공지게시판 </a> <a
-							href="/qlist" class="flex-c-m p-lr-10 trans-04"> Q&A게시판 </a>
-					</div>
-				</li>
-			</ul>
-
+		
 			<ul class="main-menu-m">
-				<li><a href="listProduct">ART-PRODUCT</a> <!--<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
-					</ul> 
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>--></li>
-
-				<li><a href="/subscription">SUBSCRIPTION (구독)</a></li>
-
-				<li><a href="/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
+				<li>
+					<a href="${pageContext.request.contextPath}/listProduct">ART-PRODUCT</a>
 				</li>
 
-				<li><a href="/about">ABOUT</a></li>
+				<li>
+					<a href="${pageContext.request.contextPath}/subscription">SUBSCRIPTION 구독</a>
+				</li>
+
+				<li>
+					<a href="${pageContext.request.contextPath}/artist" class="label1 rs1" data-label1="hot">ARTIST</a>
+				</li>
+
+				<li>
+					<a href="${pageContext.request.contextPath}/about">ABOUT</a>
+				</li>
 			</ul>
 		</div>
+		
 
 		<!-- Modal Search -->
-		<div
-			class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button
-					class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img
-						src="${pageContext.request.contextPath}/images/icons/icon-close2.png"
-						alt="CLOSE">
-				</button>
+		<div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<button class="flex-c-m btn-hide-modal-search trans-04">
+				<i class="zmdi zmdi-close"></i>
+			</button>
 
-				<form class="wrap-search-header flex-w p-l-15">
+			<form class="container-search-header">
+				<div class="wrap-search-header">
+					<input class="plh0" type="text" name="search" placeholder="Search...">
 					<button class="flex-c-m trans-04">
 						<i class="zmdi zmdi-search"></i>
 					</button>
-					<input class="plh3" type="text" name="search"
-						placeholder="Search...">
-				</form>
-			</div>
+				</div>
+			</form>
 		</div>
 	</header>
 
@@ -298,27 +275,30 @@
 					<div class="m-l-25 m-r--38 m-lr-0-xl">
 						<div class="wrap-table-shopping-cart">
 							<table class="table-shopping-cart">
-								<c:forEach items="${cartList}" var="cart">
+							
 									<tr class="table_head">
 										<th class="column-1">그림명</th>
 										<th class="column-2"></th>
-										<th class="column-3"></th>
-										<th style="text-align: center;">수량</th>
-										<th style="text-align: center;">가격</th>
+										<th class="column-3" style="text-align: center;">수량</th>
+										<th class="column-4" style="text-align: center;">가격</th>
+										<th class="column-5" style="text-align: center;"></th>
 									</tr>
 
-
+							<sec:authorize access="isAuthenticated()">
+								<c:forEach items="${cartList}" var="cart">
 									<tbody>
 										<tr class="table_row">
+										
 											<td class="column-1">
 												<div class="how-itemcart1">
 													<img src="${cart.filepath}" alt="IMG">
 												</div>
 											</td>
 											<td class="column-2">${cart.productname}</td>
-											<td class="column-3"></td>
-											<td class="column-4">
-												<div class="wrap-num-product flex-w m-l-auto m-r-0">
+											<td class="column-3" style="text-align: center;">${cart.cartquantity}</td>
+											<td class="column-4" style="text-align: center;">&#8361;<fmt:formatNumber
+													value="${cart.totalprice}" pattern="#,###" />원
+												<%-- <div class="wrap-num-product flex-w m-l-auto m-r-0">
 													<div
 														class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m"
 														id="">
@@ -334,14 +314,17 @@
 														<i class="fs-16 zmdi zmdi-plus"></i>
 
 													</div>
-												</div>
+												</div> --%>
 											</td>
-											<td class="column-5">&#8361;<fmt:formatNumber
-													value="${cart.totalprice}" pattern="#,###" />원
+											<td class="column-5">
+											<a class="a-delete btn btn-dark"
+										href="/cart/list/${cart.membernum}/${cart.productid}">삭제</a>		
 											</td>
+											
 										</tr>
 									</tbody>
 								</c:forEach>
+								</sec:authorize>
 							</table>
 						</div>
 					</div>
@@ -411,7 +394,7 @@
 						<li class="p-b-10"><a href="/subscription"
 							class="stext-107 cl7 hov-cl1 trans-04"> 정기 구독 </a></li>
 
-						<li class="p-b-10"><a href="listProduct"
+						<li class="p-b-10"><a href="/listProduct"
 							class="stext-107 cl7 hov-cl1 trans-04"> 아트 포스터 </a></li>
 
 						<li class="p-b-10"><a href="/artist"
@@ -463,17 +446,16 @@
 
 					<form>
 						<div class="wrap-input1 w-full p-b-4">
-							<input class="input1 bg-none plh1 stext-107 cl7" type="text"
-								name="email" placeholder="email@example.com">
+							<input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email" placeholder="email@example.com">
 							<div class="focus-input1 trans-04"></div>
 						</div>
-
-						<div class="p-t-18">
-							<button
-								class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04">
-								Subscribe</button>
-						</div>
 					</form>
+						<div class="p-t-18">
+							<button class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
+									onclick = "location.href = 'subscription'">
+								Subscribe
+							</button>
+						</div>
 				</div>
 			</div>
 
