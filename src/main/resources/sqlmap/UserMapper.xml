@@ -36,6 +36,12 @@
   	</select>
    
    	<insert id="memberJoin" >
+   	<![CDATA[ 
+         insert into member (MEMBERNUM,ID, PASSWORD,NAME,YEAR, MONTH, DAY, ADDRESS,PHONENUM,EMAIL)
+         values (member_seq.nextval, #{id}, #{password}, #{name}, #{year},#{month},#{day},#{address}, #{phonenum}, #{email})     
+      	]]>
+   	</insert>
+
 
 	
 	<!-- 회원정보읽기 -->
