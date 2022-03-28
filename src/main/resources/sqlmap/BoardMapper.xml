@@ -135,7 +135,7 @@
                              reply.bindent
                          FROM
                              board, reply
-                         where bcategory = 1 and board.bid = reply.bid order by bgroup desc, bstep asc
+                         where bcategory = 1 and board.bid = reply.bid order by bgroup asc, bstep asc
              ) A WHERE ROWNUM <= #{pageNum} * #{amount}
          ) WHERE RNUM > (#{pageNum}-1) * #{amount}		
 	]]>

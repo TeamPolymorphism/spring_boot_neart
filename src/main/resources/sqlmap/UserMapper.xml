@@ -16,6 +16,7 @@
 	    <result property="address" column="address"/>
 	    <result property="phonenum" column="phonenum"/>
 	    <result property="enabled" column="enabled"/>
+	    <result property="email" column="email"/>
 		<collection property="authList" resultMap="authMap"></collection> <!-- private List<AuthVO> authList; 처리 -->
 	</resultMap>
 	
@@ -38,6 +39,20 @@
 		select * from member where id = #{id}
 	]]>
 	</select>
+	
+	<!-- 소셜 email체크 -->
+	<select id="isEmail" resultType="com.teamPM.neart.vo.MemberVO">
+      select * from member where email = #{email}
+   </select>
+   
+   <!-- 소셜 강제회원가입 -->
+   <insert id="memberJoin" >
+   <![CDATA[ 
+         insert into member (MEMBERNUM,ID, PASSWORD,NAME,YEAR, MONTH, DAY, ADDRESS,PHONENUM,EMAIL)
+         values (member_seq.nextval, #{id}, #{password}, #{name}, #{year},#{month},#{day},#{address}, #{phonenum}, #{email})     
+      ]]>
+   </insert>
+	
 	
 	<!-- 회원정보수정 -->
 	<update id="update">
@@ -63,24 +78,19 @@
 	<!-- 주문리스트 뽑아내기 -->
 	<select id="detail" resultType="com.teamPM.neart.vo.OrderdetailsVO">
 	<![CDATA[
-        select
-			orders.membernum as membernum,
-			orders.ordersdate as ordersdate,
-	        orders.ordersid as ordersid,
-	        ordersdetails.totalquantity as totalquantity,
-            product.productid as productid,
-	        product.productname as productname,
-			product.price as price
-	        from orders, ordersdetails, product
-	        where membernum = #{membernum}
-            group by
-            orders.membernum,
-            orders.ordersdate,
-            orders.ordersid,
-            ordersdetails.totalquantity,
-            product.productid,
-            product.productname,
-            product.price
+        select 
+            orders.ordersid as ordersid,
+            ordersdetails.productid as productid,
+            orders.membernum as membernum,
+            orders.ordersdate as ordersdate,
+            ordersdetails.totalquantity as totalquantity,
+            product.productname as productname,
+            product.price as price
+            from orders, ordersdetails, product
+            where orders.ordersid = ordersdetails.ordersid
+            and ordersdetails.productid = product.productid
+            and orders.membernum = #{membernum}
+
 	]]>
 	</select>
 	
@@ -88,46 +98,45 @@
 	<select id="orderreceipt" resultType="com.teamPM.neart.vo.OrderdetailsVO">
 	<![CDATA[
         select
-			B.membernum
-			,B.ordersdate
-			,B.ordersid
-			,sum(B.price) as price
-			from
-				(select 
-			    orders.membernum as membernum,
-			    orders.ordersdate as ordersdate,
-			    orders.ordersid as ordersid,
-			    ordersdetails.totalquantity as totalquantity,
-			    product.productname as productname,
-			    product.price as price 
-			    from orders, ordersdetails, member, product
-			    where orders.ordersid = ordersdetails.ordersid
-			    and orders.membernum = member.membernum) B
-		    where B.ordersid = #{ordersid}
-			group by 
-			B.membernum
-			,B.ordersdate
-			,B.ordersid
+         B.membernum
+         ,B.ordersdate
+         ,B.ordersid
+         ,sum(B.price) as price
+         from
+            (select 
+            orders.ordersid as ordersid,
+            ordersdetails.productid as productid,
+            orders.membernum as membernum,
+            orders.ordersdate as ordersdate,
+            ordersdetails.totalquantity as totalquantity,
+            product.productname as productname,
+            product.price as price
+            from orders, ordersdetails, product
+            where orders.ordersid = ordersdetails.ordersid
+            and ordersdetails.productid = product.productid) B
+          where B.ordersid = #{ordersid}
+         group by 
+         B.membernum
+         ,B.ordersdate
+         ,B.ordersid
+
 	]]>
 	</select>
 	
 	<!-- 주문리스트 뽑아내기 -->
 	<select id="receiptlist" resultType="com.teamPM.neart.vo.OrderdetailsVO">
 	<![CDATA[
-        select
-	        orders.ordersid as ordersid,
-	        ordersdetails.totalquantity as totalquantity,
-	        product.productname as productname,
-			product.price as price,
+         select
+           orders.ordersid as ordersid,
+           ordersdetails.totalquantity as totalquantity,
+           product.productname as productname,
+         product.price as price,
             product.productid as productid
-	        from orders, ordersdetails, product
-	        where orders.ordersid = #{ordersid}
-            group by 
-            orders.ordersid,
-	        ordersdetails.totalquantity,
-	        product.productname,
-			product.price,
-            product.productid
+           from orders, ordersdetails, product
+           where orders.ordersid = ordersdetails.ordersid
+            and ordersdetails.productid = product.productid
+            and orders.ordersid = #{ordersid}
+
 	]]>
 	</select>
 	

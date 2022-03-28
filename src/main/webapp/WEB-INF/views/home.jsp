@@ -75,7 +75,13 @@
 							<li>
 								<a href="/about">ABOUT</a>
 							</li>
+							<sec:authorize access="hasRole('ADMIN')">
+							<li>
+								<a href="/statistics/income">매출통계</a>
+							</li>
+							</sec:authorize>
 						</ul>
+						
 					</div>
 
 
@@ -236,6 +242,11 @@
 					<li>
 						<a href="/about">ABOUT</a>
 					</li>
+					<sec:authorize access="hasRole('ADMIN')">
+					<li>
+						<a href="/statistics/income">매출통계</a>
+					</li>
+					</sec:authorize>
 				</ul>
 			</div>
 
@@ -280,7 +291,7 @@
 								</div>
 									
 								<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-									<a href="subscription-detail.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									<a href="/subscription" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 										구독 서비스 안내
 									</a>
 								</div>

@@ -88,10 +88,15 @@
                                 </li>
                             </ul>
                             <ul class="main-menu">
-                                <li>
-                                    <a href="/about">ABOUT</a>
-                                </li>
-                            </ul>
+							<li>
+								<a href="/about">ABOUT</a>
+							</li>
+							<sec:authorize access="hasRole('ADMIN')">
+							<li>
+								<a href="/statistics/income">매출통계</a>
+							</li>
+							</sec:authorize>
+						</ul>
                         </div>
 
                         <!-- Icon header 반응형 클 때-->

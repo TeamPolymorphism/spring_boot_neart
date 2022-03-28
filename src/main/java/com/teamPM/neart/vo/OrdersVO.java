@@ -47,5 +47,6 @@ public class OrdersVO {
 	int membernum;
 	int paymentid;
 	int deliveryid;
+	int price;
 	
 }

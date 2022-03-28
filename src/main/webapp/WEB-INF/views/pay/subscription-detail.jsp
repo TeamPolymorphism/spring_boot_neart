@@ -47,6 +47,7 @@
 
 <script>
 function iamport(){
+	console.log("아임포트 나와라");
 		//가맹점 식별코드
 		IMP.init('imp82620077');
 		IMP.request_pay({
@@ -126,6 +127,11 @@ function iamport(){
 							<li>
 								<a href="/about">ABOUT</a>
 							</li>
+							<sec:authorize access="hasRole('ADMIN')">
+							<li>
+								<a href="/statistics/income">매출통계</a>
+							</li>
+							</sec:authorize>
 						</ul>
 					</div>
 

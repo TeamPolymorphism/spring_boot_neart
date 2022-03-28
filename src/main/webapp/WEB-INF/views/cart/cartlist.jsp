@@ -48,45 +48,46 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/main.css">
 <!--===============================================================================================-->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script type="text/javascript">
-
-      $(document).ready(function () {
-         $(".a-delete").click(function(event) {
-            //prevendDefault()는 href로 연결해 주지 않고 
-            //단순히 click에 대한 처리를 하도록 해준다.
-            event.preventDefault();
-            console.log("ajax 호출전");
-            
-            var trObj = $(this).parent().parent(); // <tr>: 해당열을 삭제해야하니까 <td>의 부모인 <tr>을 받아야한다.
-            
-            console.log($(this).attr("href"));
-            
-            $.ajax({
-                type : "DELETE",
-                url : $(this).attr("href"),
-                success: function (result) {       
-                console.log(result); 
-                  if(result == "SUCCESS"){
-                          //getList();
-                        $(trObj).remove();  
-                                  
-                     }                       
-                   },
-                   error: function (e) {
-                       console.log(e);
-                   }         
-            
-            });   
-         
-         });   
-      
-      });
-
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<!-- 아래 제이쿼리는 1.0이상이면 원하는 버전을 사용하셔도 무방합니다. -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+	<script>
+	function iamport(){
+			console.log("아임포트 나와라11");
+			//가맹점 식별코드
+			IMP.init('imp82620077');
+			console.log("아임포트 나와라22");
+			IMP.request_pay({
+			    pg : 'kcp',
+			    pay_method : 'card',
+			    merchant_uid : 'smi' + new Date().getTime(),
+			    name : '상품1 외,' , //결제창에서 보여질 이름
+			    amount : 100, //실제 결제되는 가격
+			    buyer_email : 'iamport@siot.do',
+			    buyer_name : '구매자이름',
+			    buyer_tel : '010-1234-5678',
+			    buyer_addr : '서울 강남구 도곡동',
+			    buyer_postcode : '123-456'
+			}, function(rsp) {
+				console.log(rsp);
+			    if ( rsp.success ) {
+			    	var msg = '결제가 완료되었습니다.';
+			        msg += '고유ID : ' + rsp.imp_uid;
+			        msg += '상점 거래ID : ' + rsp.merchant_uid;
+			        msg += '결제 금액 : ' + rsp.paid_amount;
+			        msg += '카드 승인번호 : ' + rsp.apply_num;
+			    } else {
+			    	 var msg = '결제에 실패하였습니다.';
+			         msg += '에러내용 : ' + rsp.error_msg;
+			    }
+			    alert(msg);
+			    console.log("아임포트 나와라55");
+			});
+		}
+	
+	</script>
    
-   </script>
 </head>
 <body class="animsition">
 
@@ -127,8 +128,16 @@
 							<li><a href="/artist">ARTIST</a></li>
 						</ul>
 						<ul class="main-menu">
-							<li><a href="/about">ABOUT</a></li>
+							<li>
+								<a href="/about">ABOUT</a>
+							</li>
+							<sec:authorize access="hasRole('ADMIN')">
+							<li>
+								<a href="/statistics/income">매출통계</a>
+							</li>
+							</sec:authorize>
 						</ul>
+						
 					</div>
 					
 					<!-- Icon header 반응형 클 때-->
@@ -318,7 +327,7 @@
 											</td>
 											<td class="column-5">
 											<a class="a-delete btn btn-dark"
-										href="/cart/list/${cart.membernum}/${cart.productid}">삭제</a>		
+										href="/cart/list?membernum=${cart.membernum}&productid=${cart.productid}">삭제</a>		
 											</td>
 											
 										</tr>
@@ -370,10 +379,12 @@
 								</span>
 							</div>
 						</div>
-
-						<button
-							class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
-							결제하기</button>
+						<div type="button" 
+						class="btn btn-dark flex-c-m  size-101  bor1 ">
+						<a onClick="iamport();" href="#" style="color: white;">
+							결제하기
+						</a>
+						</div>
 					</div>
 				</div>
 			</div>

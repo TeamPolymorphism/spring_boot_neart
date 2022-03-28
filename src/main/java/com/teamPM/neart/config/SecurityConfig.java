@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.httpBasic().and().authorizeRequests()
     	.antMatchers("/").permitAll()
-    	.antMatchers("/static").permitAll()
+    	.antMatchers("/static/**").permitAll()
     	.antMatchers("/artist").permitAll()
     	.antMatchers("/about").permitAll()
     	.antMatchers("/listProduct").permitAll()
@@ -85,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/css/**", "/js/**", "/images/**", "/vendor/**", "/fonts/**", 
-        		"/neart-source/**");
+        		"/neart-source/**","/AdminLTE-master/**");
     }
 	
 }

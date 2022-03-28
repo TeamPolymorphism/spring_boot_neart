@@ -89,7 +89,14 @@
 							<li><a href="/artist">ARTIST</a></li>
 						</ul>
 						<ul class="main-menu">
-							<li><a href="/about">ABOUT</a></li>
+							<li>
+								<a href="/about">ABOUT</a>
+							</li>
+							<sec:authorize access="hasRole('ADMIN')">
+							<li>
+								<a href="/statistics/income">매출통계</a>
+							</li>
+							</sec:authorize>
 						</ul>
 					</div>
 					
@@ -289,7 +296,7 @@
 										href="/q_modify_view?bid=${content_view.bid}">수정하기</a> &nbsp;&nbsp;
 						<a type="button" class="btn btn-dark float-left m-r-10"
 										href="javascript:del('q_delete?bid=${content_view.bid}')">삭제하기</a>
-								</c:if>
+								</c:if> 
 
 							</sec:authorize> &nbsp;&nbsp; <sec:authorize access="hasRole('ADMIN')">
 								<a type="button" class="btn btn-dark float-left m-r-10"

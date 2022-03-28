@@ -120,7 +120,14 @@
 							<li><a href="/artist">ARTIST</a></li>
 						</ul>
 						<ul class="main-menu">
-							<li><a href="/about">ABOUT</a></li>
+							<li>
+								<a href="/about">ABOUT</a>
+							</li>
+							<sec:authorize access="hasRole('ADMIN')">
+							<li>
+								<a href="/statistics/income">매출통계</a>
+							</li>
+							</sec:authorize>
 						</ul>
 					</div>
 					
@@ -326,19 +333,19 @@
 					<ul class="pagination justify-content-center">
 						<c:if test="${pageMaker.pre}">
 							<a class="page-link"
-								href="nlist${pageMaker.makeQuery(pageMaker.startPage - 1) }">«</a>
+								href="nlist${pageMaker.makeQuery(pageMaker.startPage - 1)}">«</a>
 						</c:if>
 
 						<!-- 링크를 걸어준다 1-10페이지까지 페이지를 만들어주는것  -->
-						<c:forEach var="idx" begin="${pageMaker.startPage }"
-							end="${pageMaker.endPage }">
+						<c:forEach var="idx" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
 							<a class="page-link"
 								href="nlist${pageMaker.makeQuery(idx)}">${idx}</a>
 						</c:forEach>
 
 						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 							<a class="page-link"
-								href="nlist${pageMaker.makeQuery(pageMaker.endPage +1) }">
+								href="nlist${pageMaker.makeQuery(pageMaker.endPage +1)}">
 								» </a>
 						</c:if>
 					</ul>
