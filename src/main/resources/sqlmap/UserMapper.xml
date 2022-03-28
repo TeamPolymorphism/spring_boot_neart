@@ -16,7 +16,7 @@
 	    <result property="address" column="address"/>
 	    <result property="phonenum" column="phonenum"/>
 	    <result property="enabled" column="enabled"/>
-	    <result property="email" column="email"/>
+	  
 		<collection property="authList" resultMap="authMap"></collection> <!-- private List<AuthVO> authList; 처리 -->
 	</resultMap>
 	
@@ -31,17 +31,7 @@
 		where member.membernum = authorities.membernum and member.id = #{username}
 	</select>
 	
-	<select id="isEmail" resultType="com.teamPM.neart.vo.MemberVO">
-      		select * from member where email = #{email}
-  	</select>
-   
-   	<insert id="memberJoin" >
-   	<![CDATA[ 
-         insert into member (MEMBERNUM,ID, PASSWORD,NAME,YEAR, MONTH, DAY, ADDRESS,PHONENUM,EMAIL)
-         values (member_seq.nextval, #{id}, #{password}, #{name}, #{year},#{month},#{day},#{address}, #{phonenum}, #{email})     
-      	]]>
-   	</insert>
-
+	
 
 	
 	<!-- 회원정보읽기 -->
