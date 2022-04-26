@@ -4,7 +4,6 @@ My personal Curator <br/><br/>
 
 
 
-## 팀<폴리모피즘>활동사진
 <br/>
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/group%20photo.jpg"></p>
@@ -17,7 +16,7 @@ My personal Curator <br/><br/>
 ---------------------------------
 <br/><br/><br/>
 
-## 팀<폴리모피즘>
+
 <br/>
 
 <p>
