@@ -141,7 +141,7 @@ My personal Curator <br/><br/>
 --------
 <br/><br/><br/>
 
-# __구현 화면__
+### __구현 화면__
 <br/><br/>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/pages/about.png">
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/pages/subscribe.png">
