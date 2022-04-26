@@ -73,6 +73,6 @@ javascript, ajax, JSP, Oracle, SQLD, AWS S3, Github
 
 <br/>
 <p>
-<img src="./spring_boot_neart/img/neart_final_presentation/슬라이드1.PNG">
+<img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C1.PNG">
 </p>
 <br/>
