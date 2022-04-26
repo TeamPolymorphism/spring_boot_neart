@@ -5,20 +5,20 @@ My personal Curator
 
 
 ## 팀<폴리모피즘>활동사진
-
+<br/>
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/group%20photo.jpg"></p>
-<br/><br/><br/>
+
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/db%20group%20photo.jpg"></p>
 <br/><br/><br/>
 
 
 ---------------------------------
-
+<br/><br/><br/>
 
 ## 팀<폴리모피즘>
-
+<br/>
 
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C1.PNG"></p>
