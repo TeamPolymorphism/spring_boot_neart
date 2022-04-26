@@ -180,5 +180,8 @@ javascript, ajax, JSP, Oracle, SQLD, AWS S3, Github
 <br/><br/><br/>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C40.PNG"></p>
 <br/><br/><br/>
-
+<img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/db%20group%20photo.jpg"></p>
+<br/><br/><br/>
+<img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/group%20photo.jpg"></p>
+<br/><br/><br/>
 
