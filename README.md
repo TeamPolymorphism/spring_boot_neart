@@ -75,25 +75,25 @@ javascript, ajax, JSP, Oracle, SQLD, AWS S3, Github
 
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C1.PNG"></p>
-</br>
+<br/><br/><br/><br/>
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C2.PNG"></p>
-<br/><br/><br>
+<br/><br/><br/><br/>
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C3.PNG"></p>
-<br/><br/><br>
+<br/><br/><br/><br/>
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C4.PNG"></p>
-<br/><br/><br>
+<br/><br/><br/><br/>
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C5.PNG"></p>
-<br/><br/><br>
+<br/><br/><br/><br/>
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C6.PNG"></p>
-<br/><br/><br>
+<br/><br/><br/><br/>
 <p>
 <img src="https://github.com/TeamPolymorphism/spring_boot_neart/blob/main/img/neart_final_presentation/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C7.PNG"></p>
-<br/><br/><br>
+<br/><br/><br/><br/>
 
 
                                                                                                                             
