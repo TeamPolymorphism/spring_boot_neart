@@ -1,6 +1,6 @@
 # NEART :artist:
 
-My personal Curator
+My personal Curator <br/><br/>
 
 
 
